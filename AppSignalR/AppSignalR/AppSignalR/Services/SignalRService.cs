@@ -23,7 +23,7 @@ namespace AppSignalR.Services
         public SignalRService()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://192.168.1.131/SignalRApi/testHub")
+                .WithUrl("http://172.30.3.55/API/testHub")
                 .WithAutomaticReconnect(new SignalRretryPolicy())
                 .Build();
         }

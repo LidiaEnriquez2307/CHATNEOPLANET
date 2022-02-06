@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tdY4uUH0Yayd22xhyDrmiy6Yxde0TEldQzSmdEujxoTusIr4LXh2whkX4nmnb5blr2jO28jxjolWtrh4YfuzPQ==",
+  "dgSpecHash": "LKLWhNPDdybS95njSSOHfHxjPMXM5NsT/trz6d312sjetwHzkYf3EHSvudndi/PIbA/qWBZ45eKyX1Z0eEYFcQ==",
   "success": true,
-  "projectFilePath": "D:\\SignalR\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
+  "projectFilePath": "D:\\GitHub\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",

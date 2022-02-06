@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SignalR\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {}
+    "D:\\GitHub\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {}
   },
   "projects": {
-    "D:\\SignalR\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {
+    "D:\\GitHub\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SignalR\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
+        "projectUniqueName": "D:\\GitHub\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
         "projectName": "SignalRApi",
-        "projectPath": "D:\\SignalR\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
+        "projectPath": "D:\\GitHub\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\SignalR\\SignalRApi\\SignalRApi\\obj\\",
+        "outputPath": "D:\\GitHub\\SignalRApi\\SignalRApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

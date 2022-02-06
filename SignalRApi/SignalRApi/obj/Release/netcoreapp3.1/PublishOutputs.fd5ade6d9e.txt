@@ -1,0 +1,10 @@
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\SignalRApi.exe
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\web.config
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\SignalRApi.dll
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\SignalRApi.deps.json
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\SignalRApi.runtimeconfig.json
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\SignalRApi.pdb
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\Newtonsoft.Json.dll
+D:\GitHub\SignalRApi\SignalRApi\obj\Release\netcoreapp3.1\PubTmp\Out\System.Net.WebSockets.WebSocketProtocol.dll
