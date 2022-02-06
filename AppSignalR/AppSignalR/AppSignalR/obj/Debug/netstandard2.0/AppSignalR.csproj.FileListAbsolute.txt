@@ -1,0 +1,16 @@
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\AppSignalR.deps.json
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\AppSignalR.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\ref\AppSignalR.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\AppSignalR.pdb
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.csproj.AssemblyReference.cache
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.AssemblyInfoInputs.cache
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.AssemblyInfo.cs
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.csproj.CoreCompileInputs.cache
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\ref\AppSignalR.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.pdb
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
