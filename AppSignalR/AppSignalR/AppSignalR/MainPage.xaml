@@ -5,7 +5,7 @@
 
     <StackLayout Margin="10,50" HorizontalOptions="Center" VerticalOptions="Center">
         <Label x:Name="lbState" />
-        <Entry x:Name="enId" Placeholder="Device id" Keyboard="Text"/>
+        <Entry x:Name="enId" Placeholder="Device id" Keyboard="Numeric"/>
         <Button x:Name="btConnect" Text="Connect" Clicked="btConnect_Clicked" />
         <Entry x:Name="enMessage" Margin="0,50,0,0" Placeholder="Text menssage" />
         <Button x:Name="btSentToAll" Text="Send to all" Clicked="btSentToAll_Clicked" />

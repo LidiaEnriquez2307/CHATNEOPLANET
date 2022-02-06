@@ -32,7 +32,7 @@ namespace AppSignalR
 
         private void btConnect_Clicked(object sender, EventArgs e)
         {
-            SignalRService.DeviceId = enId.Text;
+            SignalRService.DeviceId = Convert.ToInt32(enId.Text);
             signalRService.StartWithReconnectionAsync();
         }
 
@@ -48,12 +48,10 @@ namespace AppSignalR
 
         private void btSentToAll_Clicked(object sender, EventArgs e)
         {
-
-
             signalRService.SendMessageToAll(new MessageItem
             {
                 Message = enMessage.Text,
-                SourceId = enId.Text,
+                SourceId = Convert.ToInt32(enId.Text),
                 TargetId = Convert.ToInt32(enTargetId.Text)
             });
         }
@@ -63,7 +61,7 @@ namespace AppSignalR
             signalRService.SendMessageToDevice(new MessageItem
             {
                 Message = enMessage.Text,
-                SourceId = enId.Text,
+                SourceId = Convert.ToInt32(enId.Text),
                 TargetId = Convert.ToInt32(enTargetId.Text)
             });
         }

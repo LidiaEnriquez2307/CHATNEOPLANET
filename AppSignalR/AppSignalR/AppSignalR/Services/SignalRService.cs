@@ -17,13 +17,13 @@ namespace AppSignalR.Services
         private const string SEND_MESSAGE_TO_DEVICE_OPERATION = "SendMessageToDevice";
         private const string SEND_MESSAGE_TO_ALL_OPERATION = "SendMessageToAll";
 
-        public static string DeviceId { get; set; }
+        public static int DeviceId { get; set; }
         private HubConnection connection;
 
         public SignalRService()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://192.168.1.6/API/testHub")
+                .WithUrl("http://192.168.1.131/SignalRApi/testHub")
                 .WithAutomaticReconnect(new SignalRretryPolicy())
                 .Build();
         }
