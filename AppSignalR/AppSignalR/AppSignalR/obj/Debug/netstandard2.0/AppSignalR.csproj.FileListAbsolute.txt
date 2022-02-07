@@ -1,0 +1,15 @@
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\AppSignalR.deps.json
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\AppSignalR.dll
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\ref\AppSignalR.dll
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\bin\Debug\netstandard2.0\AppSignalR.pdb
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.csproj.AssemblyReference.cache
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.AssemblyInfoInputs.cache
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.AssemblyInfo.cs
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.csproj.CoreCompileInputs.cache
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\XamlC.stamp
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.dll
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\ref\AppSignalR.dll
+D:\GitHub\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.pdb

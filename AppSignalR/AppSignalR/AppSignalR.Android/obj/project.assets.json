@@ -2908,11 +2908,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+      "projectUniqueName": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
       "projectName": "AppSignalR.Android",
-      "projectPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+      "projectPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\obj\\",
+      "outputPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2933,8 +2933,8 @@
       "frameworks": {
         "monoandroid11.0": {
           "projectReferences": {
-            "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
-              "projectPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+            "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+              "projectPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
             }
           }
         }

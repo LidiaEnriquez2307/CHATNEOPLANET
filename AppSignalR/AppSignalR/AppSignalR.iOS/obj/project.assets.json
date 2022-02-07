@@ -2626,11 +2626,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+      "projectUniqueName": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
       "projectName": "AppSignalR.iOS",
-      "projectPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+      "projectPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
+      "outputPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2651,8 +2651,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
-              "projectPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+            "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+              "projectPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
             }
           }
         }

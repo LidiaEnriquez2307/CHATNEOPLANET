@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x/R+f69Wp+UUKNf0bchXQbov/HIKik6DnFxpYkUJuIwH0naphkZ/d/1x7LQOrv1ceKzX5JokPKwjCU2aUnSn3w==",
+  "dgSpecHash": "guUY1tuRZPd0e5laZJ1IVcSI0VxIRumwpzTCJ/JU8tXskvDJ9fCy/Tl/znE7CLOjUjWUjC66f1G+1ZMDFz2FSA==",
   "success": true,
-  "projectFilePath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+  "projectFilePath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\5.0.7\\microsoft.aspnetcore.connections.abstractions.5.0.7.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\5.0.7\\microsoft.aspnetcore.http.connections.client.5.0.7.nupkg.sha512",
