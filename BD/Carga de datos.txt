@@ -1,0 +1,19 @@
+use CHAT;
+
+call sp_insertar_cuenta("usuario1@1","123");
+call sp_insertar_cuenta("usuario2@2","123");
+call sp_insertar_cuenta("usuario3@3","123");
+
+call sp_insertar_sala(1,"U1_U2");
+call sp_insertar_sala(2,"U1_U2_U3");
+
+
+call sp_sala_cuenta((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where Nombre="U1_U2"));
+call sp_sala_cuenta((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where Nombre="U1_U2"));
+
+call sp_sala_cuenta((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where Nombre="U1_U2_U3"));
+call sp_sala_cuenta((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where Nombre="U1_U2_U3"));
+call sp_sala_cuenta((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where Nombre="U1_U2_U3"));
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where Nombre="U1_U2"),"mensaje1",'10/10/2022');
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where Nombre="U1_U2_U3"),"mensaje2",'10/10/2022');

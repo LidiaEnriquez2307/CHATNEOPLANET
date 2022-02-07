@@ -1,0 +1,45 @@
+drop database if exists CHAT;
+
+create database CHAT;
+
+use CHAT;
+
+create table CUENTA
+(
+    id_cuenta int auto_increment primary key not null,
+    correo varchar(50) not null,
+    contrasenia varchar(100) not null
+);
+create table TIPO_SALA
+(
+    id_tipo_sala int primary key not null,
+    nombre varchar(10) not null
+);
+create table SALA
+(
+    id_sala int auto_increment primary key not null,
+    id_tipo_sala int not null,
+    foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
+    Nombre varchar(50)
+);
+create table MENSAJE
+(
+    id_mensaje int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+    foreign key(id_cuenta) references CUENTA(id_cuenta),
+    foreign key(id_sala) references SALA(id_sala),
+    Mensaje text not null,
+    Fecha datetime not null
+);
+create table SALA_CUENTA
+(
+    id_sala_usuario int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+    foreign key(id_cuenta) references CUENTA(id_cuenta),
+    foreign key(id_sala) references SALA(id_sala)
+);
+
+INSERT INTO TIPO_SALA() VALUES(1,"Privado");
+INSERT INTO TIPO_SALA() VALUES(2,"Publico");
