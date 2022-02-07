@@ -11,6 +11,8 @@ drop procedure if exists sp_buscar_cuenta;
 //
 drop procedure if exists sp_mostrar_cuentas;
 //
+drop procedure if exists sp_id_cuenta;
+//
 
 drop view if EXISTS V_cuentas;
 //
@@ -45,5 +47,10 @@ END
 CREATE PROCEDURE sp_mostrar_cuentas()
 BEGIN
 	Select * from CUENTA;
+END
+//
+CREATE PROCEDURE sp_id_cuenta(_correo varchar(50))
+BEGIN
+	Select id_cuenta from CUENTA where correo=_correo;
 END
 //
