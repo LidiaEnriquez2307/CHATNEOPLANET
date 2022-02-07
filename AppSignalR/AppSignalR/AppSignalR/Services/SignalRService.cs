@@ -73,7 +73,7 @@ namespace AppSignalR.Services
         {
             try
             {
-                await connection.InvokeAsync(INIT_OPERATION, new DeviceInfo { Id = DeviceId });
+                await connection.InvokeAsync(INIT_OPERATION, new Cuenta { Id = DeviceId });
             }
             catch (Exception ex)
             {
