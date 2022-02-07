@@ -48,25 +48,25 @@ namespace AppSignalR
 
         private void btSentToAll_Clicked(object sender, EventArgs e)
         {
-            signalRService.SendMessageToAll(new MessageItem
+            signalRService.SendMessageToAll(new Mensaje
             {
                 Message = enMessage.Text,
-                SourceId = Convert.ToInt32(enId.Text),
-                TargetId = Convert.ToInt32(enTargetId.Text)
+                id_cuenta = Convert.ToInt32(enId.Text),
+                id_sala = Convert.ToInt32(enTargetId.Text)
             });
         }
 
         private void btSentToDevice_Clicked(object sender, EventArgs e)
         {
-            signalRService.SendMessageToDevice(new MessageItem
+            signalRService.SendMessageToDevice(new Mensaje
             {
                 Message = enMessage.Text,
-                SourceId = Convert.ToInt32(enId.Text),
-                TargetId = Convert.ToInt32(enTargetId.Text)
+                id_cuenta = Convert.ToInt32(enId.Text),
+                id_sala = Convert.ToInt32(enTargetId.Text)
             });
         }
 
-        private async void SignalRService_MessageReceived(object sender, MessageItem e)
+        private async void SignalRService_MessageReceived(object sender, Mensaje e)
         {
             await DisplayAlert("Message reveived", e.Message, "Ok");
         }

@@ -49,18 +49,18 @@ namespace SignalRApi.SignalR
         }
 
         [HubMethodName("SendMessageToAll")]
-        public async Task SendMessageToAll(MessageItem item)
+        public async Task SendMessageToAll(Mensaje item)
         {
             await Clients.All.SendAsync("NewMessage", item);
         }
 
         [HubMethodName("SendMessageToDevice")]
-        public async Task SendMessageToDevice(MessageItem item)
+        public async Task SendMessageToDevice(Mensaje item)
         {
-            Debug.WriteLine($"SignalR server send message {item.Message} from {item.SourceId} to  {item.TargetId}");
+            Debug.WriteLine($"SignalR server send message {item.Message} from {item.id_cuenta} to  {item.id_sala}");
 
-            if (deviceConnections.ContainsKey(item.TargetId))
-                await Clients.Client(deviceConnections[item.TargetId]).SendAsync("NewMessage", item);
+            if (deviceConnections.ContainsKey(item.id_sala))
+                await Clients.Client(deviceConnections[item.id_sala]).SendAsync("NewMessage", item);
         }
     }
 }
