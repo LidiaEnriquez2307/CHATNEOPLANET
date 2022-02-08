@@ -18,6 +18,7 @@ namespace AppSignalR.Services
         private const string SEND_MESSAGE_TO_ALL_OPERATION = "SendMessageToAll";
 
         public static int DeviceId { get; set; }
+        public static string _correo { get; set; }
         private HubConnection connection;
 
         public SignalRService()
@@ -73,7 +74,7 @@ namespace AppSignalR.Services
         {
             try
             {
-                await connection.InvokeAsync(INIT_OPERATION, new Cuenta { Id = DeviceId });
+                await connection.InvokeAsync(INIT_OPERATION, new Cuenta { Id = DeviceId ,correo=_correo}) ;
             }
             catch (Exception ex)
             {

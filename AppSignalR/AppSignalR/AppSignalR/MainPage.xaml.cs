@@ -33,6 +33,7 @@ namespace AppSignalR
         private void btConnect_Clicked(object sender, EventArgs e)
         {
             SignalRService.DeviceId = Convert.ToInt32(enId.Text);
+            SignalRService._correo = enCorreo.Text;
             signalRService.StartWithReconnectionAsync();
         }
 
