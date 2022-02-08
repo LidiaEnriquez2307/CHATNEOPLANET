@@ -45,12 +45,12 @@ namespace SignalRApi.SignalR
         [HubMethodName("Init")]
         public async Task Init(Cuenta cuenta)
         {
-            int idCuneta = GetIdCuenta(cuenta.correo);
-            deviceConnections.AddOrUpdate(idCuneta, Context.ConnectionId);
-            connectionDevices.AddOrUpdate(Context.ConnectionId, idCuneta);
+            cuenta.id_cuenta = GetIdCuenta(cuenta.correo);
+            deviceConnections.AddOrUpdate(cuenta.id_cuenta, Context.ConnectionId);
+            connectionDevices.AddOrUpdate(Context.ConnectionId, cuenta.id_cuenta);
 
-            if (deviceConnections.ContainsKey(idCuneta))
-                await Clients.Client(deviceConnections[idCuneta]).SendAsync("Conectado", cuenta);
+            if (deviceConnections.ContainsKey(cuenta.id_cuenta))
+                await Clients.Client(deviceConnections[cuenta.id_cuenta]).SendAsync("Conectado", cuenta);
 
             await Task.CompletedTask;
         }

@@ -74,7 +74,7 @@ namespace AppSignalR.Services
         {
             try
             {
-                await connection.InvokeAsync(INIT_OPERATION, new Cuenta { Id = DeviceId ,correo=_correo}) ;
+                await connection.InvokeAsync(INIT_OPERATION, new Cuenta { id_cuenta = DeviceId ,correo=_correo}) ;
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace AppSignalR.Services
         }
         private void Conectado(Cuenta cuenta)
         {
-            Debug.WriteLine(cuenta.correo);
+            Debug.WriteLine(cuenta.correo+" "+ cuenta.id_cuenta);
         }
 
         public async Task SendMessageToAll(Mensaje item)
