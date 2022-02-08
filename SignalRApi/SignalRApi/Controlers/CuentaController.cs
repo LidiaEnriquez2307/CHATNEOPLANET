@@ -16,15 +16,19 @@ namespace SignalRApi.Controlers
         [HttpGet]
         public IActionResult Get()
         {
+            var f = 0;
             IEnumerable<Modelos.Cuenta> lista = null;
+            //IEnumerable<Modelos.Cuenta> lista = null;
             using (var db= new MySqlConnection(cadena))
-            
             {
-                var sql = "select * from cuenta;";
+                var sql = "call sp_id_cuenta('usuario1@1')";
                 lista = db.Query<Modelos.Cuenta>(sql);
             }
-
-            return Ok(lista);
+                foreach(var w in lista)
+            {
+                f = w.id_cuenta;
+            }
+            return Ok(f);
         }
     }
 }

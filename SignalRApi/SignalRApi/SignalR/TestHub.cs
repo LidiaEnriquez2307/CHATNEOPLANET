@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using SignalRApi.Modelos;
+using MySql.Data.MySqlClient;
+using Dapper;
 
 namespace SignalRApi.SignalR
 {
@@ -43,11 +45,12 @@ namespace SignalRApi.SignalR
         [HubMethodName("Init")]
         public async Task Init(Cuenta cuenta)
         {
-            deviceConnections.AddOrUpdate(cuenta.id_cuenta, Context.ConnectionId);
-            connectionDevices.AddOrUpdate(Context.ConnectionId, cuenta.id_cuenta);
+            int idCuneta = GetIdCuenta(cuenta.correo);
+            deviceConnections.AddOrUpdate(idCuneta, Context.ConnectionId);
+            connectionDevices.AddOrUpdate(Context.ConnectionId, idCuneta);
 
-            if (deviceConnections.ContainsKey(cuenta.id_cuenta))
-                await Clients.Client(deviceConnections[cuenta.id_cuenta]).SendAsync("Conectado", cuenta);
+            if (deviceConnections.ContainsKey(idCuneta))
+                await Clients.Client(deviceConnections[idCuneta]).SendAsync("Conectado", cuenta);
 
             await Task.CompletedTask;
         }
@@ -65,6 +68,22 @@ namespace SignalRApi.SignalR
 
             if (deviceConnections.ContainsKey(item.id_sala))
                 await Clients.Client(deviceConnections[item.id_sala]).SendAsync("NewMessage", item);
+        }
+        public int GetIdCuenta(string correo)
+        {
+            int f = 0;
+            string cadena = @"Server=localhost; Database=CHAT; Uid=root;";
+        IEnumerable<Modelos.Cuenta> lista = null;
+            using (var db = new MySqlConnection(cadena))
+            {
+                var sql = "call sp_id_cuenta('usuario1@1')";
+                lista = db.Query<Modelos.Cuenta>(sql);
+            }
+            foreach (var w in lista)
+            {
+                f = w.id_cuenta;
+            }
+            return f;
         }
     }
 }
