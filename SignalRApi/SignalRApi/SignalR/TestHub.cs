@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using SignalRApi.Modelos;
 
 namespace SignalRApi.SignalR
 {
@@ -40,12 +41,15 @@ namespace SignalRApi.SignalR
         }
 
         [HubMethodName("Init")]
-        public Task Init(DeviceInfo info)
+        public async Task Init(Cuenta cuenta)
         {
-            deviceConnections.AddOrUpdate(info.Id, Context.ConnectionId);
-            connectionDevices.AddOrUpdate(Context.ConnectionId, info.Id);
+            deviceConnections.AddOrUpdate(cuenta.id_cuenta, Context.ConnectionId);
+            connectionDevices.AddOrUpdate(Context.ConnectionId, cuenta.id_cuenta);
 
-            return Task.CompletedTask;
+            if (deviceConnections.ContainsKey(cuenta.id_cuenta))
+                await Clients.Client(deviceConnections[cuenta.id_cuenta]).SendAsync("Conectado", cuenta);
+
+            await Task.CompletedTask;
         }
 
         [HubMethodName("SendMessageToAll")]

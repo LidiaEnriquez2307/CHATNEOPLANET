@@ -39,7 +39,7 @@ namespace AppSignalR.Services
             connection.Reconnected += OnConnectionReconnected;
 
             connection.On<Mensaje>("NewMessage", NewMessage);
-
+            connection.On<Cuenta>("Conectado", Conectado);
             while (true)
             {
                 try
@@ -85,6 +85,10 @@ namespace AppSignalR.Services
         private void NewMessage(Mensaje obj)
         {
             MessageReceived?.Invoke(this, obj);
+        }
+        private void Conectado(Cuenta cuenta)
+        {
+            Debug.WriteLine(cuenta.correo);
         }
 
         public async Task SendMessageToAll(Mensaje item)
