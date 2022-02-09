@@ -15,7 +15,12 @@ namespace AppSignalR.ViewModels
 
         }
 
-       
+        public ChatViewModel Chat
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Constructors
