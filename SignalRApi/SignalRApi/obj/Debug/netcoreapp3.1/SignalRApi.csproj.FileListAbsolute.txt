@@ -61,3 +61,7 @@ D:\GitHub\SignalRApi\SignalRApi\obj\Debug\netcoreapp3.1\SignalRApi.csproj.CopyCo
 D:\GitHub\SignalRApi\SignalRApi\obj\Debug\netcoreapp3.1\SignalRApi.dll
 D:\GitHub\SignalRApi\SignalRApi\obj\Debug\netcoreapp3.1\SignalRApi.pdb
 D:\GitHub\SignalRApi\SignalRApi\obj\Debug\netcoreapp3.1\SignalRApi.genruntimeconfig.cache
+D:\GitHub\SignalRApi\SignalRApi\bin\Debug\netcoreapp3.1\Data.dll
+D:\GitHub\SignalRApi\SignalRApi\bin\Debug\netcoreapp3.1\Models.dll
+D:\GitHub\SignalRApi\SignalRApi\bin\Debug\netcoreapp3.1\Data.pdb
+D:\GitHub\SignalRApi\SignalRApi\bin\Debug\netcoreapp3.1\Models.pdb

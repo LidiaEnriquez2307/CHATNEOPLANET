@@ -847,6 +847,31 @@
             "rid": "win"
           }
         }
+      },
+      "Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "Models": "1.0.0",
+          "MySql.Data": "8.0.28"
+        },
+        "compile": {
+          "bin/placeholder/Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
+        }
       }
     }
   },
@@ -2619,12 +2644,24 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/Data.csproj",
+      "msbuildProject": "../Data/Data.csproj"
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Dapper >= 2.0.123",
+      "Data >= 1.0.0",
       "Microsoft.AspNetCore.SignalR >= 1.1.0",
+      "Models >= 1.0.0",
       "MySql.Data >= 8.0.28"
     ]
   },
@@ -2659,7 +2696,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\GitHub\\SignalRApi\\Data\\Data.csproj": {
+              "projectPath": "D:\\GitHub\\SignalRApi\\Data\\Data.csproj"
+            },
+            "D:\\GitHub\\SignalRApi\\Models\\Models.csproj": {
+              "projectPath": "D:\\GitHub\\SignalRApi\\Models\\Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,0 +1,10 @@
+D:\GitHub\SignalRApi\Models\bin\Debug\netcoreapp3.1\Models.deps.json
+D:\GitHub\SignalRApi\Models\bin\Debug\netcoreapp3.1\Models.dll
+D:\GitHub\SignalRApi\Models\bin\Debug\netcoreapp3.1\Models.pdb
+D:\GitHub\SignalRApi\Models\obj\Debug\netcoreapp3.1\Models.csproj.AssemblyReference.cache
+D:\GitHub\SignalRApi\Models\obj\Debug\netcoreapp3.1\Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\SignalRApi\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfoInputs.cache
+D:\GitHub\SignalRApi\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
+D:\GitHub\SignalRApi\Models\obj\Debug\netcoreapp3.1\Models.csproj.CoreCompileInputs.cache
+D:\GitHub\SignalRApi\Models\obj\Debug\netcoreapp3.1\Models.dll
+D:\GitHub\SignalRApi\Models\obj\Debug\netcoreapp3.1\Models.pdb
