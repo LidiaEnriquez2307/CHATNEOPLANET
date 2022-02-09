@@ -1,0 +1,42 @@
+-- MENSAJE
+delimiter //
+use CHAT;
+//
+
+drop procedure if exists sp_insertar_mensaje;
+//
+drop procedure if exists sp_buscar_mensaje;
+//
+drop procedure if exists sp_mostrar_mensajes;
+//
+
+drop view if EXISTS V_mensajes;
+//
+
+CREATE PROCEDURE sp_insertar_mensaje
+(
+    _id_cuenta int,
+    _id_sala int,
+    _mensaje text,
+    _fecha datetime
+) 
+BEGIN
+	INSERT INTO MENSAJE (id_cuenta,id_sala,Mensaje,Fecha) VALUES(_id_cuenta,_id_sala,_mensaje,_fecha);
+END
+//
+CREATE PROCEDURE sp_buscar_mensaje
+(
+    _mensaje text
+) 
+BEGIN
+        SELECT m.Mensaje FROM mensaje as m INNER JOIN cuenta as c on m.id_cuenta = c.id_cuenta WHERE c.id_cuenta=_id_cuenta and Mensaje LIKE '%_mensaje%';
+END
+//
+CREATE PROCEDURE sp_mostrar_mensajes
+(
+  _id_sala int
+)
+BEGIN
+	SELECT m.Mensaje, c.correo FROM mensaje as m INNER JOIN cuenta as c on m.id_cuenta = c.id_cuenta WHERE m.id_sala=_id_sala;
+END
+//
