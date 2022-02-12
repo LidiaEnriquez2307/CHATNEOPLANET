@@ -119,8 +119,8 @@ namespace AppSignalR.ViewModels
             this.Email = string.Empty;
             this.Password = string.Empty;
 
-            MainViewModel.GetInstance().Chat = new ChatViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ChatPage());
+            MainViewModel.GetInstance().Room = new RoomViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RoomPage());
 
 
 

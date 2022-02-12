@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c5b2f30a-0c21-4dda-a3e6-55b69c9bbe5d": {
+      "ProjectGuid": "c5b2f30a-0c21-4dda-a3e6-55b69c9bbe5d",
+      "DisplayName": "AppSignalR",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

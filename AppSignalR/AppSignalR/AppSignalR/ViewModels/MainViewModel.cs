@@ -14,6 +14,12 @@ namespace AppSignalR.ViewModels
             set;
 
         }
+        public RoomViewModel Room
+        {
+            get;
+            set;
+        }
+
 
         public ChatViewModel Chat
         {
