@@ -4,8 +4,17 @@ using System.Text;
 
 namespace AppSignalR.ViewModels
 {
-   public class MainViewModel
+    using System.Collections.Generic;
+    using Models;
+    public class MainViewModel
     {
+        #region Properties
+        public List<Room> RoomsList
+        {
+            get;
+            set;
+        }
+        #endregion
         #region ViewModels
 
         public LoginViewModel Login

@@ -6,15 +6,21 @@
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Room}">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar
+                BackgroundColor="Silver"
+                HeightRequest="46"
+                Text="{Binding Filter, Mode=TwoWay}"
+                Placeholder="Search"
+                SearchCommand="{Binding SearchCommand}">
+            </SearchBar>
             <ListView
                 BackgroundColor="Silver"
                 HasUnevenRows="true" 
-                IsPullToRefreshEnabled="true"
+                IsPullToRefreshEnabled="true"                
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
                 ItemsSource="{Binding Rooms}"
-                SeparatorVisibility="None">
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -22,7 +28,9 @@
                                 CornerRadius="20"
                                 HasShadow="true"
                                 Margin="5">
-                                
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectRoomCommand}"/>
+                                </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>

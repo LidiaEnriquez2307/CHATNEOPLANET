@@ -1,29 +1,25 @@
 ﻿namespace AppSignalR.ViewModels
 {
-    using AppSignalR.Services;
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using Xamarin.Forms;
-    public class ChatViewModel : BaseViewModel
+    using Models;
+    public class ChatViewModel
     {
-        /*private readonly ISignalRService signalRService;
-        signalRService = DependencyService.Get<ISignalRService>();
 
-        protected override void OnAppearing()
+        #region Properties
+        public Room Room
         {
-            base.OnAppearing();
-            signalRService.MessageReceived += SignalRService_MessageReceived;
-            signalRService.Connecting += SignalRService_Connecting;
-            signalRService.Connected += SignalRService_Connected;
-            SignalRService.DeviceId = 1;
-            Lista.ItemsSource = Messages;
-
-            signalRService.StartWithReconnectionAsync();
+            get;
+            set;
         }
-        private void SignalRService_Connected(object sender, EventArgs e)
+        #endregion
+
+        #region Constructors
+        public ChatViewModel(Room room)
         {
-            lbState.Text = "Connected";
-        }*/
+            this.Room = room;
+        }
+        #endregion
     }
 }
