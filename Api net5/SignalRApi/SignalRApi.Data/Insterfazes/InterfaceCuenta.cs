@@ -9,8 +9,8 @@ namespace SignalRApi.Data.Insterfazes
 {
     public interface InterfaceCuenta
     {
-        Task<IEnumerable<Cuenta>> GetCuentas();
-        Task<Cuenta> GetIdCuenta(string correo);
-        Task<bool> InsertCuenta(Cuenta cuenta);
+        Task<bool> insertar_cuenta(Cuenta cuenta);
+        Task<IEnumerable<Cuenta>> mostrar_cuentas();
+        Task<IEnumerable<Cuenta>> id_cuenta(string correo);
     }
 }

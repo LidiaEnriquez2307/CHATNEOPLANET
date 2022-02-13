@@ -15,23 +15,23 @@ namespace SignalRApi.Controllers
     public class CuentaController : ControllerBase
     {
         //inyectar el repositorio
-        private readonly InterfaceCuenta _RepoCuenta;
-        public CuentaController(InterfaceCuenta RepoCuenta)
+        private readonly InterfaceCuenta _repoCuenta;
+        public CuentaController(InterfaceCuenta repoCuenta)
         {
-            this._RepoCuenta = RepoCuenta;
+            this._repoCuenta = repoCuenta;
         }
         [HttpGet]
-        public async Task<IActionResult> GetCuentas()
+        public async Task<IActionResult> mostrar_cuentas()
         {
-            return Ok(await _RepoCuenta.GetCuentas());
+            return Ok(await _repoCuenta.mostrar_cuentas());
         }
-        [HttpGet("{_correo}")]
-        public async Task<IActionResult> GetIdCuenta(string correo)
+        [HttpGet("{correo}")]
+        public async Task<IActionResult> id_cuenta(string correo)
         {
-            return Ok(await _RepoCuenta.GetIdCuenta(correo));
+            return Ok(await _repoCuenta.id_cuenta(correo));
         }
         [HttpPost]
-        public async Task<IActionResult> InsertCuenta([FromBody]Cuenta cuenta)
+        public async Task<IActionResult> insertar_cuenta([FromBody]Cuenta cuenta)
         {
             if (cuenta==null)
             {
@@ -41,7 +41,7 @@ namespace SignalRApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var created = await _RepoCuenta.InsertCuenta(cuenta);
+            var created = await _repoCuenta.insertar_cuenta(cuenta);
             return Created("created",created);
         }
     }

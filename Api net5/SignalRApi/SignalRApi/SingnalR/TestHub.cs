@@ -59,7 +59,7 @@ namespace SignalRApi.SingnalR
         [HubMethodName("SendMessageToDevice")]
         public async Task SendMessageToDevice(Mensaje mensaje)
         {
-            Debug.WriteLine($"SignalR server send message {mensaje.mensaje} from {mensaje.id_cueta} to  {mensaje.id_sala}");
+            Debug.WriteLine($"SignalR server send message {mensaje.mensaje} from {mensaje.id_cuenta} to  {mensaje.id_sala}");
 
             if (deviceConnections.ContainsKey(mensaje.id_sala))
                 await Clients.Client(deviceConnections[mensaje.id_sala]).SendAsync("NewMessage", mensaje);

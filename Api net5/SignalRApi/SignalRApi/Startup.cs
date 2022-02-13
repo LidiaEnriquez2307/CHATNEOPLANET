@@ -33,6 +33,12 @@ namespace SignalRApi
             var mySQLConnectionConfig = new MySQLConfiguration(Configuration.GetConnectionString("MySqlConnection"));
             services.AddSingleton(mySQLConnectionConfig);//Coneccion a la BD
             services.AddSingleton<InterfaceCuenta,RepoCuenta>(); //Tabla Cuenta 
+            services.AddSingleton<InterfaceSala, RepoSala>(); //Tabla Sala
+            services.AddSingleton<InterfaceMensaje, RepoMensaje>(); //Tabla Mensaje
+            services.AddSingleton<InterfaceCuentaSala, RepoCuentaSala>(); //Tabla CUENTA_SALA
+            services.AddSingleton<InterfaceTipoSala, RepoTipoSala>(); //Tabla TIPO_SALA
+            services.AddSingleton<InterfaceUMNV, RepoUMNV>(); //Tabla ULTIMO_MENSAJE_NO_VISIBLE
+
             services.AddControllers();
             services.AddSignalR(); //SignalR
             services.AddSwaggerGen(c =>
@@ -50,6 +56,9 @@ namespace SignalRApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SignalRApi v1"));
             }
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SignalRApi v1"));
 
             app.UseHttpsRedirection();
 

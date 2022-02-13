@@ -10,6 +10,8 @@ namespace SignalRApi.Modelos
     {
         public int id_sala { get; set; }
         public int id_tipo_sala { get; set; } //1=privado; 2= publica
-        public int nombre { get; set; }
+        public string nombre { get; set; }
+        public DateTime fecha { get; set; }
+        public bool activo { get; set; }
     }
 }

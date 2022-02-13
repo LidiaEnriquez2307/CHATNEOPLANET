@@ -3,8 +3,6 @@ using SignalRApi.Data.Insterfazes;
 using SignalRApi.Modelos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 
@@ -23,23 +21,26 @@ namespace SignalRApi.Data.Repositorios
             return new MySqlConnection(_connectionString._connectionString);
         }
         //CRUD
-        public async Task<IEnumerable<Cuenta>> GetCuentas()
+        public async Task<IEnumerable<Cuenta>> id_cuenta(string correo)
         {
             var db = dbConection();
-            var sql = @"select * from cuenta";
-            return await db.QueryAsync<Cuenta>(sql,new { });
+            var sql = @"call sp_id_cuenta(@_correo)";
+            return await db.QueryAsync<Cuenta>(sql, new { _correo = correo });
         }
 
-        public async Task<Cuenta> GetIdCuenta(string correo)
+        public async Task<bool> insertar_cuenta(Cuenta cuenta)
         {
             var db = dbConection();
-            var sql = @"select * from cuenta where correo=@_correo";
-            return await db.QueryFirstOrDefaultAsync<Cuenta>(sql, new {_correo=correo});
+            var sql = @"call sp_insertar_cuenta(@_correo,@_contrasenia)";
+            var result = await db.ExecuteAsync(sql, new { _correo = cuenta.correo, _contrasenia = cuenta.contrasenia });
+            return result > 0;
         }
 
-        public Task<bool> InsertCuenta(Cuenta cuenta)
+        public async Task<IEnumerable<Cuenta>> mostrar_cuentas()
         {
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @"call sp_mostrar_cuentas()";
+            return await db.QueryAsync<Cuenta>(sql, new { });
         }
     }
 }

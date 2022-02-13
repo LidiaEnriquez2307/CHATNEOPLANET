@@ -9,9 +9,10 @@ namespace SignalRApi.Modelos
     public class Mensaje
     {
         public int id_mensaje { get; set; }
-        public int id_cueta { get; set; }
+        public int id_cuenta { get; set; }
         public int id_sala { get; set; }
         public string mensaje { get; set; }
-        public string fecha { get; set; }
+        public DateTime fecha { get; set; }
+        public bool activo { get; set; }
     }
 }
