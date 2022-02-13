@@ -1,8 +1,8 @@
-drop database if exists CHAT;
+drop database if exists chat;
 
-create database CHAT;
+create database chat;
 
-use CHAT;
+use chat;
 
 create table CUENTA
 (
@@ -13,33 +13,49 @@ create table CUENTA
 create table TIPO_SALA
 (
     id_tipo_sala int primary key not null,
-    nombre varchar(10) not null
+    nombre varchar(10) not null,
+    fecha datetime not null,
+    activo bool not null
 );
 create table SALA
 (
     id_sala int auto_increment primary key not null,
     id_tipo_sala int not null,
-    foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
-    Nombre varchar(50)
+	foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
+    nombre varchar(50),
+    fecha datetime not null,
+    activo bool not null
 );
 create table MENSAJE
 (
     id_mensaje int auto_increment primary key not null,
     id_cuenta int not null,
     id_sala int not null,
-    foreign key(id_cuenta) references CUENTA(id_cuenta),
-    foreign key(id_sala) references SALA(id_sala),
-    Mensaje text not null,
-    Fecha datetime not null
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+    mensaje text not null,
+    fecha datetime not null,
+    activo bool not null
 );
-create table SALA_CUENTA
+create table CUENTA_SALA
 (
-    id_sala_usuario int auto_increment primary key not null,
+    id_sala_cuenta int auto_increment primary key not null,
     id_cuenta int not null,
     id_sala int not null,
-    foreign key(id_cuenta) references CUENTA(id_cuenta),
-    foreign key(id_sala) references SALA(id_sala)
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+    administrador bool not null,
+    fecha datetime not null,
+    activo bool not null
 );
-
-INSERT INTO TIPO_SALA() VALUES(1,"Privado");
-INSERT INTO TIPO_SALA() VALUES(2,"Publico");
+create table ULTIMO_MENSAJE_NV
+(
+   id_umnv int auto_increment primary key not null,
+   id_cuenta int not null,
+   id_sala int not null,
+   id_mensaje int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+	foreign key(id_mensaje) references MENSAJE(id_mensaje),
+   fecha datetime not null
+);

@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj": {}
+    "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj": {
+    "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+        "projectUniqueName": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
         "projectName": "AppSignalR.iOS",
-        "projectPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
+        "projectPath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
-                "projectPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+              "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+                "projectPath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
               }
             }
           }
@@ -79,20 +79,20 @@
         }
       }
     },
-    "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+    "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
+        "projectUniqueName": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
         "projectName": "AppSignalR",
-        "projectPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\AppSignalR\\AppSignalR\\AppSignalR\\obj\\",
+        "projectPath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -123,6 +123,10 @@
               "target": "Package",
               "version": "[5.0.7, )"
             },
+            "MvvmLightLibs": {
+              "target": "Package",
+              "version": "[5.4.1.1, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -148,7 +152,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

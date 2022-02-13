@@ -1,0 +1,11 @@
+-- TIPO_SALA
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_insertar_tipo_sala//
+
+CREATE PROCEDURE sp_insertar_tipo_sala(_id_tipo_sala int,_nombre varchar(50), _fecha date) 
+BEGIN
+	INSERT INTO TIPO_SALA (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,_fecha,true);
+END//

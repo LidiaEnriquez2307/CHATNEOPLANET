@@ -1,49 +1,25 @@
 -- SALA
 delimiter //
-use CHAT;
-//
+use CHAT//
 
-drop procedure if exists sp_insertar_sala;
-//
-drop procedure if exists sp_buscar_sala;
-//
-drop procedure if exists sp_mostrar_salas;
-//
-drop procedure if exists sp_sala_cuenta;
-//
+drop procedure if exists sp_insertar_sala//
+drop procedure if exists sp_cambiar_nombre_sala//
+drop procedure if exists sp_borrar_sala//
 
-CREATE PROCEDURE sp_insertar_sala
-(
-    _id_tipo_sala int,
-    _Nombre varchar(50)
-) 
+CREATE PROCEDURE sp_insertar_sala(_id_tipo_sala int,_nombre varchar(50), _fecha date) 
 BEGIN
-	INSERT INTO SALA (id_tipo_sala,Nombre) VALUES(_id_tipo_sala,_nombre);
-END
-//
-CREATE PROCEDURE sp_buscar_sala
-(
-    _nombre text,
-    _id_cuenta int
-) 
+	INSERT INTO SALA (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,_fecha,true);
+END//
+
+CREATE PROCEDURE sp_cambiar_nombre_sala(_id_sala int,_nombre varchar(50)) 
 BEGIN
-        select s.Nombre as nombre_sala from sala as s INNER JOIN sala_usuario as su on s.id_sala = su.id_sala WHERE su.id_cuenta=_id_cuenta AND s.Nombre LIKE '%_nombre%';
-END
-//
-CREATE PROCEDURE sp_mostrar_salas
-(
-  _id_cuenta int
-)
+	UPDATE SALA SET	nombre=_nombre 
+	WHERE id_sala=_id_sala;
+END//
+
+CREATE PROCEDURE sp_borrar_sala(_id_sala int) 
 BEGIN
-	select s.Nombre as nombre_sala from sala as s INNER JOIN sala_usuario as su on s.id_sala = su.id_sala WHERE su.id_cuenta=_id_cuenta;
-END
-//
-CREATE PROCEDURE sp_sala_cuenta
-(
-    _id_cuenta int,
-    _id_sala int
-) 
-BEGIN
-	INSERT INTO SALA_CUENTA(id_cuenta,id_sala) VALUES(_id_cuenta,_id_sala);
-END
-//
+	UPDATE SALA SET	activo=false
+	WHERE id_sala=_id_sala;
+END//

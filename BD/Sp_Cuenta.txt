@@ -1,49 +1,16 @@
 -- CUENTA
 delimiter //
-use CHAT;
-//
+use CHAT //
 
-drop procedure if exists sp_insertar_cuenta;
-//
-drop procedure if exists sp_actualizar_cuenta;
-//
-drop procedure if exists sp_buscar_cuenta;
-//
-drop procedure if exists sp_mostrar_cuentas;
-//
-drop procedure if exists sp_id_cuenta;
-//
+drop procedure if exists sp_insertar_cuenta//
+drop procedure if exists sp_mostrar_cuentas//
+drop procedure if exists sp_id_cuenta//
 
-drop view if EXISTS V_cuentas;
-//
-
-CREATE PROCEDURE sp_insertar_cuenta 
-(
-    _correo varchar(50),
-    _contrasenia varchar(50)
-) 
+CREATE PROCEDURE sp_insertar_cuenta (_correo varchar(50),_contrasenia varchar(50)) 
 BEGIN
 	INSERT INTO CUENTA(correo,contrasenia) VALUES(_correo,_contrasenia);
-END
-//
-CREATE PROCEDURE sp_actualizar_cuenta 
-(
-    _id_cuenta int,
-    _correo varchar(50),
-    _contrasenia varchar(50)
-) 
-BEGIN
-	update CUENTA set correo=_correo,contrasenia=_contrasenia where id_cuenta=_id_cuenta;
-END
-//
-CREATE PROCEDURE sp_buscar_cuenta
-(
-    _id_cuenta int
-) 
-BEGIN
-	Select * from CUENTA where id_cuenta=_id_cuenta;
-END
-//
+END//
+
 CREATE PROCEDURE sp_mostrar_cuentas()
 BEGIN
 	Select * from CUENTA;
@@ -52,5 +19,4 @@ END
 CREATE PROCEDURE sp_id_cuenta(_correo varchar(50))
 BEGIN
 	Select id_cuenta from CUENTA where correo=_correo;
-END
-//
+END//

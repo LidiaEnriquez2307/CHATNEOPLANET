@@ -1,0 +1,24 @@
+-- CUENTA_SALA
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_vincular_cuenta_sala//
+drop procedure if exists sp_desvincular_cuenta_sala//
+drop procedure if exists sp_salas_de_una_cuenta//
+
+CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_fecha date,_administrador bool) 
+BEGIN
+	INSERT INTO CUENTA_SALA(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta,_id_sala,_fecha,_administrador,true);
+END//
+
+CREATE PROCEDURE sp_desvincular_cuenta_sala(_id_sala_cuenta int) 
+BEGIN
+	UPDATE CUENTA_SALA SET administrador = false, activo = false 
+	WHERE id_sala_cuenta= _id_sala_cuenta;
+END//
+
+CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int) 
+BEGIN
+        select s.* from SALA as s INNER JOIN CUENTA_SALA as sc on s.id_sala = sc.id_sala WHERE sc.id_cuenta=_id_cuenta AND s.activo;
+END//

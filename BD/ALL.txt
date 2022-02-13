@@ -1,0 +1,245 @@
+drop database if exists chat;
+
+create database chat;
+
+use chat;
+
+create table CUENTA
+(
+    id_cuenta int auto_increment primary key not null,
+    correo varchar(50) not null,
+    contrasenia varchar(100) not null
+);
+create table TIPO_SALA
+(
+    id_tipo_sala int primary key not null,
+    nombre varchar(10) not null,
+    fecha datetime not null,
+    activo bool not null
+);
+create table SALA
+(
+    id_sala int auto_increment primary key not null,
+    id_tipo_sala int not null,
+	foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
+    nombre varchar(50),
+    fecha datetime not null,
+    activo bool not null
+);
+create table MENSAJE
+(
+    id_mensaje int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+    mensaje text not null,
+    fecha datetime not null,
+    activo bool not null
+);
+create table CUENTA_SALA
+(
+    id_sala_cuenta int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+    administrador bool not null,
+    fecha datetime not null,
+    activo bool not null
+);
+create table ULTIMO_MENSAJE_NV
+(
+   id_umnv int auto_increment primary key not null,
+   id_cuenta int not null,
+   id_sala int not null,
+   id_mensaje int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+	foreign key(id_mensaje) references MENSAJE(id_mensaje),
+   fecha datetime not null
+);
+-- CUENTA
+delimiter //
+use CHAT //
+
+drop procedure if exists sp_insertar_cuenta//
+drop procedure if exists sp_mostrar_cuentas//
+drop procedure if exists sp_id_cuenta//
+
+CREATE PROCEDURE sp_insertar_cuenta (_correo varchar(50),_contrasenia varchar(50)) 
+BEGIN
+	INSERT INTO CUENTA(correo,contrasenia) VALUES(_correo,_contrasenia);
+END//
+
+CREATE PROCEDURE sp_mostrar_cuentas()
+BEGIN
+	Select * from CUENTA;
+END
+//
+CREATE PROCEDURE sp_id_cuenta(_correo varchar(50))
+BEGIN
+	Select id_cuenta from CUENTA where correo=_correo;
+END//
+-- CUENTA_SALA
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_vincular_cuenta_sala//
+drop procedure if exists sp_desvincular_cuenta_sala//
+drop procedure if exists sp_salas_de_una_cuenta//
+
+CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_fecha date,_administrador bool) 
+BEGIN
+	INSERT INTO CUENTA_SALA(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta,_id_sala,_fecha,_administrador,true);
+END//
+
+CREATE PROCEDURE sp_desvincular_cuenta_sala(_id_sala_cuenta int) 
+BEGIN
+	UPDATE CUENTA_SALA SET administrador = false, activo = false 
+	WHERE id_sala_cuenta= _id_sala_cuenta;
+END//
+
+CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int) 
+BEGIN
+        select s.* from SALA as s INNER JOIN CUENTA_SALA as sc on s.id_sala = sc.id_sala WHERE sc.id_cuenta=_id_cuenta AND s.activo;
+END//
+-- MENSAJE
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_insertar_mensaje//
+drop procedure if exists sp_mostrar_mensajes//
+drop procedure if exists sp_buscar_mensaje//
+
+CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text,_fecha datetime) 
+BEGIN
+	INSERT INTO MENSAJE (id_cuenta,id_sala,mensaje,fecha,activo) 
+	VALUES(_id_cuenta,_id_sala,_mensaje,_fecha,true);
+END//
+
+CREATE PROCEDURE sp_mostrar_mensajes(_id_sala int)
+BEGIN
+	SELECT * FROM MENSAJE WHERE id_sala=_id_sala;
+END//
+
+CREATE PROCEDURE sp_buscar_mensaje(_id_cuenta int,_mensaje text)
+BEGIN
+	SELECT * FROM MENSAJE WHERE id_cuenta=_id_cuenta AND mensaje LIKE _mensaje;
+END//
+
+
+
+-- SALA
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_insertar_sala//
+drop procedure if exists sp_cambiar_nombre_sala//
+drop procedure if exists sp_borrar_sala//
+
+CREATE PROCEDURE sp_insertar_sala(_id_tipo_sala int,_nombre varchar(50), _fecha date) 
+BEGIN
+	INSERT INTO SALA (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,_fecha,true);
+END//
+
+CREATE PROCEDURE sp_cambiar_nombre_sala(_id_sala int,_nombre varchar(50)) 
+BEGIN
+	UPDATE SALA SET	nombre=_nombre 
+	WHERE id_sala=_id_sala;
+END//
+
+CREATE PROCEDURE sp_borrar_sala(_id_sala int) 
+BEGIN
+	UPDATE SALA SET	activo=false
+	WHERE id_sala=_id_sala;
+END//
+-- TIPO_SALA
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_insertar_tipo_sala//
+
+CREATE PROCEDURE sp_insertar_tipo_sala(_id_tipo_sala int,_nombre varchar(50), _fecha date) 
+BEGIN
+	INSERT INTO TIPO_SALA (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,_fecha,true);
+END//
+-- ULTIMO_MENSAJE_NO_VISIBLE
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_insertar_umnv//
+
+CREATE PROCEDURE sp_insertar_umnv(_id_cuenta int,_id_sala int, _id_mensaje int, _fecha date) 
+BEGIN
+	INSERT INTO ULTIMO_MENSAJE_NV (id_cuenta,id_sala,id_mensaje,fecha) 
+	VALUES(_id_cuenta,_id_sala, _id_mensaje, _fecha);
+END//
+delimiter ;
+use CHAT;
+
+call sp_insertar_tipo_sala(1,"Privado","");
+call sp_insertar_tipo_sala(2,"Publico","");
+
+call sp_insertar_cuenta("usuario1@1","123");
+call sp_insertar_cuenta("usuario2@2","123");
+call sp_insertar_cuenta("usuario3@3","123");
+call sp_insertar_cuenta("usuario4@4","123");
+call sp_insertar_cuenta("usuario5@5","123");
+call sp_insertar_cuenta("usuario6@6","123");
+call sp_insertar_cuenta("usuario7@7","123");
+call sp_insertar_cuenta("usuario8@8","123");
+
+call sp_insertar_sala(1,"Sala privada 1",CURDATE());
+call sp_insertar_sala(1,"Sala privada 2",CURDATE());
+call sp_insertar_sala(1,"Sala privada 3",CURDATE());
+call sp_insertar_sala(1,"Sala privada 4",CURDATE());
+call sp_insertar_sala(2,"Sala publica 1",CURDATE());
+call sp_insertar_sala(2,"Sala publica 2",CURDATE());
+
+
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala privada 1"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala privada 1"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala privada 2"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala privada 2"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala privada 3"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala privada 3"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala privada 4"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala privada 4"),CURDATE(),false);
+
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala publica 1"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala publica 2"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala publica 1"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala publica 2"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala publica 1"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala publica 2"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala publica 1"),CURDATE(),false);
+call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala publica 2"),CURDATE(),false);
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala privada 1"),"mensaje de usuario1@1 a sala privada1",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario1@1 a sala publica1",CURDATE());
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala privada 1"),"mensaje de usuario2@2 a sala privada1",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario2@2 a sala publica2",CURDATE());
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala privada 2"),"mensaje de usuario3@3 a sala privada2",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario3@3 a sala publica1",CURDATE());
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala privada 2"),"mensaje de usuario4@4 a sala privada2",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario4@4 a sala publica2",CURDATE());
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala privada 3"),"mensaje de usuario5@5 a sala privada3",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario5@5 a sala publica1",CURDATE());
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala privada 3"),"mensaje de usuario6@6 a sala privada3",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario6@6 a sala publica2",CURDATE());
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala privada 4"),"mensaje de usuario7@7 a sala privada4",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario7@7 a sala publica1",CURDATE());
+
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala privada 4"),"mensaje de usuario8@8 a sala privada4",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario8@8 a sala publica2",CURDATE());
+

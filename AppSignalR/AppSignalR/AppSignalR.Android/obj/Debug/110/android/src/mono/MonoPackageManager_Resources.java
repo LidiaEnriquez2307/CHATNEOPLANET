@@ -4,7 +4,11 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "AppSignalR.Android.dll" comes first in this list. */
 		"AppSignalR.Android.dll",
 		"AppSignalR.dll",
+		"CommonServiceLocator.dll",
 		"FormsViewGroup.dll",
+		"GalaSoft.MvvmLight.dll",
+		"GalaSoft.MvvmLight.Extras.dll",
+		"GalaSoft.MvvmLight.Platform.dll",
 		"Microsoft.AspNetCore.Connections.Abstractions.dll",
 		"Microsoft.AspNetCore.Http.Connections.Client.dll",
 		"Microsoft.AspNetCore.Http.Connections.Common.dll",

@@ -1,0 +1,11 @@
+-- ULTIMO_MENSAJE_NO_VISIBLE
+delimiter //
+use CHAT//
+
+drop procedure if exists sp_insertar_umnv//
+
+CREATE PROCEDURE sp_insertar_umnv(_id_cuenta int,_id_sala int, _id_mensaje int, _fecha date) 
+BEGIN
+	INSERT INTO ULTIMO_MENSAJE_NV (id_cuenta,id_sala,id_mensaje,fecha) 
+	VALUES(_id_cuenta,_id_sala, _id_mensaje, _fecha);
+END//
