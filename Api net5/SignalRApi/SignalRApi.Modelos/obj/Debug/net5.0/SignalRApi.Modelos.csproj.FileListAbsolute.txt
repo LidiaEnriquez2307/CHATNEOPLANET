@@ -10,3 +10,15 @@ C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\Si
 C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.dll
 C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\ref\SignalRApi.Modelos.dll
 C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.pdb
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\SignalRApi.Modelos.deps.json
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\SignalRApi.Modelos.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\ref\SignalRApi.Modelos.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\SignalRApi.Modelos.pdb
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.csproj.AssemblyReference.cache
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.AssemblyInfoInputs.cache
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.AssemblyInfo.cs
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.csproj.CoreCompileInputs.cache
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\ref\SignalRApi.Modelos.dll
+C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.pdb
