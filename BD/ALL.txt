@@ -181,8 +181,8 @@ END//
 delimiter ;
 use CHAT;
 
-call sp_insertar_tipo_sala(1,"Privado","");
-call sp_insertar_tipo_sala(2,"Publico","");
+call sp_insertar_tipo_sala(1,"Privado",CURDATE());
+call sp_insertar_tipo_sala(2,"Publico",CURDATE());
 
 call sp_insertar_cuenta("usuario1@1","123");
 call sp_insertar_cuenta("usuario2@2","123");
