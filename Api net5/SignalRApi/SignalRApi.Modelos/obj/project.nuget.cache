@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+gHwEoDb//whcnvbNC6d7HCZWOJRCzDHv1GheUVb0y7jQ130ZMzu3y9Rfau4EMisZuH/2bGgwwa91g3FjhizHA==",
+  "dgSpecHash": "WRFtfHz7aoZJR/q4CkJr4fYrcizwRys/YxlQwjd6MCGWByn0ia2F9MkUU0ggAxmp54x16jZMDrry1FEs95iwQw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dell\\Desktop\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
+  "projectFilePath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",

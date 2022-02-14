@@ -10,3 +10,15 @@ C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\Si
 C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.dll
 C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\ref\SignalRApi.Modelos.dll
 C:\Users\Dell\Desktop\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.pdb
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\SignalRApi.Modelos.deps.json
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\SignalRApi.Modelos.dll
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\ref\SignalRApi.Modelos.dll
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\bin\Debug\net5.0\SignalRApi.Modelos.pdb
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.csproj.AssemblyReference.cache
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.GeneratedMSBuildEditorConfig.editorconfig
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.AssemblyInfoInputs.cache
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.AssemblyInfo.cs
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.csproj.CoreCompileInputs.cache
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.dll
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\ref\SignalRApi.Modelos.dll
+D:\Lenin\EcoPlanet\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\obj\Debug\net5.0\SignalRApi.Modelos.pdb

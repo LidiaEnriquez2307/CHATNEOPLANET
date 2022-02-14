@@ -19,6 +19,12 @@ namespace SignalRApi.Controllers
         {
             this._repoSalaCuenta = repoSalaCuneta;
         }
+        //CRUD
+        [HttpGet("{id_cuenta}")]
+        public async Task<IActionResult> mostrar_mensajes(int id_cuenta)
+        {
+            return Ok(await _repoSalaCuenta.salas_de_una_cuenta(id_cuenta));
+        }
         [HttpPost]
         public async Task<IActionResult> vincular_cuenta_sala([FromBody] Cuenta_Sala sala_cuenta)
         {
