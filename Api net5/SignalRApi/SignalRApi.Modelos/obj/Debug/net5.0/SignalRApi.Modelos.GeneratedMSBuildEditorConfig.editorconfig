@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = SignalRApi.Modelos
-build_property.ProjectDir = C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\
+build_property.ProjectDir = C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\Api net5\SignalRApi\SignalRApi.Modelos\
