@@ -9,7 +9,7 @@ namespace AppSignalR.ViewModels
     public class MainViewModel
     {
         #region Properties
-        public List<Room> RoomsList
+        public List<Sala> RoomsList
         {
             get;
             set;

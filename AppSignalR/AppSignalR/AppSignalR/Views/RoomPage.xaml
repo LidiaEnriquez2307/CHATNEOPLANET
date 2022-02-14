@@ -44,11 +44,11 @@
                                         <Label 
                                             FontAttributes="Bold"
                                             FontSize="Medium" 
-                                            Text="{Binding Id}"
+                                            Text="{Binding id_sala}"
                                             TextColor="Black">
                                         </Label>
                                         <Label 
-                                            Text="{Binding Name}"
+                                            Text="{Binding nombre}"
                                             TextColor="Black">
                                         </Label>
                                     </StackLayout>

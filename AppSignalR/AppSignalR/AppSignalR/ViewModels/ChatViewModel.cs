@@ -8,7 +8,7 @@
     {
 
         #region Properties
-        public Room Room
+        public Sala Room
         {
             get;
             set;
@@ -16,7 +16,7 @@
         #endregion
 
         #region Constructors
-        public ChatViewModel(Room room)
+        public ChatViewModel(Sala room)
         {
             this.Room = room;
         }

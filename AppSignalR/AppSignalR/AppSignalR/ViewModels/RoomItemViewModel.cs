@@ -6,7 +6,7 @@
     using Views;
     using Xamarin.Forms;
 
-    public class RoomItemViewModel : Room
+    public class RoomItemViewModel : Sala
     {
         public ICommand SelectRoomCommand
         {

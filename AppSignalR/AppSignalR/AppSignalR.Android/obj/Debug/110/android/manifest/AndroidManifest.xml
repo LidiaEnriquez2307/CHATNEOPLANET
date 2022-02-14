@@ -9,6 +9,7 @@
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@mipmap/icon" android:label="AppSignalR.Android" android:theme="@style/MainTheme">
     <activity android:name="crc64e42dde13ac9e1663.MainActivity" android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:exported="true" android:icon="@mipmap/icon" android:label="AppSignalR" android:theme="@style/MainTheme">
@@ -17,6 +18,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <receiver android:name="crc64cea48322b3427ae9.ConnectivityChangeBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Connectivity Plugin Broadcast Receiver" />
     <service android:name="crc64396a3fe5f8138e3f.KeepAliveService" />
     <receiver android:name="crc64a0e0a82d0db9a07d.BatteryBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Essentials Battery Broadcast Receiver" />
     <receiver android:name="crc64a0e0a82d0db9a07d.EnergySaverBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Essentials Energy Saver Broadcast Receiver" />
