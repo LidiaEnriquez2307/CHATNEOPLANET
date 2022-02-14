@@ -14,6 +14,11 @@ namespace AppSignalR.ViewModels
             get;
             set;
         }
+        public Cuenta Cuenta
+        {
+            get;
+            set;
+        }
         #endregion
         #region ViewModels
 

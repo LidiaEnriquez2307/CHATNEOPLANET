@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
@@ -125,7 +126,7 @@
                 var url = string.Format("{0}{1}", servicePrefix, controller);
                 var response = await client.GetAsync(url);
                 var result = await response.Content.ReadAsStringAsync();
-
+                Console.WriteLine(result);
                 if (!response.IsSuccessStatusCode)
                 {
                     return new Response

@@ -21,6 +21,7 @@
         private List<RoomItemViewModel> roomList;
         private bool isRefreshing;
         private string filter;
+        public int id_cuenta;
 
         #endregion
 
@@ -82,9 +83,9 @@
                 return;
             }*/
             var response = await this.apiService.GetList<Sala>(
-                "http://192.168.11.117",
-                "/Api2",
-                "/api/CuentaSala/1");
+                "http://192.168.1.7",
+                "/API",
+                "/api/CuentaSala/"+ id_cuenta);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
@@ -95,9 +96,23 @@
                 await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
-            var list = (List<RoomItemViewModel>)response.Result;
-            this.rooms = new ObservableCollection<RoomItemViewModel>(list);
+            MainViewModel.GetInstance().RoomsList = (List<Sala>)response.Result;
+            this.Rooms = new ObservableCollection<RoomItemViewModel>(
+                this.ToRoomItemViewModel());
+            this.IsRefreshing = false;
 
+
+        }
+        private IEnumerable<RoomItemViewModel> ToRoomItemViewModel()
+        {
+            return MainViewModel.GetInstance().RoomsList.Select(l => new RoomItemViewModel
+            {
+                id_sala = l.id_sala,
+                id_tipo_sala = l.id_tipo_sala,
+                nombre = l.nombre,
+                fecha = l.fecha,
+                activo = l.activo,
+            });
         }
 
 

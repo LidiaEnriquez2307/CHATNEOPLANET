@@ -32,3 +32,5 @@ D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\
 D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\ref\AppSignalR.dll
 D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\AppSignalR.pdb
 D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\Views\RoomPage.xaml.g.cs
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\Views\ChatPage.xaml.g.cs
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR\obj\Debug\netstandard2.0\Views\RoomPage.xaml.g.cs

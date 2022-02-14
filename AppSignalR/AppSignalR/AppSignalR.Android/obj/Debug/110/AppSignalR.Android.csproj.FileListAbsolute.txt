@@ -13,14 +13,8 @@ C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignal
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\AppSignalR.Android.csproj.AssemblyReference.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\stamp\_BuildLibraryImportsCache.stamp
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\res.flag
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\45\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\55\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\63\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\68\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\71\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\72\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\73\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\76\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\R.txt
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\R.cs.flag
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\AppSignalR.Android.csproj.CoreCompileInputs.cache
@@ -600,14 +594,11 @@ C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignal
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\46\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\52\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\56\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\64\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\69\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\74\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\77\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\80\jl\files.cache
-C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\88\jl\files.cache
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\CommonServiceLocator.dll
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\GalaSoft.MvvmLight.dll
 C:\Users\LIDIA\Source\Repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\GalaSoft.MvvmLight.dll.mdb
@@ -1258,3 +1249,18 @@ D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\
 D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\Plugin.Connectivity.dll
 D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\Plugin.Connectivity.dll.mdb
 D:\Documentos\Quinto Semestre\Nueva carpeta\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\src\crc64cea48322b3427ae9\ConnectivityChangeBroadcastReceiver.java
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\47\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\53\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\57\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\65\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\70\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\75\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\78\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\81\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\lp\89\jl\files.cache
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\Newtonsoft.Json.dll
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\Plugin.Connectivity.Abstractions.dll
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\Plugin.Connectivity.Abstractions.pdb
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\Plugin.Connectivity.dll
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\assets\Plugin.Connectivity.dll.mdb
+C:\Users\LIDIA\source\repos\LidiaEnriquez2307\CHATNEOPLANET\AppSignalR\AppSignalR\AppSignalR.Android\obj\Debug\110\android\src\crc64cea48322b3427ae9\ConnectivityChangeBroadcastReceiver.java

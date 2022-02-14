@@ -6,12 +6,20 @@ namespace AppSignalR.ViewModels
     using AppSignalR.Views;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using AppSignalR.Services;
+    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
+    using AppSignalR.Models;
+    using System;
 
-    public class LoginViewModel: BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
-      
+        #region Services
+        private ApiService apiService;
+        #endregion
 
         #region Attributes
+        private Cuenta cuenta;
         private string email;
         private string password;
         private bool isRunning;
@@ -48,6 +56,13 @@ namespace AppSignalR.ViewModels
             get { return this.isEnabled; }
             set { SetValue(ref this.isEnabled, value); }
         }
+
+        public Cuenta Cuenta
+        {
+            get { return this.cuenta; }
+            set { SetValue(ref this.cuenta, value);  }
+            
+        }
         #endregion
 
         #region Constructors
@@ -71,7 +86,9 @@ namespace AppSignalR.ViewModels
                 return new RelayCommand(Login);
             }
         }
+        #endregion
 
+        #region metodo
         private async void Login()
         {
             if (string.IsNullOrEmpty(this.Email))
@@ -119,7 +136,29 @@ namespace AppSignalR.ViewModels
             this.Email = string.Empty;
             this.Password = string.Empty;
 
-            MainViewModel.GetInstance().Room = new RoomViewModel();
+         /*  var response = await this.apiService.Get<Cuenta>(
+               "http://192.168.1.7",
+               "/API",
+               "/api/Cuenta/usuario1@1");
+            if (!response.IsSuccess)
+            {
+                
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    response.Message,
+                    "Aceptar");
+                await Application.Current.MainPage.Navigation.PopAsync();
+                return;
+            }
+
+            MainViewModel.GetInstance().Cuenta = (Cuenta)response.Result;
+            this.Cuenta = (Cuenta) response.Result;
+            Console.WriteLine(Cuenta);*/
+
+           
+            
+            
+           MainViewModel.GetInstance().Room = new RoomViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RoomPage());
 
 
