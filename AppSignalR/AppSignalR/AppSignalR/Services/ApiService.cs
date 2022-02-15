@@ -71,7 +71,8 @@
             string controller,
             string tokenType,
             string accessToken,
-            int id)
+            int id
+            )
         {
             try
             {
@@ -80,10 +81,11 @@
                     new AuthenticationHeaderValue(tokenType, accessToken);
                 client.BaseAddress = new Uri(urlBase);
                 var url = string.Format(
-                    "{0}{1}/{2}",
+                    "{0}{1}",
                     servicePrefix,
                     controller,
-                    id);
+                    id
+                    );
                 var response = await client.GetAsync(url);
 
                 if (!response.IsSuccessStatusCode)
@@ -101,7 +103,7 @@
                 {
                     IsSuccess = true,
                     Message = "Ok",
-                    Result = model,
+                    Result = result,
                 };
             }
             catch (Exception ex)

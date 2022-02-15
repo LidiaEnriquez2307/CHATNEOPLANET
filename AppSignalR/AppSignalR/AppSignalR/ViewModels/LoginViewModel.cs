@@ -19,7 +19,9 @@ namespace AppSignalR.ViewModels
         #endregion
 
         #region Attributes
-        private Cuenta cuenta;
+        private List<Cuenta> cuentas;
+       
+
         private string email;
         private string password;
         private bool isRunning;
@@ -57,10 +59,10 @@ namespace AppSignalR.ViewModels
             set { SetValue(ref this.isEnabled, value); }
         }
 
-        public Cuenta Cuenta
+        public List<Cuenta> Cuenta
         {
-            get { return this.cuenta; }
-            set { SetValue(ref this.cuenta, value);  }
+            get { return this.cuentas; }
+            set { SetValue(ref this.cuentas, value);  }
             
         }
         #endregion
@@ -73,8 +75,11 @@ namespace AppSignalR.ViewModels
             this.IsRemembered = true;
             this.IsEnabled = true;
 
-            this.Email = "lidia";
+            this.Email = "usuario2@2";
             this.Password = "1234";
+
+            this.apiService = new ApiService();
+
         }
         #endregion
 
@@ -116,7 +121,7 @@ namespace AppSignalR.ViewModels
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            if (this.Email != "lidia" || this.Password != "1234")
+            if (this.Email != "usuario2@2" || this.Password != "1234")
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
@@ -133,13 +138,12 @@ namespace AppSignalR.ViewModels
             }
             this.IsRunning = false;
             this.IsEnabled = true;
-            this.Email = string.Empty;
-            this.Password = string.Empty;
+            
 
-         /*  var response = await this.apiService.Get<Cuenta>(
+          var response = await this.apiService.GetList<Cuenta>(
                "http://192.168.1.7",
                "/API",
-               "/api/Cuenta/usuario1@1");
+               "/api/Cuenta/"+this.Email);
             if (!response.IsSuccess)
             {
                 
@@ -151,15 +155,34 @@ namespace AppSignalR.ViewModels
                 return;
             }
 
-            MainViewModel.GetInstance().Cuenta = (Cuenta)response.Result;
-            this.Cuenta = (Cuenta) response.Result;
-            Console.WriteLine(Cuenta);*/
+           // MainViewModel.GetInstance().Cuenta = (Cuenta)response.Result;
+            this.Cuenta = (List<Cuenta>) response.Result;
+           
+
+            if(this.Cuenta != null)
+            {
+                //roomviewmodel.id_cuenta = Cuenta[0].id_cuenta;
+                Console.WriteLine(Cuenta[0].id_cuenta);
+                MainViewModel.GetInstance().Room = new RoomViewModel(Cuenta[0].id_cuenta);
+                await Application.Current.MainPage.Navigation.PushAsync(new RoomPage());
+                
+            }
+             else
+            {
+                await Application.Current.MainPage.DisplayAlert(
+
+
+                    "Error",
+                    "Cuenta no registrada",
+                    "Acept");
+
+            }
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+
 
            
-            
-            
-           MainViewModel.GetInstance().Room = new RoomViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new RoomPage());
 
 
 

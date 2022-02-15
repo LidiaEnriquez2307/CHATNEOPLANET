@@ -21,7 +21,7 @@
         private List<RoomItemViewModel> roomList;
         private bool isRefreshing;
         private string filter;
-        public int id_cuenta;
+       public int id_cuenta;
 
         #endregion
 
@@ -50,16 +50,22 @@
         #endregion
 
         #region Constructors
-        public RoomViewModel()
+        public RoomViewModel(int id_cuenta)
         {
             this.apiService = new ApiService();
+            this.id_cuenta = id_cuenta;
+            Console.WriteLine(this.id_cuenta);
             this.LoadRooms();
+           
         }
+
+
         #endregion
 
         #region Methods
         private async void LoadRooms()
         {
+
             /*this.IsRefreshing = true;
             List<RoomItemViewModel> listaroom = new List<RoomItemViewModel>
             {
@@ -85,7 +91,7 @@
             var response = await this.apiService.GetList<Sala>(
                 "http://192.168.1.7",
                 "/API",
-                "/api/CuentaSala/"+ id_cuenta);
+                "/api/CuentaSala/"+ this.id_cuenta);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;

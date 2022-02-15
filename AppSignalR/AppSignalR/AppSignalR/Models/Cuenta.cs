@@ -8,8 +8,8 @@ namespace AppSignalR.Models
     public class Cuenta
     {
         public int id_cuenta { get; set; }
-        public bool correo { get; set; }
-        public bool contrasenia { get; set; }
+        public string correo { get; set; }
+        public string contrasenia { get; set; }
 
 
     }
