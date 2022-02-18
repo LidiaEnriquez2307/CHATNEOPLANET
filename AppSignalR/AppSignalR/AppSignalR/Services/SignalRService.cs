@@ -1,6 +1,7 @@
 ﻿[assembly: Xamarin.Forms.Dependency(typeof(AppSignalR.Services.SignalRService))]
 namespace AppSignalR.Services
 {
+    using AppSignalR.Models;
     using Microsoft.AspNetCore.SignalR.Client;
     using System;
     using System.Diagnostics;
@@ -9,7 +10,7 @@ namespace AppSignalR.Services
 
     public class SignalRService : ISignalRService
     {
-        public event EventHandler<MessageItem> MessageReceived;
+        public event EventHandler<Mensaje> MessageReceived;
         public event EventHandler Connecting;
         public event EventHandler Connected;
 
@@ -23,7 +24,7 @@ namespace AppSignalR.Services
         public SignalRService()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://192.168.1.131/SignalRApi/testHub")
+                .WithUrl("http://192.168.1.6/API/testHub")
                 .WithAutomaticReconnect(new SignalRretryPolicy())
                 .Build();
         }
@@ -37,7 +38,7 @@ namespace AppSignalR.Services
             connection.Closed += OnConnectionClosed;
             connection.Reconnected += OnConnectionReconnected;
 
-            connection.On<MessageItem>("NewMessage", NewMessage);
+            connection.On<Mensaje>("NewMessage", NewMessage);
 
             while (true)
             {
@@ -73,7 +74,7 @@ namespace AppSignalR.Services
         {
             try
             {
-                await connection.InvokeAsync(INIT_OPERATION, new DeviceInfo { Id = DeviceId });
+                await connection.InvokeAsync(INIT_OPERATION, new Cuenta { id_cuenta = DeviceId  });
             }
             catch (Exception ex)
             {
@@ -81,12 +82,12 @@ namespace AppSignalR.Services
             }
         }
 
-        private void NewMessage(MessageItem obj)
+        private void NewMessage(Mensaje obj)
         {
             MessageReceived?.Invoke(this, obj);
         }
 
-        public async Task SendMessageToAll(MessageItem item)
+        public async Task SendMessageToAll(Mensaje item)
         {
             try
             {
@@ -98,7 +99,7 @@ namespace AppSignalR.Services
             }
         }
 
-        public async Task SendMessageToDevice(MessageItem item)
+        public async Task SendMessageToDevice(Mensaje item)
         {
             try
             {
