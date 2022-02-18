@@ -15,6 +15,7 @@ namespace AppSignalR.Services
         public event EventHandler Connected;
 
         private const string INIT_OPERATION = "Init";
+       // private const string INIT_OPERATION = "Init";
         private const string SEND_MESSAGE_TO_DEVICE_OPERATION = "SendMessageToDevice";
         private const string SEND_MESSAGE_TO_ALL_OPERATION = "SendMessageToAll";
 
