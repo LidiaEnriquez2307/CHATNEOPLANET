@@ -141,7 +141,7 @@ namespace AppSignalR.ViewModels
             
 
           var response = await this.apiService.GetList<Cuenta>(
-               "http://192.168.1.7",
+               "http://192.168.1.6",
                "/API",
                "/api/Cuenta/"+this.Email);
             if (!response.IsSuccess)

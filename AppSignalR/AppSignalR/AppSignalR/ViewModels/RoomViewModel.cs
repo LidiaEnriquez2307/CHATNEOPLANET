@@ -89,7 +89,7 @@
                 return;
             }*/
             var response = await this.apiService.GetList<Sala>(
-                "http://192.168.1.7",
+                "http://192.168.1.6",
                 "/API",
                 "/api/CuentaSala/"+ this.id_cuenta);
             if (!response.IsSuccess)
