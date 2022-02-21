@@ -67,22 +67,24 @@
         public async Task<Response> Get<T>(
             string urlBase,
             string servicePrefix,
-            string controller,
-            string tokenType,
-            string accessToken,
-            int id)
+            string controller //,
+            //string tokenType,
+            //string accessToken,
+            //int id
+            )
         {
             try
             {
                 var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(tokenType, accessToken);
+                /*client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(tokenType, accessToken);*/
                 client.BaseAddress = new Uri(urlBase);
                 var url = string.Format(
-                    "{0}{1}/{2}",
+                    "{0}{1}",
                     servicePrefix,
-                    controller,
-                    id);
+                    controller //,
+                    //id
+                    );
                 var response = await client.GetAsync(url);
 
                 if (!response.IsSuccessStatusCode)

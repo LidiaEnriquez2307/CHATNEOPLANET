@@ -95,9 +95,23 @@
                 await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
-            var list = (List<RoomItemViewModel>)response.Result;
-            this.rooms = new ObservableCollection<RoomItemViewModel>(list);
+            MainViewModel.GetInstance().RoomsList = (List<Sala>)response.Result;
+            this.Rooms = new ObservableCollection<RoomItemViewModel>(
+                this.ToRoomItemViewModel());
+            this.IsRefreshing = false;
 
+        }
+
+        private IEnumerable<RoomItemViewModel> ToRoomItemViewModel()
+        {
+            return MainViewModel.GetInstance().RoomsList.Select(l => new RoomItemViewModel
+            {
+                id_sala = l.id_sala,
+                id_tipo_sala = l.id_tipo_sala,
+                nombre = l.nombre,
+                fecha = l.fecha,    
+                activo = l.activo,
+            });
         }
 
 

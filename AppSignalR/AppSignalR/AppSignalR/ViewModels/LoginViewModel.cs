@@ -6,12 +6,18 @@ namespace AppSignalR.ViewModels
     using AppSignalR.Views;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Models;
+    using Services;
 
     public class LoginViewModel: BaseViewModel
     {
-      
+        #region Services
+        private ApiService apiService;
+        #endregion
+
 
         #region Attributes
+        private Cuenta cuenta;
         private string email;
         private string password;
         private bool isRunning;
@@ -19,6 +25,12 @@ namespace AppSignalR.ViewModels
         #endregion
 
         #region Properties
+        public Cuenta Cuenta
+        {
+            get { return this.cuenta; }
+            set { SetValue(ref this.cuenta, value); }
+        }
+
         public string Email
         {
             get { return this.email; }
@@ -53,7 +65,8 @@ namespace AppSignalR.ViewModels
         #region Constructors
         public LoginViewModel()
         {
-            
+            this.apiService = new ApiService();
+
 
             this.IsRemembered = true;
             this.IsEnabled = true;
@@ -118,6 +131,20 @@ namespace AppSignalR.ViewModels
             this.IsEnabled = true;
             this.Email = string.Empty;
             this.Password = string.Empty;
+
+            var response = await this.apiService.Get<Cuenta>(
+                "http://192.168.11.117",
+                "/Api2",
+                "/api/Cuenta/usuario1@1");
+            if (!response.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    response.Message,
+                    "Aceptar");
+                await Application.Current.MainPage.Navigation.PopAsync();
+                return;
+            }
 
             MainViewModel.GetInstance().Room = new RoomViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RoomPage());
