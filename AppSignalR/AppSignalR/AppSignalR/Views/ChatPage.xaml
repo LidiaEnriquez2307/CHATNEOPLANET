@@ -2,15 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSignalR.Views.ChatPage"            
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             >
 
    
 
     <ContentPage.Resources>
         
     </ContentPage.Resources>
-    
-    <Grid BindingContext="{Binding Room}"
+
+    <Grid BindingContext="{Binding Chat}"
           RowDefinitions="*, auto"
           Margin="10">
 
@@ -29,9 +30,14 @@
                      Orientation="Horizontal"
                      >
 
-            <Label x:Name="lbState" />
-            <Entry x:Name="enMessage"  Placeholder="..." HorizontalOptions="FillAndExpand" />
-            <Button x:Name="btSentToDevice" Text="Enviar"/>
+            <Label Text="{Binding Room.id_cuenta}" />
+            <Entry  
+                Placeholder="..." 
+                HorizontalOptions="FillAndExpand" 
+                Text="{Binding Mensaje, Mode=TwoWay}"/>
+            <Button 
+                Text="Enviar"
+                Command="{Binding SendCommand}"/>
         </StackLayout>
     </Grid>
     

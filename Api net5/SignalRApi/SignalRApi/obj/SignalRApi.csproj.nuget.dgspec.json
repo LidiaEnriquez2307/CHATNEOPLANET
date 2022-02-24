@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {}
+    "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj": {
+    "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj",
+        "projectUniqueName": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj",
         "projectName": "SignalRApi.Data",
-        "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj",
-        "packagesPath": "C:\\Users\\LIDIA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\obj\\",
+        "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj",
+        "packagesPath": "C:\\Users\\Veronica\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\LIDIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Veronica\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -32,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
-                "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj"
+              "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
+                "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj"
               }
             }
           }
@@ -71,31 +67,41 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
+    "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
+        "projectUniqueName": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
         "projectName": "SignalRApi.Modelos",
-        "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
-        "packagesPath": "C:\\Users\\LIDIA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\obj\\",
+        "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
+        "packagesPath": "C:\\Users\\Veronica\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\LIDIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Veronica\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -135,31 +141,41 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {
+    "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
+        "projectUniqueName": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
         "projectName": "SignalRApi",
-        "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
-        "packagesPath": "C:\\Users\\LIDIA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\obj\\",
+        "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
+        "packagesPath": "C:\\Users\\Veronica\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\LIDIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Veronica\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -172,11 +188,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj": {
-                "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj"
+              "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj": {
+                "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj"
               },
-              "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
-                "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj"
+              "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
+                "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj"
               }
             }
           }
@@ -210,6 +226,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.13, 5.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -218,7 +252,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

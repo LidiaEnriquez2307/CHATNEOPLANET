@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "52d822d4-bb5e-47e1-9fba-c1268ace15d2": {
+      "ProjectGuid": "52d822d4-bb5e-47e1-9fba-c1268ace15d2",
+      "DisplayName": "SignalRApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

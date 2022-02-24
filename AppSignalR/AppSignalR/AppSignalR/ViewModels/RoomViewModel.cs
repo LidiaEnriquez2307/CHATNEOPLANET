@@ -21,7 +21,7 @@
         private List<RoomItemViewModel> roomList;
         private bool isRefreshing;
         private string filter;
-       public int id_cuenta;
+        public int id_cuenta;
 
         #endregion
 
@@ -30,6 +30,12 @@
         {
             get { return this.rooms; }
             set { SetValue(ref this.rooms, value); }
+        }
+
+        public List<RoomItemViewModel> RoomList
+        {
+            get { return this.roomList; }
+            set { SetValue(ref this.roomList, value); }
         }
 
         public bool IsRefreshing
@@ -105,9 +111,7 @@
             MainViewModel.GetInstance().RoomsList = (List<Sala>)response.Result;
             this.Rooms = new ObservableCollection<RoomItemViewModel>(
                 this.ToRoomItemViewModel());
-            this.IsRefreshing = false;
-
-
+            this.IsRefreshing = false;            
         }
         private IEnumerable<RoomItemViewModel> ToRoomItemViewModel()
         {
@@ -118,6 +122,7 @@
                 nombre = l.nombre,
                 fecha = l.fecha,
                 activo = l.activo,
+                id_cuenta = this.id_cuenta
             });
         }
 

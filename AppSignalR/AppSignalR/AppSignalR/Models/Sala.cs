@@ -15,7 +15,8 @@ namespace AppSignalR.Models
         public DateTime fecha { get; set; }
         [JsonProperty(PropertyName = "activo")]
         public bool activo { get; set; }
-
+        [JsonProperty(PropertyName = "id_cuenta")]
+        public int id_cuenta { get; set; }
 
     }
 }
