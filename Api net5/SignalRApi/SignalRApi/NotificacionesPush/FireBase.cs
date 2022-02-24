@@ -11,7 +11,7 @@ namespace SignalRApi.NotificacionesPush
     public class FireBase
     {
         public FireBase(){}
-        public void SendNotification()
+        public void SendNotification(string titulo,string cuerpo)
         {
             try
             {
@@ -21,14 +21,12 @@ namespace SignalRApi.NotificacionesPush
                                                                                                                                                                                     // registration_ids = singlebatch, // this is for multiple user 
                     data = new
                     {
-                        notiTitle = "Notificacion desde .NET",     // Notification title
-                        notiBody = "Es enviado desde Api REST"    // Notification body data
-                                                                  // link = ""       // When click on notification user redirect to this link
+                        notiTitle = titulo,    
+                       notiBody = cuerpo   
+                     // link = ""       // When click on notification user redirect to this link
                     }
                 };
 
-                //var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                //var json = serializer.Serialize(data);
                 var json = JsonConvert.SerializeObject(fieldsFirebase);
                 Byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(json);
 

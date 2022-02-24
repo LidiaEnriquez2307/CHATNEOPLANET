@@ -4,16 +4,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using SignalRApi.Modelos;
+using SignalRApi.NotificacionesPush;
 using Microsoft.AspNetCore.SignalR;
 
 namespace SignalRApi.SingnalR
 {
-    public class TestHub:Hub
+    public class ChatHub:Hub
     {
         private static Dictionary<int, string> deviceConnections;
         private static Dictionary<string, int> connectionDevices;
+        private FireBase fireBase = new FireBase();
 
-        public TestHub()
+        public ChatHub()
         {
             deviceConnections = deviceConnections ?? new Dictionary<int, string>();
             connectionDevices = connectionDevices ?? new Dictionary<string, int>();
@@ -21,7 +23,6 @@ namespace SignalRApi.SingnalR
 
         public override Task OnConnectedAsync()
         {
-            Debug.WriteLine("SignalR server connected");
             return base.OnConnectedAsync();
         }
 
@@ -36,17 +37,15 @@ namespace SignalRApi.SingnalR
                 deviceConnections.Remove(deviceId.Value);
                 connectionDevices.Remove(Context.ConnectionId);
             }
-
-            Debug.WriteLine($"SignalR server disconnected. Device: {deviceId}.");
             await base.OnDisconnectedAsync(exception);
         }
         //conectar
         [HubMethodName("Init")]
-        public Task Init(Cuenta cuenta)
+        public Task Init(Cuenta cuenta, string sala)
         {
             deviceConnections.AddOrUpdate(cuenta.id_cuenta, Context.ConnectionId);
             connectionDevices.AddOrUpdate(Context.ConnectionId, cuenta.id_cuenta);
-
+            RegistrarCuenta_a_Sala(sala);
             return Task.CompletedTask;
         }
         //Enviar mensaje a todos
@@ -54,15 +53,21 @@ namespace SignalRApi.SingnalR
         public async Task SendMessageToAll(Mensaje mensaje)
         {
             await Clients.All.SendAsync("NewMessage", mensaje);
+            //Notificar
+            fireBase.SendNotification(mensaje.id_cuenta.ToString(),mensaje.mensaje);
         }
-        //enviar mensaje a una cuenta
+        //enviar mensaje a una SALA
         [HubMethodName("SendMessageToDevice")]
-        public async Task SendMessageToDevice(Mensaje mensaje)
+        public async Task SendMessageToSala(Mensaje mensaje,string sala)
         {
-            Debug.WriteLine($"SignalR server send message {mensaje.mensaje} from {mensaje.id_cuenta} to  {mensaje.id_sala}");
-
-            if (deviceConnections.ContainsKey(mensaje.id_sala))
-                await Clients.Client(deviceConnections[mensaje.id_sala]).SendAsync("NewMessage", mensaje);
+            await Clients.Group(sala).SendAsync("NewMessage", mensaje);
+            //Notificar
+            fireBase.SendNotification(mensaje.id_cuenta.ToString(), mensaje.mensaje);
+        }
+        //Reistrar usuarios en grupos
+        public void RegistrarCuenta_a_Sala(string grupo)
+        {
+            Groups.AddToGroupAsync(Context.ConnectionId, grupo);
         }
     }
 }
