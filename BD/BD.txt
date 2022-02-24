@@ -10,6 +10,13 @@ create table CUENTA
     correo varchar(50) not null,
     contrasenia varchar(100) not null
 );
+create table DISPOSITIVO
+(
+    id_dispositivo int primary key not null,
+    token text not null,
+    id_cuenta int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta)
+);
 create table TIPO_SALA
 (
     id_tipo_sala int primary key not null,
@@ -35,7 +42,8 @@ create table MENSAJE
 	foreign key(id_sala) references SALA(id_sala),
     mensaje text not null,
     fecha datetime not null,
-    activo bool not null
+    activo bool not null,
+    leido bool not null
 );
 create table CUENTA_SALA
 (
