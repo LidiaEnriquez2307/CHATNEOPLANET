@@ -20,11 +20,12 @@
         <ListView x:Name="Lista" 
                   SeparatorVisibility="None"
                   HasUnevenRows="True"
-                  Grid.Row="1">
+                  Grid.Row="1"
+                  ItemsSource="{Binding ListaMensajes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-
+                        <Label Text="{Binding mensaje}"/>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -10,6 +10,7 @@
     using System.Collections.Generic;
     using System.Text;
     using AppSignalR.Views;
+    using System.Collections.ObjectModel;
 
     public class ChatViewModel : BaseViewModel
     {
@@ -17,9 +18,15 @@
         public int id_cuenta;
         public string mensaje;
         public string estado;
+        public ObservableCollection<Mensaje> listaMensajes;
         #endregion
 
         #region Properties
+        public ObservableCollection<Mensaje> ListaMensajes
+        {
+            set { SetValue(ref this.listaMensajes, value); }
+            get { return this.listaMensajes; }
+        }
         public string Mensaje
         {
             get { return this.mensaje; }
@@ -42,7 +49,9 @@
             this.Room = room;
             signalRService.MessageReceived += SignalRService_MessageReceived;
             SignalRService.mensaje = new Mensaje {id_cuenta=this.Room.id_cuenta,id_sala=this.Room.id_sala};
+
             signalRService.StartWithReconnectionAsync();
+            this.ListaMensajes = new ObservableCollection<Mensaje>();
         }
         #endregion
 
@@ -96,12 +105,18 @@
             });
             return;
         }
-        private async void SignalRService_MessageReceived(object sender, Mensaje e)
+        private async void SignalRService_MessageReceived(object sender, Mensaje mensaje)
         {
-            await Application.Current.MainPage.DisplayAlert(
+           await Application.Current.MainPage.DisplayAlert(
                    "Message received",
-                   e.mensaje,
+                   mensaje.mensaje,
                    "Acept");
+            if (mensaje.id_cuenta != this.id_cuenta)
+            {
+                
+                this.ListaMensajes.Add(mensaje);
+               // NuevoMensajeLista(mensaje);
+            }
         }
         private void SignalRService_Connected(object sender, EventArgs e)
         {
@@ -111,6 +126,10 @@
         private void SignalRService_Connecting(object sender, EventArgs e)
         {
             estado = "Connecting...";
+        }
+        private void NuevoMensajeLista(Mensaje mensaje)
+        {
+            ListaMensajes.Add(mensaje);
         }
 
         #endregion
