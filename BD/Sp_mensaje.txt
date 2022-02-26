@@ -8,8 +8,8 @@ drop procedure if exists sp_buscar_mensaje//
 
 CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text,_fecha datetime) 
 BEGIN
-	INSERT INTO MENSAJE (id_cuenta,id_sala,mensaje,fecha,activo) 
-	VALUES(_id_cuenta,_id_sala,_mensaje,_fecha,true);
+	INSERT INTO MENSAJE (id_cuenta,id_sala,mensaje,fecha,activo,leido) 
+	VALUES(_id_cuenta,_id_sala,_mensaje,_fecha,true,false);
 END//
 
 CREATE PROCEDURE sp_mostrar_mensajes(_id_sala int)

@@ -14,5 +14,6 @@ namespace SignalRApi.Modelos
         public string mensaje { get; set; }
         public DateTime fecha { get; set; }
         public bool activo { get; set; }
+        public bool leido { get; set; }
     }
 }

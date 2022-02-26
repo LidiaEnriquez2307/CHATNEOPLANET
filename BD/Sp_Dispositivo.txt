@@ -1,0 +1,17 @@
+-- CUENTA
+delimiter //
+use CHAT //
+
+drop procedure if exists sp_insertar_dispositivo//
+drop procedure if exists sp_mostrar_dispositivo//
+
+CREATE PROCEDURE sp_insertar_dispositivo(_correo varchar(50),_contrasenia varchar(50)) 
+BEGIN
+	INSERT INTO CUENTA(correo,contrasenia) VALUES(_correo,_contrasenia);
+END//
+
+CREATE PROCEDURE sp_mostrar_dispositivo(_id_cuenta int)
+BEGIN
+	Select * from DISPOSITIVO where id_cuenta=_id_cuenta;
+END
+//

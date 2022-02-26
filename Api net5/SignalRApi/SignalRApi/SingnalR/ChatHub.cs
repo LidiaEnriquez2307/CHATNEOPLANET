@@ -41,11 +41,11 @@ namespace SignalRApi.SingnalR
         }
         //conectar
         [HubMethodName("Init")]
-        public Task Init(Cuenta cuenta, string sala)
+        public Task Init(Mensaje mensaje)
         {
-            deviceConnections.AddOrUpdate(cuenta.id_cuenta, Context.ConnectionId);
-            connectionDevices.AddOrUpdate(Context.ConnectionId, cuenta.id_cuenta);
-            RegistrarCuenta_a_Sala(sala);
+            deviceConnections.AddOrUpdate(mensaje.id_cuenta, Context.ConnectionId);
+            connectionDevices.AddOrUpdate(Context.ConnectionId, mensaje.id_cuenta);
+            RegistrarCuenta_a_Sala(mensaje.id_sala);
             return Task.CompletedTask;
         }
         //Enviar mensaje a todos
@@ -57,17 +57,18 @@ namespace SignalRApi.SingnalR
             fireBase.SendNotification(mensaje.id_cuenta.ToString(),mensaje.mensaje);
         }
         //enviar mensaje a una SALA
-        [HubMethodName("SendMessageToDevice")]
-        public async Task SendMessageToSala(Mensaje mensaje,string sala)
+        [HubMethodName("SendMessageToSala")]
+        public async Task SendMessageToSala(Mensaje mensaje)
         {
-            await Clients.Group(sala).SendAsync("NewMessage", mensaje);
+            await Clients.Group(mensaje.id_sala.ToString()).SendAsync("NewMessage", mensaje);
             //Notificar
             fireBase.SendNotification(mensaje.id_cuenta.ToString(), mensaje.mensaje);
         }
         //Reistrar usuarios en grupos
-        public void RegistrarCuenta_a_Sala(string grupo)
+        [HubMethodName("RegistrarCuenta_a_Sala")]
+        public void RegistrarCuenta_a_Sala(int grupo)
         {
-            Groups.AddToGroupAsync(Context.ConnectionId, grupo);
+            Groups.AddToGroupAsync(Context.ConnectionId, grupo.ToString());
         }
     }
 }

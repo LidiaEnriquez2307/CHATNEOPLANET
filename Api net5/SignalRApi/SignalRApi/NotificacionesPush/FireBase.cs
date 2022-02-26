@@ -17,7 +17,7 @@ namespace SignalRApi.NotificacionesPush
             {
                 dynamic fieldsFirebase = new
                 {
-                    to = "fsjY82FDQdY:APA91bFoYjiOU2hPBXnaJdtOizAT049kojGW7Av-9j0CtZNlUyQB33bUdpCm3kot5-6TnE7vE_Y9Tn8n3IzdO8k3vsaOmHb4QzYrSvoiopQNWgh1N_JDx94A9YUmjM7t5y_h_5ox0lDt",//YOUR_FCM_DEVICE_ID, // Uncoment this if you want to test for single device
+                    to = "ew15t2sDQzuYUT68HG9DSc:APA91bG66xXmDXpjEhD8Cloix2qmp8vLF_CYgDYJ6EjTOqqebPm6H-klp1euFWwFGNYtr0eXv2EPypxOYHXoT0isBxTkMB08zDEKEYYXF24Bg2Zri0PHeDirzRjDaSJpLcua17O9AAuX",//YOUR_FCM_DEVICE_ID, // Uncoment this if you want to test for single device
                                                                                                                                                                                     // registration_ids = singlebatch, // this is for multiple user 
                     data = new
                     {
@@ -30,8 +30,8 @@ namespace SignalRApi.NotificacionesPush
                 var json = JsonConvert.SerializeObject(fieldsFirebase);
                 Byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(json);
 
-                string SERVER_API_KEY = "AAAAw-EdaXs:APA91bHs1jf1ifeA4kOpFKOn4WjM71GfqcqmddNS2vsEEOGuj34kt19nY3MzVGYtRAMkeZzxsDhzVFtNPGpO7cJbGduvaizs4fNywF0tPhfudQCSzhOzaWCNEkvNIZggQHiROqeNmAXl";
-                string SENDER_ID = "841295423867";
+                string SERVER_API_KEY = "AAAA713rtM8:APA91bHgjggLV-5e1EsQVrQpNsFteMqrqnVIdr5b6H1qMwA9lGd9WjwfksaA-3Y-wTNube7M0tSwy0i0nihGAlCAOipwi1WoJSiWbBosPf5pB21JWGVXJ1WUkrDDcCzdQFmk2bBlzvoE";
+                string SENDER_ID = "1028072912079";
 
                 WebRequest tRequest;
                 tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
