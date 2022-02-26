@@ -75,7 +75,7 @@ namespace AppSignalR.ViewModels
             this.IsRemembered = true;
             this.IsEnabled = true;
 
-            this.Email = "usuario2@2";
+            this.Email = "usuario1@1";
             this.Password = "1234";
 
             this.apiService = new ApiService();
@@ -121,7 +121,7 @@ namespace AppSignalR.ViewModels
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            if (this.Email != "usuario2@2" || this.Password != "1234")
+            if (this.Email != "usuario1@1" || this.Password != "1234")
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
@@ -141,8 +141,8 @@ namespace AppSignalR.ViewModels
             
 
           var response = await this.apiService.GetList<Cuenta>(
-               "http://192.168.11.117",
-               "/Api2",
+               "http://172.30.3.108",
+               "/API",
                "/api/Cuenta/"+this.Email);
             if (!response.IsSuccess)
             {

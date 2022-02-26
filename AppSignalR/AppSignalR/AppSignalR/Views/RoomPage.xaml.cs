@@ -14,6 +14,7 @@ namespace AppSignalR.Views
     {
         public RoomPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
     }

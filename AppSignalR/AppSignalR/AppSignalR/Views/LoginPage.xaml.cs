@@ -14,6 +14,7 @@ namespace AppSignalR.Views
     {
         public LoginPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
     }

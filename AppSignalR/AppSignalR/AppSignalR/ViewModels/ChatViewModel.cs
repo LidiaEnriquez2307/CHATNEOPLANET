@@ -9,11 +9,14 @@
     using GalaSoft.MvvmLight.Command;
     using System.Collections.Generic;
     using System.Text;
+    using AppSignalR.Views;
+
     public class ChatViewModel : BaseViewModel
     {
         #region Attributes
         public int id_cuenta;
         public string mensaje;
+        public string estado;
         #endregion
 
         #region Properties
@@ -38,7 +41,7 @@
             signalRService = DependencyService.Get<ISignalRService>();
             this.Room = room;
             signalRService.MessageReceived += SignalRService_MessageReceived;
-            SignalRService.DeviceId = this.Room.id_sala;
+            SignalRService.mensaje = new Mensaje {id_cuenta=this.Room.id_cuenta,id_sala=this.Room.id_sala};
             signalRService.StartWithReconnectionAsync();
         }
         #endregion
@@ -93,7 +96,6 @@
             });
             return;
         }
-
         private async void SignalRService_MessageReceived(object sender, Mensaje e)
         {
             await Application.Current.MainPage.DisplayAlert(
@@ -101,6 +103,16 @@
                    e.mensaje,
                    "Acept");
         }
+        private void SignalRService_Connected(object sender, EventArgs e)
+        {
+            estado = "Connected";
+        }
+
+        private void SignalRService_Connecting(object sender, EventArgs e)
+        {
+            estado = "Connecting...";
+        }
+
         #endregion
     }
 }

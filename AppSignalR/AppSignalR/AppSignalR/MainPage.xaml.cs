@@ -37,7 +37,7 @@ namespace AppSignalR
         private void btConnect_Clicked(object sender, EventArgs e)
         {
 
-            SignalRService.DeviceId = roomViewModel.id_cuenta;
+            SignalRService.mensaje.id_cuenta = roomViewModel.id_cuenta;
             //SignalRService.DeviceId = Convert.ToInt32(enId.Text);
             signalRService.StartWithReconnectionAsync();
         }

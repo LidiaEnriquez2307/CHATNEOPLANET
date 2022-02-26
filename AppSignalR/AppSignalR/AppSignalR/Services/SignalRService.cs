@@ -16,25 +16,28 @@ namespace AppSignalR.Services
 
         private const string INIT_OPERATION = "Init";
        // private const string INIT_OPERATION = "Init";
-        private const string SEND_MESSAGE_TO_DEVICE_OPERATION = "SendMessageToDevice";
+        private const string SEND_MESSAGE_TO_DEVICE_OPERATION = "SendMessageToSala";
         private const string SEND_MESSAGE_TO_ALL_OPERATION = "SendMessageToAll";
 
-        public static int DeviceId { get; set; }
+        public static Mensaje mensaje { get; set; }
         private HubConnection connection;
 
-        public SignalRService()
+        public SignalRService()//Mensaje mensaje)
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://192.168.11.117/Api2/testHub")
+                .WithUrl("http://172.30.3.108/API/chatHub")
                 .WithAutomaticReconnect(new SignalRretryPolicy())
                 .Build();
+         //   mensaje = new Mensaje {id_cuenta=mensaje.id_cuenta,id_sala=mensaje.id_sala };
         }
 
         public async void StartWithReconnectionAsync()
         {
             if (connection.State != HubConnectionState.Disconnected)
+            {
+                await connection.StopAsync();
                 return;
-
+            }
             Connecting?.Invoke(this, null);
             connection.Closed += OnConnectionClosed;
             connection.Reconnected += OnConnectionReconnected;
@@ -56,7 +59,7 @@ namespace AppSignalR.Services
             }
 
             Debug.WriteLine($"SignalR connected");
-            await Init();
+            await Init(mensaje);
             Connected?.Invoke(this, null);
         }
 
@@ -68,14 +71,14 @@ namespace AppSignalR.Services
 
         private async Task OnConnectionReconnected(string connectionId)
         {
-            await Init();
+            await Init(mensaje);
         }
 
-        private async Task Init()
+        private async Task Init(Mensaje mensaje)
         {
             try
             {
-                await connection.InvokeAsync(INIT_OPERATION, new Cuenta { id_cuenta = DeviceId  });
+                await connection.InvokeAsync(INIT_OPERATION, mensaje);
             }
             catch (Exception ex)
             {
@@ -108,7 +111,7 @@ namespace AppSignalR.Services
             }
             catch (Exception ex)
             {
-
+                Debug.WriteLine(ex.ToString());
             }
         }
 
@@ -118,7 +121,6 @@ namespace AppSignalR.Services
                 return;
 
             await connection.StopAsync();
-
             connection.Closed -= OnConnectionClosed;
             connection.Reconnected -= OnConnectionReconnected;
         }
