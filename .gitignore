@@ -196,3 +196,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 .vscode/settings.json
+Api net5/SignalRApi/.vs/SignalRApi/v16/.suo
