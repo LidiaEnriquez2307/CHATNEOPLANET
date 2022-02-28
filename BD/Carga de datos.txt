@@ -13,6 +13,19 @@ call sp_insertar_cuenta("usuario6@6","123");
 call sp_insertar_cuenta("usuario7@7","123");
 call sp_insertar_cuenta("usuario8@8","123");
 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario1@1"),"token1"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario1@1"),"token2"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario2@2"),"token3"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario2@2"),"token4"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario3@3"),"token5"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario3@3"),"token6"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario4@4"),"token7"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario4@4"),"token8"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario5@5"),"token9"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario5@5"),"token10"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario6@6"),"token11"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario6@6"),"token12");
+
 call sp_insertar_sala(1,"Sala privada 1",CURDATE());
 call sp_insertar_sala(1,"Sala privada 2",CURDATE());
 call sp_insertar_sala(1,"Sala privada 3",CURDATE());

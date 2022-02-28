@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
+using SignalRApi.Data.Insterfazes;
+using SignalRApi.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -10,8 +13,30 @@ namespace SignalRApi.NotificacionesPush
 {
     public class FireBase
     {
+        //inyectar el repositorio
+        private readonly InterfaceDispositivo _repoDispositivo;
+        private readonly InterfaceCuenta _repoCuenta;
         public FireBase(){}
-        public void SendNotification(string titulo,string cuerpo)
+        public void NotificarSala(Mensaje mensaje)
+        {
+            string autor= TraerAutor(mensaje.id_cuenta);
+            var ListaTokens = TraerTokens(mensaje);
+            foreach(string token in ListaTokens)
+            {
+                SendNotification(token, autor, mensaje.mensaje);
+                Debug.WriteLine(token, autor, mensaje.mensaje);
+            }
+        }
+        private IEnumerable<string> TraerTokens(Mensaje mensaje)
+        {
+            return _repoDispositivo.mostrar_tokens(mensaje).Result;
+        }
+        private string TraerAutor(int id_cuenta)
+        {
+            string autor = _repoCuenta.mostrar_cuenta(id_cuenta).Result.First();
+            return autor;
+        }
+        public void SendNotification(string token,string autor, string mensaje)
         {
             try
             {
@@ -21,8 +46,8 @@ namespace SignalRApi.NotificacionesPush
                                                                                                                                                                                     // registration_ids = singlebatch, // this is for multiple user 
                     data = new
                     {
-                        notiTitle = titulo,    
-                       notiBody = cuerpo   
+                        notiTitle = autor,    
+                       notiBody = mensaje   
                      // link = ""       // When click on notification user redirect to this link
                     }
                 };

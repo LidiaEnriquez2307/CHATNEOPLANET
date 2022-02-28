@@ -3,15 +3,19 @@ delimiter //
 use CHAT //
 
 drop procedure if exists sp_insertar_dispositivo//
-drop procedure if exists sp_mostrar_dispositivo//
+drop procedure if exists sp_mostrar_tokens//
 
-CREATE PROCEDURE sp_insertar_dispositivo(_correo varchar(50),_contrasenia varchar(50)) 
+CREATE PROCEDURE sp_insertar_dispositivo(_id_cuenta int,_token text) 
 BEGIN
-	INSERT INTO CUENTA(correo,contrasenia) VALUES(_correo,_contrasenia);
+	INSERT INTO DISPOSITIVO(id_cuenta,token) VALUES(_id_cuenta,_token);
 END//
 
-CREATE PROCEDURE sp_mostrar_dispositivo(_id_cuenta int)
+CREATE PROCEDURE sp_mostrar_tokens(_id_cuenta int, _id_sala int)
 BEGIN
-	Select * from DISPOSITIVO where id_cuenta=_id_cuenta;
+SELECT token FROM DISPOSITIVO as d 
+INNER JOIN CUENTA as c on d.id_cuenta=c.id_cuenta
+INNER JOIN CUENTA_SALA as cs on cs.id_cuenta=c.id_cuenta
+INNER JOIN SALA as s on s.id_sala=cs.id_sala
+WHERE s.id_sala=_id_sala AND c.id_cuenta!=_id_cuenta;
 END
 //

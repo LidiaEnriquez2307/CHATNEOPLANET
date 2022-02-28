@@ -54,7 +54,7 @@ namespace SignalRApi.SingnalR
         {
             await Clients.All.SendAsync("NewMessage", mensaje);
             //Notificar
-            fireBase.SendNotification(mensaje.id_cuenta.ToString(),mensaje.mensaje);
+            fireBase.NotificarSala(mensaje);
         }
         //enviar mensaje a una SALA
         [HubMethodName("SendMessageToSala")]
@@ -62,7 +62,7 @@ namespace SignalRApi.SingnalR
         {
             await Clients.Group(mensaje.id_sala.ToString()).SendAsync("NewMessage", mensaje);
             //Notificar
-            fireBase.SendNotification(mensaje.id_cuenta.ToString(), mensaje.mensaje);
+            fireBase.NotificarSala(mensaje);
         }
         //Reistrar usuarios en grupos
         [HubMethodName("RegistrarCuenta_a_Sala")]
