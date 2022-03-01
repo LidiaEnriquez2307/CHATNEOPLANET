@@ -24,8 +24,6 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public async Task<IActionResult> mostrar_cuentas()
         {
-            FireBase fireBase = new FireBase();
-            fireBase.NotificarSala(new Mensaje { id_cuenta=1,id_sala=1,mensaje="Hola"});
             return Ok(await _repoCuenta.mostrar_cuentas());
         }
         [HttpGet("{correo}")]

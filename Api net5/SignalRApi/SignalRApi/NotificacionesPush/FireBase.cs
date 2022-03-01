@@ -1,5 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using SignalRApi.Data;
 using SignalRApi.Data.Insterfazes;
+using SignalRApi.Data.Repositorios;
 using SignalRApi.Modelos;
 using System;
 using System.Collections.Generic;
@@ -8,18 +12,15 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SignalRApi.NotificacionesPush
 {
-    public class FireBase
-    {
-        //inyectar el repositorio
-        private readonly InterfaceDispositivo _repoDispositivo;
-        private readonly InterfaceCuenta _repoCuenta;
-        public FireBase(){}
+    public class FireBase : ControllerBase
+    {        
         public void NotificarSala(Mensaje mensaje)
         {
-            string autor= TraerAutor(mensaje.id_cuenta);
+            string autor = TraerAutor(mensaje.id_cuenta);
             var ListaTokens = TraerTokens(mensaje);
             foreach(string token in ListaTokens)
             {
@@ -27,14 +28,13 @@ namespace SignalRApi.NotificacionesPush
                 Debug.WriteLine(token, autor, mensaje.mensaje);
             }
         }
-        private IEnumerable<string> TraerTokens(Mensaje mensaje)
+        private List<string> TraerTokens(Mensaje mensaje)
         {
-            return _repoDispositivo.mostrar_tokens(mensaje).Result;
+            return null;
         }
-        private string TraerAutor(int id_cuenta)
+        public string TraerAutor(int id_cuenta)
         {
-            string autor = _repoCuenta.mostrar_cuenta(id_cuenta).Result.First();
-            return autor;
+            return null;
         }
         public void SendNotification(string token,string autor, string mensaje)
         {

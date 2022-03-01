@@ -42,11 +42,11 @@ namespace SignalRApi.Data.Repositorios
             var sql = @"call sp_mostrar_cuentas()";
             return await db.QueryAsync<Cuenta>(sql, new { });
         }
-        public async Task<IEnumerable<string>> mostrar_cuenta(int id_cuenta)
+        public Task<IEnumerable<Cuenta>> mostrar_cuenta(int id_cuenta)
         {
             var db = dbConection();
             var sql = @"call sp_mostrar_cuenta(@_id_cuenta)";
-            return await db.QueryAsync<string>(sql, new { _id_cuenta =id_cuenta});
+            return db.QueryAsync<Cuenta>(sql, new { _id_cuenta =id_cuenta});
         }
     }
 }
