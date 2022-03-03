@@ -20,13 +20,13 @@ namespace SignalRApi.NotificacionesPush
     {        
         public void NotificarSala(Mensaje mensaje)
         {
-            string autor = TraerAutor(mensaje.id_cuenta);
-            var ListaTokens = TraerTokens(mensaje);
-            foreach(string token in ListaTokens)
-            {
+            string autor = mensaje.id_cuenta.ToString();//TraerAutor(mensaje.id_cuenta);
+            string token = "f5XziTjdSGKoKcmWwNTlIP:APA91bFhQCKE5msI7saUXTOBXR_LnYZX43BLWDeB3u18IOt8Vh-N86ljUuq-Spp79puT35GlPqsFzx0qO_y3uok2oez1BDpvk-GYmxM6FxGgtCTaXTGr2TEcVikZv3_RhVneytU4xFxN";
+ //           var ListaTokens = TraerTokens(mensaje);
+ //           foreach(string token in ListaTokens)
+ //           {
                 SendNotification(token, autor, mensaje.mensaje);
-                Debug.WriteLine(token, autor, mensaje.mensaje);
-            }
+ //           }
         }
         private List<string> TraerTokens(Mensaje mensaje)
         {
@@ -42,7 +42,7 @@ namespace SignalRApi.NotificacionesPush
             {
                 dynamic fieldsFirebase = new
                 {
-                    to = "ew15t2sDQzuYUT68HG9DSc:APA91bG66xXmDXpjEhD8Cloix2qmp8vLF_CYgDYJ6EjTOqqebPm6H-klp1euFWwFGNYtr0eXv2EPypxOYHXoT0isBxTkMB08zDEKEYYXF24Bg2Zri0PHeDirzRjDaSJpLcua17O9AAuX",//YOUR_FCM_DEVICE_ID, // Uncoment this if you want to test for single device
+                    to = token,//YOUR_FCM_DEVICE_ID, // Uncoment this if you want to test for single device
                                                                                                                                                                                     // registration_ids = singlebatch, // this is for multiple user 
                     data = new
                     {
