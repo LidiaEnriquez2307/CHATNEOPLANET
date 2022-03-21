@@ -38,6 +38,7 @@ namespace SignalRApi
             services.AddSingleton<InterfaceCuentaSala, RepoCuentaSala>(); //Tabla CUENTA_SALA
             services.AddSingleton<InterfaceTipoSala, RepoTipoSala>(); //Tabla TIPO_SALA
             services.AddSingleton<InterfaceUMNV, RepoUMNV>(); //Tabla ULTIMO_MENSAJE_NO_VISIBLE
+            services.AddSingleton<InterfaceDispositivo, RepoDispositivo>(); //Tabla Dispositivo
 
             services.AddControllers();
             services.AddSignalR(); //SignalR

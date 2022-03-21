@@ -1,13 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SignalRApi.Data.Insterfazes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using SignalRApi.Data;
 using SignalRApi.Modelos;
-using SignalRApi.NotificacionesPush;
 
 namespace SignalRApi.Controllers
 {

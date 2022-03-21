@@ -3,8 +3,6 @@ using SignalRApi.Data.Insterfazes;
 using SignalRApi.Modelos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 
@@ -31,11 +29,11 @@ namespace SignalRApi.Data.Repositorios
             return result > 0;
         }
 
-        public async Task<IEnumerable<string>> mostrar_tokens(Mensaje mensaje)
+        public async Task<IEnumerable<string>> mostrar_tokens(int id_cuenta, int id_sala)
         {
             var db = dbConection();
-            var sql = @"call sp_mostrar_tokens(@_id_cuenta, @_id_sala)";
-            return await db.QueryAsync<string>(sql, new { _id_cuenta=mensaje.id_cuenta, _id_sala=mensaje.id_sala });
+            var sql = @"call sp_mostrar_tokens(@_id_cuenta,@_id_sala)";
+            return await db.QueryAsync<string>(sql, new { _id_cuenta=id_cuenta, _id_sala=id_sala });
         }
     }
 }
