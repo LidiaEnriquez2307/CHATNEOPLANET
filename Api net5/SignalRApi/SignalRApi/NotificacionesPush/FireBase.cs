@@ -17,20 +17,30 @@ using Microsoft.AspNetCore.Mvc;
 namespace SignalRApi.NotificacionesPush
 {
     public class FireBase : ControllerBase
-    {        
+    {
+        private MySQLConfiguration _connectionString;
+        //conexion
+        protected MySqlConnection dbConection()
+        {
+            return new MySqlConnection(_connectionString._connectionString);
+        }
         public void NotificarSala(Mensaje mensaje)
         {
             string autor = mensaje.id_cuenta.ToString();//TraerAutor(mensaje.id_cuenta);
-            string token = "f5XziTjdSGKoKcmWwNTlIP:APA91bFhQCKE5msI7saUXTOBXR_LnYZX43BLWDeB3u18IOt8Vh-N86ljUuq-Spp79puT35GlPqsFzx0qO_y3uok2oez1BDpvk-GYmxM6FxGgtCTaXTGr2TEcVikZv3_RhVneytU4xFxN";
- //           var ListaTokens = TraerTokens(mensaje);
- //           foreach(string token in ListaTokens)
- //           {
+            //string token = "f5XziTjdSGKoKcmWwNTlIP:APA91bFhQCKE5msI7saUXTOBXR_LnYZX43BLWDeB3u18IOt8Vh-N86ljUuq-Spp79puT35GlPqsFzx0qO_y3uok2oez1BDpvk-GYmxM6FxGgtCTaXTGr2TEcVikZv3_RhVneytU4xFxN";
+          
+
+            var ListaTokens = TraerTokens(mensaje);
+            foreach (string token in ListaTokens)
+            {
                 SendNotification(token, autor, mensaje.mensaje);
- //           }
+            }
         }
         private List<string> TraerTokens(Mensaje mensaje)
         {
-            return null;
+            var db = dbConection();
+            var sql = @"call sp_mostrar_tokens(@_id_cuenta,@_id_sala)";
+            return db.Query<string>(sql, new { _id_cuenta = mensaje.id_cuenta, _id_sala = mensaje.id_sala }).ToList();
         }
         public string TraerAutor(int id_cuenta)
         {
