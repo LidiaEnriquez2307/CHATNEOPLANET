@@ -12,6 +12,11 @@ namespace AppSignalR.ViewModels
     using AppSignalR.Models;
     using System;
     using Xamarin.Essentials;
+    using System.Threading.Tasks;
+    using System.Net.Http;
+    using Newtonsoft.Json;
+    using System.Text;
+    using System.Net;
 
     public class LoginViewModel : BaseViewModel
     {
@@ -162,8 +167,11 @@ namespace AppSignalR.ViewModels
 
             if(this.Cuenta != null)
             {
+                
                 //Recuperar TOKEN
                 string token = Preferences.Get("TokenFirebase","") ;
+                //Guardar
+                GuardarToken(token, Cuenta[0].id_cuenta);
 
                 //roomviewmodel.id_cuenta = Cuenta[0].id_cuenta;
                 Console.WriteLine(Cuenta[0].id_cuenta);
@@ -191,22 +199,69 @@ namespace AppSignalR.ViewModels
 
 
         }
-        private async void GuardarToken(string token)
+        private async void GuardarToken(string _token,int _id_cuenta)
         {
-            if (string.IsNullOrEmpty(token))
+            if (string.IsNullOrEmpty(_token))
             {
                 return;
             }
-            if (token=="" || ExisteToken(token))
+            if (ExisteToken(_token).Result)
             {
                 return;
             }
             //Guardar el token en la base de datos
+            Dispositivo dispositivo = new Dispositivo {id_dispositivo=0,id_cuenta=_id_cuenta,token=_token};
+            Uri requestUri = new Uri("");
+            var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(dispositivo);
+            var contentJson = new StringContent(json,Encoding.UTF8,"applicationn/json");
+            var response = await client.PostAsync(requestUri,contentJson);
+            if(response.StatusCode==HttpStatusCode.OK)
+            {
+                Console.WriteLine("Token guardado: "+_token);
+            }
+            else
+            {
+                Console.WriteLine("No se pudo guardar: " + _token);
+            }
         }
-        private bool ExisteToken(string token)
+        private async Task<bool> ExisteToken(string token)
         {
+            List<string> listaTokens;
             //Consultar en la base de datos si existe el token
-            return false;
+            if (string.IsNullOrEmpty(token))
+            {
+                return false;
+            }
+            if (token == "")
+            {
+                return false;
+            }
+            //Guardar el token en la base de datos
+            var response = await this.apiService.GetList<string>(
+               "http://192.168.0.198",
+               "/API",
+               "/api/Dispositivo/" + token);
+
+            if (!response.IsSuccess)
+            {
+
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    response.Message,
+                    "Aceptar");
+                await Application.Current.MainPage.Navigation.PopAsync();
+                return false;
+            }
+            listaTokens = (List<string>)response.Result;
+            if (listaTokens.Count>0)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+
         }
         #endregion    
     }
