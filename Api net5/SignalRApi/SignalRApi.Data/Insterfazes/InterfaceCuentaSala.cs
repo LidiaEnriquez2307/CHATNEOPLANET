@@ -11,6 +11,6 @@ namespace SignalRApi.Data.Insterfazes
     {
         Task<bool> vincular_cuenta_sala(Cuenta_Sala cuenta_sala);
         Task<bool> desvincular_cuenta_sala(int id_sala_cuenta);
-        Task<IEnumerable<string>> salas_de_una_cuenta(int id_cuenta);//Se recupera solo los datos de la tabla SALA 
+        Task<IEnumerable<Sala>> salas_de_una_cuenta(int id_cuenta);//Se recupera solo los datos de la tabla SALA 
     }
 }

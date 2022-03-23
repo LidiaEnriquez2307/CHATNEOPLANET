@@ -21,7 +21,7 @@ namespace SignalRApi.Controllers
         }
         //CRUD
         [HttpGet("{id_cuenta}")]
-        public async Task<IActionResult> mostrar_mensajes(int id_cuenta)
+        public async Task<IActionResult> mostrar_salas(int id_cuenta)
         {
             return Ok(await _repoSalaCuenta.salas_de_una_cuenta(id_cuenta));
         }
