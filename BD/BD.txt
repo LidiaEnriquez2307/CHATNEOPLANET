@@ -13,7 +13,7 @@ create table CUENTA
 create table DISPOSITIVO
 (
     id_dispositivo int auto_increment primary key not null,
-    token text not null,
+    token text not null UNIQUE,
     id_cuenta int not null,
 	foreign key(id_cuenta) references CUENTA(id_cuenta)
 );

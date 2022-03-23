@@ -1,72 +1,3 @@
-drop database if exists chat;
-
-create database chat;
-
-use chat;
-
-create table CUENTA
-(
-    id_cuenta int auto_increment primary key not null,
-    correo varchar(50) not null,
-    contrasenia varchar(100) not null
-);
-create table DISPOSITIVO
-(
-    id_dispositivo int primary key not null,
-    token text not null,
-    id_cuenta int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta)
-);
-create table TIPO_SALA
-(
-    id_tipo_sala int primary key not null,
-    nombre varchar(10) not null,
-    fecha datetime not null,
-    activo bool not null
-);
-create table SALA
-(
-    id_sala int auto_increment primary key not null,
-    id_tipo_sala int not null,
-	foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
-    nombre varchar(50),
-    fecha datetime not null,
-    activo bool not null
-);
-create table MENSAJE
-(
-    id_mensaje int auto_increment primary key not null,
-    id_cuenta int not null,
-    id_sala int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta),
-	foreign key(id_sala) references SALA(id_sala),
-    mensaje text not null,
-    fecha datetime not null,
-    activo bool not null,
-    leido bool not null
-);
-create table CUENTA_SALA
-(
-    id_sala_cuenta int auto_increment primary key not null,
-    id_cuenta int not null,
-    id_sala int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta),
-	foreign key(id_sala) references SALA(id_sala),
-    administrador bool not null,
-    fecha datetime not null,
-    activo bool not null
-);
-create table ULTIMO_MENSAJE_NV
-(
-   id_umnv int auto_increment primary key not null,
-   id_cuenta int not null,
-   id_sala int not null,
-   id_mensaje int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta),
-	foreign key(id_sala) references SALA(id_sala),
-	foreign key(id_mensaje) references MENSAJE(id_mensaje),
-   fecha datetime not null
-);
 -- CUENTA
 delimiter //
 use CHAT //
@@ -74,6 +5,7 @@ use CHAT //
 drop procedure if exists sp_insertar_cuenta//
 drop procedure if exists sp_mostrar_cuentas//
 drop procedure if exists sp_id_cuenta//
+drop procedure if exists sp_mostrar_cuenta//
 
 CREATE PROCEDURE sp_insertar_cuenta (_correo varchar(50),_contrasenia varchar(50)) 
 BEGIN
@@ -83,6 +15,11 @@ END//
 CREATE PROCEDURE sp_mostrar_cuentas()
 BEGIN
 	Select * from CUENTA;
+END
+//
+CREATE PROCEDURE sp_mostrar_cuenta(_id_cuenta int)
+BEGIN
+	Select * from CUENTA where id_cuenta=_id_cuenta;
 END
 //
 CREATE PROCEDURE sp_id_cuenta(_correo varchar(50))
@@ -111,8 +48,46 @@ END//
 
 CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int) 
 BEGIN
-        select s.* from SALA as s INNER JOIN CUENTA_SALA as sc on s.id_sala = sc.id_sala WHERE sc.id_cuenta=_id_cuenta AND s.activo;
+select s.id_sala,s.id_tipo_sala,if(ts.id_tipo_sala=2,(s.nombre),
+          	(
+            SELECT c.correo FROM CUENTA as c 
+            INNER JOIN CUENTA_SALA as cs on c.id_cuenta = cs.id_cuenta 
+            INNER JOIN SALA as sal on sal.id_sala=cs.id_sala 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta
+			)
+         ) as nombre,s.fecha,s.activo from SALA as s 
+INNER JOIN CUENTA_SALA as cs on s.id_sala = cs.id_sala 
+INNER JOIN TIPO_SALA as ts on ts.id_tipo_sala=s.id_tipo_sala 
+RIGHT JOIN CUENTA as c on c.id_cuenta = cs.id_cuenta 
+WHERE cs.id_cuenta=_id_cuenta AND s.activo;
 END//
+-- CUENTA
+delimiter //
+use CHAT //
+
+drop procedure if exists sp_insertar_dispositivo//
+drop procedure if exists sp_mostrar_tokens//
+drop procedure if exists sp_existe_token//
+
+CREATE PROCEDURE sp_insertar_dispositivo(_id_cuenta int,_token text) 
+BEGIN
+	INSERT INTO DISPOSITIVO(id_cuenta,token) VALUES(_id_cuenta,_token);
+END//
+
+CREATE PROCEDURE sp_mostrar_tokens(_id_cuenta int, _id_sala int)
+BEGIN
+SELECT token FROM DISPOSITIVO as d 
+INNER JOIN CUENTA as c on d.id_cuenta=c.id_cuenta
+INNER JOIN CUENTA_SALA as cs on cs.id_cuenta=c.id_cuenta
+INNER JOIN SALA as s on s.id_sala=cs.id_sala
+WHERE s.id_sala=_id_sala AND c.id_cuenta!=_id_cuenta;
+END
+//
+CREATE PROCEDURE sp_existe_token(_token text)
+BEGIN
+SELECT COUNT(*) FROM dispositivo WHERE token LIKE _token;
+END
+//
 -- MENSAJE
 delimiter //
 use CHAT//
@@ -201,6 +176,19 @@ call sp_insertar_cuenta("usuario6@6","123");
 call sp_insertar_cuenta("usuario7@7","123");
 call sp_insertar_cuenta("usuario8@8","123");
 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario1@1"),"token1"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario1@1"),"token2"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario2@2"),"token3"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario2@2"),"token4"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario3@3"),"token5"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario3@3"),"token6"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario4@4"),"token7"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario4@4"),"token8"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario5@5"),"token9"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario5@5"),"token10"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario6@6"),"token11"); 
+call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario6@6"),"token12");
+
 call sp_insertar_sala(1,"Sala privada 1",CURDATE());
 call sp_insertar_sala(1,"Sala privada 2",CURDATE());
 call sp_insertar_sala(1,"Sala privada 3",CURDATE());
@@ -242,7 +230,7 @@ call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario4@4"
 call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala privada 3"),"mensaje de usuario5@5 a sala privada3",CURDATE());
 call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario5@5 a sala publica1",CURDATE());
 
-call sp_insertar_mensaje((select ied_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala privada 3"),"mensaje de usuario6@6 a sala privada3",CURDATE());
+call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala privada 3"),"mensaje de usuario6@6 a sala privada3",CURDATE());
 call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario6@6 a sala publica2",CURDATE());
 
 call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala privada 4"),"mensaje de usuario7@7 a sala privada4",CURDATE());
