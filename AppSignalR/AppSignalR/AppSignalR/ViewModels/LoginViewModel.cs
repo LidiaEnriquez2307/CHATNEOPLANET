@@ -142,7 +142,7 @@ namespace AppSignalR.ViewModels
             
 
           var response = await this.apiService.GetList<Cuenta>(
-               "http://172.30.3.108",
+               "http://192.168.0.198",
                "/API",
                "/api/Cuenta/"+this.Email);
             if (!response.IsSuccess)
@@ -162,7 +162,7 @@ namespace AppSignalR.ViewModels
 
             if(this.Cuenta != null)
             {
-                //Guardar TOKEN
+                //Recuperar TOKEN
                 string token = Preferences.Get("TokenFirebase","") ;
 
                 //roomviewmodel.id_cuenta = Cuenta[0].id_cuenta;
@@ -190,6 +190,23 @@ namespace AppSignalR.ViewModels
 
 
 
+        }
+        private async void GuardarToken(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                return;
+            }
+            if (token=="" || ExisteToken(token))
+            {
+                return;
+            }
+            //Guardar el token en la base de datos
+        }
+        private bool ExisteToken(string token)
+        {
+            //Consultar en la base de datos si existe el token
+            return false;
         }
         #endregion    
     }

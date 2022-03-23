@@ -107,10 +107,10 @@
         }
         private async void SignalRService_MessageReceived(object sender, Mensaje mensaje)
         {
-           await Application.Current.MainPage.DisplayAlert(
+          /* await Application.Current.MainPage.DisplayAlert(
                    "Message received",
                    mensaje.mensaje,
-                   "Acept");
+                   "Acept");*/
             if (mensaje.id_cuenta != this.id_cuenta)
             {
                 
