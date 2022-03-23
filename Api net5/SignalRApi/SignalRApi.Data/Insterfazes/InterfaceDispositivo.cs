@@ -11,5 +11,6 @@ namespace SignalRApi.Data.Insterfazes
     {
         Task<bool> insertar_dispositivo(Dispositivo dispositivo);
         Task<IEnumerable<string>> mostrar_tokens(int id_cuenta,int id_sala);
+        Task<IEnumerable<string>> existe_token(string token);
     }
 }

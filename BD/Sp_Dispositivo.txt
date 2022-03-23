@@ -4,6 +4,7 @@ use CHAT //
 
 drop procedure if exists sp_insertar_dispositivo//
 drop procedure if exists sp_mostrar_tokens//
+drop procedure if exists sp_existe_token//
 
 CREATE PROCEDURE sp_insertar_dispositivo(_id_cuenta int,_token text) 
 BEGIN
@@ -17,5 +18,10 @@ INNER JOIN CUENTA as c on d.id_cuenta=c.id_cuenta
 INNER JOIN CUENTA_SALA as cs on cs.id_cuenta=c.id_cuenta
 INNER JOIN SALA as s on s.id_sala=cs.id_sala
 WHERE s.id_sala=_id_sala AND c.id_cuenta!=_id_cuenta;
+END
+//
+CREATE PROCEDURE sp_existe_token(_token text)
+BEGIN
+SELECT COUNT(*) FROM dispositivo WHERE token LIKE _token;
 END
 //

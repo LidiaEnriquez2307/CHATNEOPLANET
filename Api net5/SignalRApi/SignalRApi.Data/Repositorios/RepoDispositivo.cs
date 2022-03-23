@@ -35,5 +35,11 @@ namespace SignalRApi.Data.Repositorios
             var sql = @"call sp_mostrar_tokens(@_id_cuenta,@_id_sala)";
             return await db.QueryAsync<string>(sql, new { _id_cuenta=id_cuenta, _id_sala=id_sala });
         }
+        public async Task<IEnumerable<string>> existe_token(string token)
+        {
+            var db = dbConection();
+            var sql = @"call sp_existe_token(@_token)";
+            return await db.QueryAsync<string>(sql, new { _token = token});
+        }
     }
 }
