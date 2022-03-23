@@ -26,13 +26,28 @@ namespace SignalRApi.NotificacionesPush
         }
         public void NotificarSala(Mensaje mensaje)
         {
-            string autor = mensaje.id_cuenta.ToString();//TraerAutor(mensaje.id_cuenta);
-            //string token = "f5XziTjdSGKoKcmWwNTlIP:APA91bFhQCKE5msI7saUXTOBXR_LnYZX43BLWDeB3u18IOt8Vh-N86ljUuq-Spp79puT35GlPqsFzx0qO_y3uok2oez1BDpvk-GYmxM6FxGgtCTaXTGr2TEcVikZv3_RhVneytU4xFxN";
+            string autor = "";
+            if (TraerAutor(mensaje.id_cuenta)!=null)
+            {
+                autor = TraerAutor(mensaje.id_cuenta);
+            }
+            else
+            {
+                autor = mensaje.id_cuenta.ToString();
+            } 
           
 
-            var ListaTokens = TraerTokens(mensaje);
-            foreach (string token in ListaTokens)
+            var listaTokens = TraerTokens(mensaje);
+            if (listaTokens != null)
             {
+                foreach (string token in listaTokens)
+                {
+                    SendNotification(token, autor, mensaje.mensaje);
+                }
+            }
+            else
+            {
+                string token = "f5XziTjdSGKoKcmWwNTlIP:APA91bFhQCKE5msI7saUXTOBXR_LnYZX43BLWDeB3u18IOt8Vh-N86ljUuq-Spp79puT35GlPqsFzx0qO_y3uok2oez1BDpvk-GYmxM6FxGgtCTaXTGr2TEcVikZv3_RhVneytU4xFxN";
                 SendNotification(token, autor, mensaje.mensaje);
             }
         }
@@ -44,7 +59,9 @@ namespace SignalRApi.NotificacionesPush
         }
         public string TraerAutor(int id_cuenta)
         {
-            return null;
+            var db = dbConection();
+            var sql = @"SELECT correo FROM cuenta WHERE id_cuenta="+id_cuenta;
+            return db.Query<string>(sql).First();
         }
         public void SendNotification(string token,string autor, string mensaje)
         {
