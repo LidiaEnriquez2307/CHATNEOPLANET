@@ -7,11 +7,11 @@ namespace SignalRApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DisositivoController : ControllerBase
+    public class DispositivoController : ControllerBase
     {
         //inyectar el repositorio
         private readonly InterfaceDispositivo _repoDispositivo;
-        public DisositivoController(InterfaceDispositivo repoDisositivo)
+        public DispositivoController(InterfaceDispositivo repoDisositivo)
         {
             this._repoDispositivo = repoDisositivo;
         }
