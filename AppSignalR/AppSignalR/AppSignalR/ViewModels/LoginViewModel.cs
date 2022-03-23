@@ -11,6 +11,7 @@ namespace AppSignalR.ViewModels
     using System.Collections.Generic;
     using AppSignalR.Models;
     using System;
+    using Xamarin.Essentials;
 
     public class LoginViewModel : BaseViewModel
     {
@@ -161,6 +162,9 @@ namespace AppSignalR.ViewModels
 
             if(this.Cuenta != null)
             {
+                //Guardar TOKEN
+                string token = Preferences.Get("TokenFirebase","") ;
+
                 //roomviewmodel.id_cuenta = Cuenta[0].id_cuenta;
                 Console.WriteLine(Cuenta[0].id_cuenta);
                 MainViewModel.GetInstance().Room = new RoomViewModel(Cuenta[0].id_cuenta);

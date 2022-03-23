@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <SelectedDevice>10pixel_2_q_10_0_-_api_29_1</SelectedDevice>
-    <ActiveDebugProfile>10pixel_2_q_10_0_-_api_29_1</ActiveDebugProfile>
+    <SelectedDevice>Android Emulator</SelectedDevice>
+    <ActiveDebugProfile>Android Emulator</ActiveDebugProfile>
     <DefaultDevice>10pixel_2_q_10_0_-_api_29_1</DefaultDevice>
     <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
