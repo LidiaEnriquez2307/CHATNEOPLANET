@@ -2,21 +2,20 @@
 
 namespace AppSignalR.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
-    using AppSignalR.Views;
-    using System.Windows.Input;
-    using Xamarin.Forms;
-    using AppSignalR.Services;
-    using System.Collections.ObjectModel;
-    using System.Collections.Generic;
     using AppSignalR.Models;
-    using System;
-    using Xamarin.Essentials;
-    using System.Threading.Tasks;
-    using System.Net.Http;
+    using AppSignalR.Services;
+    using AppSignalR.Views;
+    using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
-    using System.Text;
+    using System;
+    using System.Collections.Generic;
     using System.Net;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Input;
+    using Xamarin.Essentials;
+    using Xamarin.Forms;
 
     public class LoginViewModel : BaseViewModel
     {
@@ -205,63 +204,21 @@ namespace AppSignalR.ViewModels
             {
                 return;
             }
-            if (ExisteToken(_token).Result)
-            {
-                return;
-            }
             //Guardar el token en la base de datos
             Dispositivo dispositivo = new Dispositivo {id_dispositivo=0,id_cuenta=_id_cuenta,token=_token};
-            Uri requestUri = new Uri("");
+            Uri requestUri = new Uri("http://192.168.0.198/API/api/Dispositivo");
             var client = new HttpClient();
             var json = JsonConvert.SerializeObject(dispositivo);
-            var contentJson = new StringContent(json,Encoding.UTF8,"applicationn/json");
+            var contentJson = new StringContent(json,Encoding.UTF8,"application/json");
             var response = await client.PostAsync(requestUri,contentJson);
-            if(response.StatusCode==HttpStatusCode.OK)
+            if(response.StatusCode==HttpStatusCode.Created)
             {
-                Console.WriteLine("Token guardado: "+_token);
+                Console.WriteLine("Token guardado: ");
             }
             else
             {
-                Console.WriteLine("No se pudo guardar: " + _token);
+                Console.WriteLine("No se pudo guardar: ");
             }
-        }
-        private async Task<bool> ExisteToken(string token)
-        {
-            List<string> listaTokens;
-            //Consultar en la base de datos si existe el token
-            if (string.IsNullOrEmpty(token))
-            {
-                return false;
-            }
-            if (token == "")
-            {
-                return false;
-            }
-            //Guardar el token en la base de datos
-            var response = await this.apiService.GetList<string>(
-               "http://192.168.0.198",
-               "/API",
-               "/api/Dispositivo/" + token);
-
-            if (!response.IsSuccess)
-            {
-
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    response.Message,
-                    "Aceptar");
-                await Application.Current.MainPage.Navigation.PopAsync();
-                return false;
-            }
-            listaTokens = (List<string>)response.Result;
-            if (listaTokens.Count>0)
-            {
-                return true;
-            }
-            else {
-                return false;
-            }
-
         }
         #endregion    
     }
