@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>Samsung SM-J701M</SelectedDevice>
     <ActiveDebugProfile>Samsung SM-J701M</ActiveDebugProfile>
-    <DefaultDevice>10pixel_2_q_10_0_-_api_29_1</DefaultDevice>
+    <DefaultDevice>pixel_2_q_10_0_-_api_29</DefaultDevice>
     <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

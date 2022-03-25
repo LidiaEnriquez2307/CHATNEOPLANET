@@ -25,7 +25,7 @@ namespace AppSignalR.Services
         public SignalRService()//Mensaje mensaje)
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://192.168.0.198/API/chatHub")
+                .WithUrl("http://192.168.1.112/API/chatHub")
                 .WithAutomaticReconnect(new SignalRretryPolicy())
                 .Build();
          //   mensaje = new Mensaje {id_cuenta=mensaje.id_cuenta,id_sala=mensaje.id_sala };
