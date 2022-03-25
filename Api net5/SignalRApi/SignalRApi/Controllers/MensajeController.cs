@@ -23,11 +23,6 @@ namespace SignalRApi.Controllers
         {
             return Ok(await _reposMensaje.mostrar_mensajes(id_sala));
         }
-        [HttpGet]
-        public async Task<IActionResult> buscar_mensaje(int id_cuenta, string mensaje)
-        {
-            return Ok(await _reposMensaje.buscar_mensaje(id_cuenta,mensaje));
-        }
         [HttpPost]
         public async Task<IActionResult> insertar_mensaje([FromBody] Mensaje mensaje)
         {
@@ -41,6 +36,48 @@ namespace SignalRApi.Controllers
             }
             var created = await _reposMensaje.insertar_mensaje(mensaje);
             return Created("created", created);
+        }
+        [HttpPut("/activo/{id_mensaje}/{activo}")]
+        public async Task<IActionResult> mensaje_activo(int id_mensaje, bool activo)
+        {
+            if (id_mensaje == 0)
+            {
+                return BadRequest();
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await _reposMensaje.mensaje_activo(id_mensaje,activo);
+            return NoContent();
+        }
+        [HttpPut("/leido/{id_mensaje}/{leido}")]
+        public async Task<IActionResult> mensaje_leido(int id_mensaje, bool leido)
+        {
+            if (id_mensaje == 0)
+            {
+                return BadRequest();
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await _reposMensaje.mensaje_leido(id_mensaje,leido);
+            return NoContent();
+        }
+        [HttpPut("{id_sala}")]
+        public async Task<IActionResult> vaciar_chat(int id_sala)
+        {
+            if (id_sala == 0)
+            {
+                return BadRequest();
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await _reposMensaje.vaciar_chat(id_sala);
+            return NoContent();
         }
     }
 }

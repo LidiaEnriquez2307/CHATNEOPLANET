@@ -16,15 +16,10 @@ namespace SignalRApi.Controllers
             this._repoDispositivo = repoDisositivo;
         }
         //
-        [HttpGet]
+        [HttpGet("{id_cuenta}/{id_sala}")]
         public async Task<IActionResult> getToken(int id_cuenta, int id_sala)
         {
             return Ok(await _repoDispositivo.mostrar_tokens(id_cuenta,id_sala));
-        }
-        [HttpGet("{token}")]
-        public async Task<IActionResult> ExisteToken(string token)
-        {
-            return Ok(await _repoDispositivo.existe_token(token));
         }
         [HttpPost]
         public async Task<IActionResult> insertar_dispositivo([FromBody] Dispositivo dispositivo)

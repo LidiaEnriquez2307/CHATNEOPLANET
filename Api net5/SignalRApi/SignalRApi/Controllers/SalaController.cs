@@ -33,7 +33,7 @@ namespace SignalRApi.Controllers
             var created = await _repoSala.insertar_sala(sala);
             return Created("created", created);
         }
-        [HttpPut("{id_sala}")]
+        [HttpPut("/borrar/{id_sala}")]
         public async Task<IActionResult> borrar_sala(int id_sala)
         {
             if (id_sala == 0)
@@ -47,7 +47,7 @@ namespace SignalRApi.Controllers
             await _repoSala.borrar_sala(id_sala);
             return NoContent();
         }
-        [HttpPut]
+        [HttpPut("/nombre/{id_sala}/{nombre}")]
         public async Task<IActionResult> cambiar_nombre_sala(int id_sala, string nombre)
         {
             if (id_sala == 0)

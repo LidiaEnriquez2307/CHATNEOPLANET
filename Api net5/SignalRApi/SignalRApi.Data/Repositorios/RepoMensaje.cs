@@ -40,5 +40,26 @@ namespace SignalRApi.Data.Repositorios
             var sql = @"call sp_mostrar_mensajes(@_id_sala)";
             return await db.QueryAsync<Mensaje>(sql, new { _id_sala = id_sala });
         }
+        public async Task<bool> mensaje_activo(int id_mensaje, bool activo)
+        {
+            var db = dbConnection();
+            var sql = @"call sp_mensaje_activo(@_id_mensaje,@_activo)";
+            var result = await db.ExecuteAsync(sql, new { _id_mensaje = id_mensaje, _activo = activo });
+            return result > 0;
+        }
+        public async Task<bool> mensaje_leido(int id_mensaje, bool leido)
+        {
+            var db = dbConnection();
+            var sql = @"call sp_mensaje_leido(@_id_mensaje,@_leido)";
+            var result = await db.ExecuteAsync(sql, new { _id_mensaje = id_mensaje, _leido = leido });
+            return result > 0;
+        }
+        public async Task<bool> vaciar_chat(int id_sala)
+        {
+            var db = dbConnection();
+            var sql = @"call sp_vaciar_chat(@_id_sala)";
+            var result = await db.ExecuteAsync(sql, new { _id_sala = id_sala });
+            return result > 0;
+        }
     }
 }
