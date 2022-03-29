@@ -25,6 +25,11 @@ namespace SignalRApi.Controllers
         {
             return Ok(await _repoCuenta.id_cuenta(correo));
         }
+        [HttpGet("/autor/{id_cuenta}")]
+        public async Task<IActionResult> nombre_cuenta(int id_cuenta)
+        {
+            return Ok(await _repoCuenta.TraerAutor(id_cuenta));
+        }
         [HttpPost]
         public async Task<IActionResult> insertar_cuenta([FromBody]Cuenta cuenta)
         {

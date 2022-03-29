@@ -61,6 +61,7 @@ namespace SignalRApi.SingnalR
         public async Task SendMessageToSala(Mensaje mensaje)
         {
             await Clients.Group(mensaje.id_sala.ToString()).SendAsync("NewMessage", mensaje);
+            //await Clients.OthersInGroup(mensaje.id_sala.ToString()).SendAsync("NewMessage", mensaje);
             //Notificar
             fireBase.NotificarSala(mensaje);
         }

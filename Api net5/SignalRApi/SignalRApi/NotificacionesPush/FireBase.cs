@@ -13,29 +13,23 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Configuration;
 
 namespace SignalRApi.NotificacionesPush
 {
     public class FireBase : ControllerBase
     {
-        private MySQLConfiguration _connectionString;
-        //conexion
-        protected MySqlConnection dbConection()
+        private string stringConection;
+
+        public FireBase()
         {
-            return new MySqlConnection(_connectionString._connectionString);
+            stringConection = "server=localhost;port=3306;database=CHAT;uid=root;CHARSET=utf8;convert zero datetime=True";
         }
         public void NotificarSala(Mensaje mensaje)
         {
-            string autor = "";
-            if (TraerAutor(mensaje.id_cuenta)!=null)
-            {
-                autor = TraerAutor(mensaje.id_cuenta);
-            }
-            else
-            {
-                autor = mensaje.id_cuenta.ToString();
-            } 
-          
+            string autor = TraerAutor(mensaje.id_cuenta).ToString();
+
 
             var listaTokens = TraerTokens(mensaje);
             if (listaTokens != null)
@@ -53,29 +47,73 @@ namespace SignalRApi.NotificacionesPush
         }
         private List<string> TraerTokens(Mensaje mensaje)
         {
-            var db = dbConection();
-            var sql = @"call sp_mostrar_tokens(@_id_cuenta,@_id_sala)";
-            return db.Query<string>(sql, new { _id_cuenta = mensaje.id_cuenta, _id_sala = mensaje.id_sala }).ToList();
+            List<string> tokens = new();
+
+            using (MySqlConnection conexion = new MySqlConnection(stringConection))
+            {
+                try
+                {
+                    conexion.Open();
+                    MySqlCommand _sql = new MySqlCommand();
+                    _sql.CommandText = @"call sp_mostrar_tokens(?_id_cuenta,?_id_sala)";
+                    _sql.Parameters.Add("?_id_cuenta", MySqlDbType.Int32).Value = mensaje.id_cuenta;
+                    _sql.Parameters.Add("?_id_sala", MySqlDbType.Int32).Value = mensaje.id_sala;
+                    _sql.Connection = conexion;
+                    using (var reader = _sql.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tokens.Add(reader["token"].ToString());
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.ToString();
+                }
+            }
+            return tokens;
         }
         public string TraerAutor(int id_cuenta)
         {
-            var db = dbConection();
-            var sql = @"SELECT correo FROM cuenta WHERE id_cuenta="+id_cuenta;
-            return db.Query<string>(sql).First();
+            string autor = "";
+            
+            using (MySqlConnection conexion = new MySqlConnection(stringConection))
+            {
+                try
+                {
+                    conexion.Open();
+                    MySqlCommand _sql = new MySqlCommand();
+                    _sql.CommandText = @"SELECT correo FROM cuenta WHERE id_cuenta=?_id_cuenta";
+                    _sql.Parameters.Add("?_id_cuenta", MySqlDbType.Int32).Value = id_cuenta;
+                    _sql.Connection = conexion;
+                    using (var reader = _sql.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            autor = reader["correo"].ToString();
+                        }
+                    }
+                } catch (Exception e)
+                {
+                    e.ToString();
+                }
+            }
+            return autor;
         }
-        public void SendNotification(string token,string autor, string mensaje)
+        public void SendNotification(string token, string autor, string mensaje)
         {
             try
             {
                 dynamic fieldsFirebase = new
                 {
                     to = token,//YOUR_FCM_DEVICE_ID, // Uncoment this if you want to test for single device
-                                                                                                                                                                                    // registration_ids = singlebatch, // this is for multiple user 
+                               // registration_ids = singlebatch, // this is for multiple user 
                     data = new
                     {
-                        notiTitle = autor,    
-                       notiBody = mensaje   
-                     // link = ""       // When click on notification user redirect to this link
+                        notiTitle = autor,
+                        notiBody = mensaje
+                        // link = ""       // When click on notification user redirect to this link
                     }
                 };
 
