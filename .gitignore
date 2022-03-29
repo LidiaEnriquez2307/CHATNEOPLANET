@@ -197,3 +197,16 @@ FakesAssemblies/
 
 .vscode/settings.json
 Api net5/SignalRApi/.vs/SignalRApi/v16/.suo
+AppSignalR/.vs/AppSignalR/DesignTimeBuild/.dtbcache.v2
+AppSignalR/.vs/AppSignalR/DesignTimeBuild/.dtbcache.v2
+AppSignalR/.vs/AppSignalR/v16/.suo
+AppSignalR/AppSignalR/AppSignalR.Android/AppSignalR.Android.csproj.user
+AppSignalR/AppSignalR/AppSignalR.Android/bin/Debug/AppSignalR.dll
+AppSignalR/AppSignalR/AppSignalR.Android/bin/Debug/AppSignalR.pdb
+AppSignalR/AppSignalR/AppSignalR.Android/bin/Debug/com.unach.appsignalr-Signed.apk
+AppSignalR/AppSignalR/AppSignalR.Android/obj/Debug/110/_TelemetryProps
+AppSignalR/AppSignalR/AppSignalR.Android/obj/Debug/110/android/assets/AppSignalR.dll
+*.pdb
+*.config
+*.zip
+*.dll
