@@ -11,9 +11,16 @@
     using System.Text;
     using AppSignalR.Views;
     using System.Collections.ObjectModel;
+    using System.Net.Http;
+    using Newtonsoft.Json;
+    using System.Net;
 
     public class ChatViewModel : BaseViewModel
     {
+        #region Services
+        private ApiService apiService;
+        #endregion
+
         #region Attributes
         public int id_cuenta;
         public string mensaje;
@@ -24,8 +31,8 @@
         #region Properties
         public ObservableCollection<Mensaje> ListaMensajes
         {
-            set { SetValue(ref this.listaMensajes, value); }
             get { return this.listaMensajes; }
+            set { SetValue(ref this.listaMensajes, value); }
         }
         public string Mensaje
         {
@@ -38,6 +45,7 @@
             set;
         }
 
+
         private readonly ISignalRService signalRService;
         
         #endregion
@@ -49,9 +57,9 @@
             this.Room = room;
             signalRService.MessageReceived += SignalRService_MessageReceived;
             SignalRService.mensaje = new Mensaje {id_cuenta=this.Room.id_cuenta,id_sala=this.Room.id_sala};
-
+            this.apiService = new ApiService();
             signalRService.StartWithReconnectionAsync();
-            this.ListaMensajes = new ObservableCollection<Mensaje>();
+            this.LoadMensajes();           
         }
         #endregion
 
@@ -66,7 +74,24 @@
         #endregion
 
         #region Methods
-
+        private async void LoadMensajes()
+        {
+            var response = await this.apiService.GetList<Mensaje>(
+                "http://192.168.11.117",
+                "/Api3",
+                "/api/Mensaje/" + Room.id_sala);
+            if (!response.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    response.Message,
+                    "Aceptar");
+                await Application.Current.MainPage.Navigation.PopAsync();
+                return;
+            }
+            this.ListaMensajes = new ObservableCollection<Mensaje>((List<Mensaje>)response.Result);
+        }
+  
         /*private void btConnect_Clicked(object sender, EventArgs e)
         {
 
@@ -113,9 +138,23 @@
                    "Acept");*/
             if (mensaje.id_cuenta != this.id_cuenta)
             {
-                
-                this.ListaMensajes.Add(mensaje);
-               // NuevoMensajeLista(mensaje);
+                Uri requestUri = new Uri("http://192.168.11.117/Api3/api/Mensaje");
+                var client = new HttpClient();
+                var json = JsonConvert.SerializeObject(mensaje);
+                var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(requestUri, contentJson);
+                if (response.StatusCode == HttpStatusCode.Created)
+                {
+                    Console.WriteLine("Mensaje guardado: ");
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo guardar: ");
+                }
+                this.LoadMensajes();
+                this.Mensaje = "";
+                //this.ListaMensajes.Add(mensaje);
+                // NuevoMensajeLista(mensaje);
             }
         }
         private void SignalRService_Connected(object sender, EventArgs e)

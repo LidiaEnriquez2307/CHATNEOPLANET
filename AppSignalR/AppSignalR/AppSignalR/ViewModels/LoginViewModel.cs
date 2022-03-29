@@ -146,8 +146,8 @@ namespace AppSignalR.ViewModels
             
 
           var response = await this.apiService.GetList<Cuenta>(
-               "http://192.168.1.112",
-               "/API",
+               "http://192.168.11.117",
+               "/Api3",
                "/api/Cuenta/"+this.Email);
             if (!response.IsSuccess)
             {
@@ -206,7 +206,7 @@ namespace AppSignalR.ViewModels
             }
             //Guardar el token en la base de datos
             Dispositivo dispositivo = new Dispositivo {id_dispositivo=0,id_cuenta=_id_cuenta,token=_token};
-            Uri requestUri = new Uri("http://192.168.1.112/API/api/Dispositivo");
+            Uri requestUri = new Uri("http://192.168.11.117/Api3/api/Dispositivo");
             var client = new HttpClient();
             var json = JsonConvert.SerializeObject(dispositivo);
             var contentJson = new StringContent(json,Encoding.UTF8,"application/json");
