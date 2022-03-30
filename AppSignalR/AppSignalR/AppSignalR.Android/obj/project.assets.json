@@ -5354,24 +5354,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CTE\\.nuget\\packages\\": {},
+    "C:\\Users\\LIDIA\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+      "projectUniqueName": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
       "projectName": "AppSignalR.Android",
-      "projectPath": "D:\\GitHub\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
-      "packagesPath": "C:\\Users\\CTE\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\obj\\",
+      "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+      "packagesPath": "C:\\Users\\LIDIA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\CTE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LIDIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -5385,8 +5385,8 @@
       "frameworks": {
         "monoandroid11.0": {
           "projectReferences": {
-            "D:\\GitHub\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
-              "projectPath": "D:\\GitHub\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+            "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+              "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
             }
           }
         }
