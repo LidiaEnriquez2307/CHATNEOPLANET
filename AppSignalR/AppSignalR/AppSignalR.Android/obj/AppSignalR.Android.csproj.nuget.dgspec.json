@@ -1,26 +1,42 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj": {}
+<<<<<<< HEAD
+    "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj": {}
   },
   "projects": {
-    "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj": {
+    "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+        "projectUniqueName": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
         "projectName": "AppSignalR.Android",
-        "projectPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR.Android\\obj\\",
+        "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+        "packagesPath": "C:\\Users\\LIDIA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\obj\\",
+=======
+    "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj": {}
+  },
+  "projects": {
+    "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+        "projectName": "AppSignalR.Android",
+        "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\AppSignalR.Android.csproj",
+        "packagesPath": "C:\\Users\\Veronica\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.Android\\obj\\",
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+<<<<<<< HEAD
+          "C:\\Users\\LIDIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+          "C:\\Users\\Veronica\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
         ],
         "originalTargetFrameworks": [
           "monoandroid11.0"
@@ -32,8 +48,13 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
-                "projectPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+<<<<<<< HEAD
+              "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+                "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+=======
+              "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+                "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
               }
             }
           }
@@ -44,36 +65,57 @@
           "dependencies": {
             "Microsoft.AspNetCore.SignalR.Client": {
               "target": "Package",
-              "version": "[5.0.7, )"
+              "version": "[6.0.2, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.6.1, )"
+              "version": "[1.7.1, )"
+            },
+            "Xamarin.Firebase.Messaging": {
+              "target": "Package",
+              "version": "[122.0.0.3, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[5.0.0.2012, )"
+              "version": "[5.0.0.2337, )"
+            },
+            "Xamarin.GooglePlayServices.Base": {
+              "target": "Package",
+              "version": "[117.6.0.3, )"
             }
           }
         }
       }
     },
-    "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+<<<<<<< HEAD
+    "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
+        "projectUniqueName": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
         "projectName": "AppSignalR",
-        "projectPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\SignalR\\SignalRClient\\AppSignalR\\AppSignalR\\AppSignalR\\obj\\",
+        "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
+        "packagesPath": "C:\\Users\\LIDIA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\obj\\",
+=======
+    "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
+        "projectName": "AppSignalR",
+        "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
+        "packagesPath": "C:\\Users\\Veronica\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\obj\\",
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+<<<<<<< HEAD
+          "C:\\Users\\LIDIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+          "C:\\Users\\Veronica\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -100,7 +142,11 @@
           "dependencies": {
             "Microsoft.AspNetCore.SignalR.Client": {
               "target": "Package",
-              "version": "[5.0.7, )"
+              "version": "[6.0.2, )"
+            },
+            "MvvmLightLibs": {
+              "target": "Package",
+              "version": "[5.4.1.1, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -108,13 +154,21 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.6.1, )"
+              "version": "[1.7.1, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[5.0.0.2012, )"
+              "version": "[5.0.0.2337, )"
             }
           },
           "imports": [
@@ -127,7 +181,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
         }
       }
     }
