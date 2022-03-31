@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sPiqUzlxsD3pNojOjIitEzzLI/EI/tVoYvkQ8m1pVAB6Z0ewXbp77d4gvmxDjPEl958DfDNl4KNdClUvRW/IHQ==",
+  "dgSpecHash": "2aEvJ9by8B04cdGBb6Al8nUnH7JLlT5hn8MR6N8cV4PMpFFca3wfLE3a+Bewjlf1aJDPQ1iAYVzMqFRlUNh8tw==",
   "success": true,
   "projectFilePath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,12 @@
     "C:\\Users\\LIDIA\\.nuget\\packages\\xamarin.forms\\5.0.0.2337\\xamarin.forms.5.0.0.2337.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

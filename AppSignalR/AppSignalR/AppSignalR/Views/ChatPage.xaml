@@ -3,10 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSignalR.Views.ChatPage"            
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             >
-
-
-
+             Title="{Binding Chat.Room.nombre}">
     <ContentPage.Resources>
 
     </ContentPage.Resources>
@@ -20,11 +17,12 @@
         <ListView x:Name="Lista" 
                   SeparatorVisibility="None"
                   HasUnevenRows="True"
-                  Grid.Row="1">
+                  Grid.Row="1"
+                  ItemsSource="{Binding ListaMensajes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-
+                        <Label Text="{Binding mensaje}"/>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -33,9 +31,9 @@
                      Orientation="Horizontal"
                      >
 
-            <Label Text="{Binding Room.id_cuenta}" />
+            <Label Text="{Binding id_cuenta}" />
             <Entry  
-                Placeholder="..." 
+                Placeholder="Mensaje" 
                 HorizontalOptions="FillAndExpand" 
                 Text="{Binding Mensaje, Mode=TwoWay}"/>
             <Button 

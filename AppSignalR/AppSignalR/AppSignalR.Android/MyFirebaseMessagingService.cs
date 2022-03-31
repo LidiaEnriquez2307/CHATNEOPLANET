@@ -17,11 +17,20 @@ namespace AppSignalR.Droid
         AndroidNotificationManager androidNotification = new AndroidNotificationManager();
         public override void OnMessageReceived(RemoteMessage message)
         {
+
             IDictionary<string, string> MensajeData = message.Data;
-
-            string Titulo = MensajeData["notiTitle"];
-            string SubTitulo = MensajeData["notiBody"];
-
+            string Titulo = "";
+            string SubTitulo = "";
+            if (message.GetNotification()!=null)
+            {
+                Titulo = message.GetNotification().Title;
+                SubTitulo = message.GetNotification().Body;
+            }
+            else
+            {
+                Titulo = MensajeData["notiTitle"];
+                SubTitulo = MensajeData["notiBody"];
+            }
             androidNotification.CrearNotificacionLocal(Titulo, SubTitulo);
             //androidNotification.CrearNotificacionLocal(message.GetNotification().Title,message.GetNotification().Body);
 

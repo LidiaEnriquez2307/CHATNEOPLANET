@@ -2,15 +2,20 @@
 
 namespace AppSignalR.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
-    using AppSignalR.Views;
-    using System.Windows.Input;
-    using Xamarin.Forms;
-    using AppSignalR.Services;
-    using System.Collections.ObjectModel;
-    using System.Collections.Generic;
     using AppSignalR.Models;
+    using AppSignalR.Services;
+    using AppSignalR.Views;
+    using GalaSoft.MvvmLight.Command;
+    using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Input;
+    using Xamarin.Essentials;
+    using Xamarin.Forms;
 
     public class LoginViewModel : BaseViewModel
     {
@@ -121,7 +126,7 @@ namespace AppSignalR.ViewModels
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            if (this.Email != "usuario1@1" || this.Password != "1234")
+            if (false)//this.Email != "usuario1@1" || this.Password != "1234")
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
@@ -141,8 +146,8 @@ namespace AppSignalR.ViewModels
             
 
           var response = await this.apiService.GetList<Cuenta>(
-               "http://172.30.3.108",
-               "/API",
+               "http://192.168.11.117",
+               "/Api3",
                "/api/Cuenta/"+this.Email);
             if (!response.IsSuccess)
             {
@@ -161,6 +166,12 @@ namespace AppSignalR.ViewModels
 
             if(this.Cuenta != null)
             {
+                
+                //Recuperar TOKEN
+                string token = Preferences.Get("TokenFirebase","") ;
+                //Guardar
+                GuardarToken(token, Cuenta[0].id_cuenta);
+
                 //roomviewmodel.id_cuenta = Cuenta[0].id_cuenta;
                 Console.WriteLine(Cuenta[0].id_cuenta);
                 MainViewModel.GetInstance().Room = new RoomViewModel(Cuenta[0].id_cuenta);
@@ -186,6 +197,28 @@ namespace AppSignalR.ViewModels
 
 
 
+        }
+        private async void GuardarToken(string _token,int _id_cuenta)
+        {
+            if (string.IsNullOrEmpty(_token))
+            {
+                return;
+            }
+            //Guardar el token en la base de datos
+            Dispositivo dispositivo = new Dispositivo {id_dispositivo=0,id_cuenta=_id_cuenta,token=_token};
+            Uri requestUri = new Uri("http://192.168.11.117/Api3/api/Dispositivo");
+            var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(dispositivo);
+            var contentJson = new StringContent(json,Encoding.UTF8,"application/json");
+            var response = await client.PostAsync(requestUri,contentJson);
+            if(response.StatusCode==HttpStatusCode.Created)
+            {
+                Console.WriteLine("Token guardado: ");
+            }
+            else
+            {
+                Console.WriteLine("No se pudo guardar: ");
+            }
         }
         #endregion    
     }

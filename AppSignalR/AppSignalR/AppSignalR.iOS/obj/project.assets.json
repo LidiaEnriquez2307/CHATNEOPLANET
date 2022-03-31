@@ -3251,26 +3251,40 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\LIDIA\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+=======
+    "C:\\Users\\Veronica\\.nuget\\packages\\": {}
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
       "projectName": "AppSignalR.iOS",
       "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
       "packagesPath": "C:\\Users\\LIDIA\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
+=======
+      "projectUniqueName": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+      "projectName": "AppSignalR.iOS",
+      "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+      "packagesPath": "C:\\Users\\Veronica\\.nuget\\packages\\",
+      "outputPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\LIDIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+        "C:\\Users\\Veronica\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
       ],
       "originalTargetFrameworks": [
         "xamarinios10"
@@ -3282,8 +3296,13 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
               "projectPath": "C:\\Users\\LIDIA\\source\\repos\\LidiaEnriquez2307\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+=======
+            "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+              "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+>>>>>>> 1a5f1a5db3edf9570a5da7c8b10629ded071ef29
             }
           }
         }
