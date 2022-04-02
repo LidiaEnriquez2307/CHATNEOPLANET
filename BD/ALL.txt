@@ -1,3 +1,72 @@
+drop database if exists chat;
+
+create database chat;
+
+use chat;
+
+create table CUENTA
+(
+    id_cuenta int auto_increment primary key not null,
+    correo varchar(50) not null,
+    contrasenia varchar(100) not null
+);
+create table DISPOSITIVO
+(
+    id_dispositivo int auto_increment primary key not null,
+    token text not null UNIQUE,
+    id_cuenta int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta)
+);
+create table TIPO_SALA
+(
+    id_tipo_sala int primary key not null,
+    nombre varchar(10) not null,
+    fecha datetime not null,
+    activo bool not null
+);
+create table SALA
+(
+    id_sala int auto_increment primary key not null,
+    id_tipo_sala int not null,
+	foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
+    nombre varchar(50),
+    fecha datetime not null,
+    activo bool not null
+);
+create table MENSAJE
+(
+    id_mensaje int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+    mensaje text not null,
+    fecha datetime not null,
+    activo bool not null,
+    leido bool not null
+);
+create table CUENTA_SALA
+(
+    id_sala_cuenta int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+    administrador bool not null,
+    fecha datetime not null,
+    activo bool not null
+);
+create table ULTIMO_MENSAJE_NV
+(
+   id_umnv int auto_increment primary key not null,
+   id_cuenta int not null,
+   id_sala int not null,
+   id_mensaje int not null,
+	foreign key(id_cuenta) references CUENTA(id_cuenta),
+	foreign key(id_sala) references SALA(id_sala),
+	foreign key(id_mensaje) references MENSAJE(id_mensaje),
+   fecha datetime not null
+);
 -- CUENTA
 delimiter //
 use CHAT //
@@ -95,6 +164,9 @@ use CHAT//
 drop procedure if exists sp_insertar_mensaje//
 drop procedure if exists sp_mostrar_mensajes//
 drop procedure if exists sp_buscar_mensaje//
+drop procedure if exists sp_mensaje_activo//
+drop procedure if exists sp_mensaje_leido//
+drop procedure if exists sp_vaciar_chat//
 
 CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text,_fecha datetime) 
 BEGIN
@@ -111,7 +183,18 @@ CREATE PROCEDURE sp_buscar_mensaje(_id_cuenta int,_mensaje text)
 BEGIN
 	SELECT * FROM MENSAJE WHERE id_cuenta=_id_cuenta AND mensaje LIKE _mensaje;
 END//
-
+CREATE PROCEDURE sp_mensaje_activo(_id_mensaje int, _activo bool)
+BEGIN
+	UPDATE MENSAJE SET activo=_activo WHERE id_mensaje=_id_mensaje;
+END//
+CREATE PROCEDURE sp_mensaje_leido(_id_mensaje int, _leido bool)
+BEGIN
+	UPDATE MENSAJE SET leido=_leido WHERE id_mensaje=_id_mensaje;
+END//
+CREATE PROCEDURE sp_vaciar_chat(_id_sala int)
+BEGIN
+	UPDATE MENSAJE SET activo=false WHERE id_sala=_id_sala;
+END//
 
 
 -- SALA

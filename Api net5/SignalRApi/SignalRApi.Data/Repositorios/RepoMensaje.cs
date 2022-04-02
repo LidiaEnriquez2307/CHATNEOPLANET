@@ -4,6 +4,7 @@ using SignalRApi.Data.Insterfazes;
 using SignalRApi.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace SignalRApi.Data.Repositorios
@@ -30,7 +31,7 @@ namespace SignalRApi.Data.Repositorios
         {
             var db = dbConnection();
             var sql = @"call sp_insertar_mensaje(@_id_cuenta,@_id_sala,@_mensaje,@_fecha)";
-            var result = await db.ExecuteAsync(sql, new { _id_cuenta = mensaje.id_cuenta, _id_sala = mensaje.id_sala, _mensaje = mensaje.mensaje, _fecha = mensaje.fecha });
+            var result = await db.ExecuteAsync(sql, new { _id_cuenta = mensaje.id_cuenta, _id_sala = mensaje.id_sala, _mensaje = mensaje.mensaje, _fecha = mensaje.fecha.ToString("yyyy-MM-dd h:mm tt") });
             return result > 0;
         }
 
