@@ -7,12 +7,13 @@ use chat;
 create table CUENTA
 (
     id_cuenta int auto_increment primary key not null,
-    correo varchar(50) not null,
+    correo varchar(100) not null,
     contrasenia varchar(100) not null
 );
 create table DISPOSITIVO
 (
     id_dispositivo int auto_increment primary key not null,
+    codigoUnico varchar(100),
     token text not null UNIQUE,
     id_cuenta int not null,
 	foreign key(id_cuenta) references CUENTA(id_cuenta)
@@ -29,7 +30,7 @@ create table SALA
     id_sala int auto_increment primary key not null,
     id_tipo_sala int not null,
 	foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
-    nombre varchar(50),
+    nombre varchar(255),
     fecha datetime not null,
     activo bool not null
 );

@@ -24,8 +24,8 @@ namespace SignalRApi.Data.Repositorios
         public async Task<bool> insertar_dispositivo(Dispositivo dispositivo)
         {
             var db = dbConection();
-            var sql = @"call sp_insertar_dispositivo(@_id_cuenta,@_token)";
-            var result = await db.ExecuteAsync(sql, new { _id_cuenta=dispositivo.id_cuenta, _token=dispositivo.token });
+            var sql = @"call sp_insertar_dispositivo(@_codigoUnico,@_id_cuenta,@_token)";
+            var result = await db.ExecuteAsync(sql, new { _codigoUnico=dispositivo.codigoUnico, _id_cuenta = dispositivo.id_cuenta, _token=dispositivo.token });
             return result > 0;
         }
 

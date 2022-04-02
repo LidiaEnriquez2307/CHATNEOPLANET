@@ -7,12 +7,13 @@ use chat;
 create table CUENTA
 (
     id_cuenta int auto_increment primary key not null,
-    correo varchar(50) not null,
+    correo varchar(100) not null,
     contrasenia varchar(100) not null
 );
 create table DISPOSITIVO
 (
     id_dispositivo int auto_increment primary key not null,
+    codigoUnico varchar(100),
     token text not null UNIQUE,
     id_cuenta int not null,
 	foreign key(id_cuenta) references CUENTA(id_cuenta)
@@ -29,7 +30,7 @@ create table SALA
     id_sala int auto_increment primary key not null,
     id_tipo_sala int not null,
 	foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
-    nombre varchar(50),
+    nombre varchar(255),
     fecha datetime not null,
     activo bool not null
 );
@@ -138,9 +139,13 @@ drop procedure if exists sp_insertar_dispositivo//
 drop procedure if exists sp_mostrar_tokens//
 drop procedure if exists sp_existe_token//
 
-CREATE PROCEDURE sp_insertar_dispositivo(_id_cuenta int,_token text) 
+CREATE PROCEDURE sp_insertar_dispositivo(_codigoUnico text,_id_cuenta int,_token text) 
 BEGIN
-	INSERT INTO DISPOSITIVO(id_cuenta,token) VALUES(_id_cuenta,_token);
+	IF((SELECT COUNT(*) FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)>0 AND (SELECT id_cuenta FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)!=_id_cuenta) THEN
+		UPDATE DISPOSITIVO SET id_cuenta=_id_cuenta WHERE codigoUnico=_codigoUnico;
+	ELSEIF((SELECT COUNT(*) FROM DISPOSITIVO WHERE token = _token)=0) THEN
+		INSERT INTO DISPOSITIVO(codigoUnico,id_cuenta,token) VALUES(_codigoUnico,_id_cuenta,_token);
+	END IF;
 END//
 
 CREATE PROCEDURE sp_mostrar_tokens(_id_cuenta int, _id_sala int)
@@ -259,18 +264,18 @@ call sp_insertar_cuenta("usuario6@6","123");
 call sp_insertar_cuenta("usuario7@7","123");
 call sp_insertar_cuenta("usuario8@8","123");
 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario1@1"),"token1"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario1@1"),"token2"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario2@2"),"token3"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario2@2"),"token4"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario3@3"),"token5"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario3@3"),"token6"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario4@4"),"token7"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario4@4"),"token8"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario5@5"),"token9"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario5@5"),"token10"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario6@6"),"token11"); 
-call sp_insertar_dispositivo((select id_cuenta from CUENTA where correo="usuario6@6"),"token12");
+call sp_insertar_dispositivo('1D',(select id_cuenta from CUENTA where correo="usuario1@1"),"token1"); 
+call sp_insertar_dispositivo('2D',(select id_cuenta from CUENTA where correo="usuario1@1"),"token2"); 
+call sp_insertar_dispositivo('3D',(select id_cuenta from CUENTA where correo="usuario2@2"),"token3"); 
+call sp_insertar_dispositivo('4D',(select id_cuenta from CUENTA where correo="usuario2@2"),"token4"); 
+call sp_insertar_dispositivo('5D',(select id_cuenta from CUENTA where correo="usuario3@3"),"token5"); 
+call sp_insertar_dispositivo('6D',(select id_cuenta from CUENTA where correo="usuario3@3"),"token6"); 
+call sp_insertar_dispositivo('7D',(select id_cuenta from CUENTA where correo="usuario4@4"),"token7"); 
+call sp_insertar_dispositivo('8D',(select id_cuenta from CUENTA where correo="usuario4@4"),"token8"); 
+call sp_insertar_dispositivo('9D',(select id_cuenta from CUENTA where correo="usuario5@5"),"token9"); 
+call sp_insertar_dispositivo('10D',(select id_cuenta from CUENTA where correo="usuario5@5"),"token10"); 
+call sp_insertar_dispositivo('11D',(select id_cuenta from CUENTA where correo="usuario6@6"),"token11"); 
+call sp_insertar_dispositivo('12D',(select id_cuenta from CUENTA where correo="usuario6@6"),"token12");
 
 call sp_insertar_sala(1,"Sala privada 1",CURDATE());
 call sp_insertar_sala(1,"Sala privada 2",CURDATE());

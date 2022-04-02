@@ -6,9 +6,13 @@ drop procedure if exists sp_insertar_dispositivo//
 drop procedure if exists sp_mostrar_tokens//
 drop procedure if exists sp_existe_token//
 
-CREATE PROCEDURE sp_insertar_dispositivo(_id_cuenta int,_token text) 
+CREATE PROCEDURE sp_insertar_dispositivo(_codigoUnico text,_id_cuenta int,_token text) 
 BEGIN
-	INSERT INTO DISPOSITIVO(id_cuenta,token) VALUES(_id_cuenta,_token);
+	IF((SELECT COUNT(*) FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)>0 AND (SELECT id_cuenta FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)!=_id_cuenta) THEN
+		UPDATE DISPOSITIVO SET id_cuenta=_id_cuenta WHERE codigoUnico=_codigoUnico;
+	ELSEIF((SELECT COUNT(*) FROM DISPOSITIVO WHERE token = _token)=0) THEN
+		INSERT INTO DISPOSITIVO(codigoUnico,id_cuenta,token) VALUES(_codigoUnico,_id_cuenta,_token);
+	END IF;
 END//
 
 CREATE PROCEDURE sp_mostrar_tokens(_id_cuenta int, _id_sala int)
