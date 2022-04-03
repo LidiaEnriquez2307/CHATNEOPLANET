@@ -102,15 +102,13 @@ namespace SignalRApi.NotificacionesPush
             {
                 dynamic fieldsFirebase = new
                 {
-                    to = token,//YOUR_FCM_DEVICE_ID, // Uncoment this if you want to test for single device
-                               // registration_ids = singlebatch, // this is for multiple user 
+                    to = token,
                     data = new
                     {
-                        notiTitle = autor,
-                        notiBody = mensaje.mensaje,
-                        notiDate = mensaje.fecha
-                        // link = ""       // When click on notification user redirect to this link
+                        autor = autor,
+                        mensaje = mensaje
                     }
+                    
                 };
 
                 var json = JsonConvert.SerializeObject(fieldsFirebase);
