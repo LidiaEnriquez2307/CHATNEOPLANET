@@ -21,7 +21,7 @@ namespace SignalRApi.ClienteParaPruebas
                 .WithAutomaticReconnect(new SignalRretryPolicy());
             hub = connection.Build();
             await hub.StartAsync();
-            await hub.InvokeAsync("Init",new Mensaje { id_cuenta = 2, id_sala = 1 });
+            await hub.InvokeAsync("Init",1);
             IsConnected = true;
             semaphoreSlim.Release();
             

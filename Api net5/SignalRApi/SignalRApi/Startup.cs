@@ -1,20 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SignalRApi.Data;
 using SignalRApi.Data.Insterfazes;
 using SignalRApi.Data.Repositorios;
 using SignalRApi.SingnalR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Configuration;
 
 namespace SignalRApi
 {
@@ -30,6 +24,8 @@ namespace SignalRApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ConnectionStringSettings>(Configuration.GetSection("ConnectionStrings"));
+
             var mySQLConnectionConfig = new MySQLConfiguration(Configuration.GetConnectionString("MySqlConnection"));
             services.AddSingleton(mySQLConnectionConfig);//Coneccion a la BD
             services.AddSingleton<InterfaceCuenta,RepoCuenta>(); //Tabla Cuenta 

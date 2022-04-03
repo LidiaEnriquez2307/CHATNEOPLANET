@@ -1,9 +1,5 @@
-﻿using Dapper;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
-using SignalRApi.Data;
-using SignalRApi.Data.Insterfazes;
-using SignalRApi.Data.Repositorios;
 using SignalRApi.Modelos;
 using System;
 using System.Collections.Generic;
@@ -11,17 +7,16 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
+using Microsoft.Extensions.Configuration;
 using System.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace SignalRApi.NotificacionesPush
 {
     public class FireBase : ControllerBase
     {
         private string stringConection;
-
         public FireBase()
         {
             stringConection = "server=localhost;port=3306;database=CHAT;uid=root;CHARSET=utf8;convert zero datetime=True";
@@ -36,13 +31,13 @@ namespace SignalRApi.NotificacionesPush
             {
                 foreach (string token in listaTokens)
                 {
-                    SendNotification(token, autor, mensaje.mensaje);
+                    SendNotification(token, autor, mensaje);
                 }
             }
             else
             {
                 string token = "f5XziTjdSGKoKcmWwNTlIP:APA91bFhQCKE5msI7saUXTOBXR_LnYZX43BLWDeB3u18IOt8Vh-N86ljUuq-Spp79puT35GlPqsFzx0qO_y3uok2oez1BDpvk-GYmxM6FxGgtCTaXTGr2TEcVikZv3_RhVneytU4xFxN";
-                SendNotification(token, autor, mensaje.mensaje);
+                SendNotification(token, autor, mensaje);
             }
         }
         private List<string> TraerTokens(Mensaje mensaje)
@@ -101,7 +96,7 @@ namespace SignalRApi.NotificacionesPush
             }
             return autor;
         }
-        public void SendNotification(string token, string autor, string mensaje)
+        public void SendNotification(string token, string autor, Mensaje mensaje)
         {
             try
             {
@@ -112,7 +107,8 @@ namespace SignalRApi.NotificacionesPush
                     data = new
                     {
                         notiTitle = autor,
-                        notiBody = mensaje
+                        notiBody = mensaje.mensaje,
+                        notiDate = mensaje.fecha
                         // link = ""       // When click on notification user redirect to this link
                     }
                 };
