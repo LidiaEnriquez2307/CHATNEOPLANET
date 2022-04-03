@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {}
+    "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {}
   },
   "projects": {
-    "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
+    "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
+        "projectUniqueName": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
         "projectName": "SignalRApi.Modelos",
-        "projectPath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
+        "projectPath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\SignalRApi.Modelos.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "D:\\Lenin\\EcoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\obj\\",
+        "outputPath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Modelos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
