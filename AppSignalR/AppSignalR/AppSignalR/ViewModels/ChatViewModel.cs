@@ -122,40 +122,21 @@
 
         private void Send()
         {
-            signalRService.SendMessageToDevice(new Mensaje
+            Mensaje mensaje = new Mensaje
             {
                 mensaje = this.mensaje,
                 id_cuenta = this.Room.id_cuenta,
-                id_sala = this.Room.id_sala
-            });
-            return;
+                id_sala = this.Room.id_sala,
+                fecha = DateTime.Now,
+            };
+            signalRService.SendMessageToDevice(mensaje);
+            guardar_mensaje(mensaje);
+            this.LoadMensajes();
+            this.Mensaje = "";
         }
         private async void SignalRService_MessageReceived(object sender, Mensaje mensaje)
         {
-          /* await Application.Current.MainPage.DisplayAlert(
-                   "Message received",
-                   mensaje.mensaje,
-                   "Acept");*/
-            if (mensaje.id_cuenta != this.id_cuenta)
-            {
-                Uri requestUri = new Uri("http://192.168.11.117/Api3/api/Mensaje");
-                var client = new HttpClient();
-                var json = JsonConvert.SerializeObject(mensaje);
-                var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(requestUri, contentJson);
-                if (response.StatusCode == HttpStatusCode.Created)
-                {
-                    Console.WriteLine("Mensaje guardado: ");
-                }
-                else
-                {
-                    Console.WriteLine("No se pudo guardar: ");
-                }
-                this.LoadMensajes();
-                this.Mensaje = "";
-                //this.ListaMensajes.Add(mensaje);
-                // NuevoMensajeLista(mensaje);
-            }
+            this.LoadMensajes();                   
         }
         private void SignalRService_Connected(object sender, EventArgs e)
         {
@@ -169,6 +150,23 @@
         private void NuevoMensajeLista(Mensaje mensaje)
         {
             ListaMensajes.Add(mensaje);
+        }
+
+        public async void guardar_mensaje(Mensaje mensaje)
+        {
+            Uri requestUri = new Uri("http://192.168.11.117/Api3/api/Mensaje");
+            var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(mensaje);
+            var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(requestUri, contentJson);
+            if (response.StatusCode == HttpStatusCode.Created)
+            {
+                Console.WriteLine("Mensaje guardado: ");
+            }
+            else
+            {
+                Console.WriteLine("No se pudo guardar: ");
+            }
         }
 
         #endregion
