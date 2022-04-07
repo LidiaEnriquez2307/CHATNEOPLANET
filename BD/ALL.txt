@@ -13,7 +13,7 @@ create table CUENTA
 create table DISPOSITIVO
 (
     id_dispositivo int auto_increment primary key not null,
-    codigoUnico varchar(100),
+    codigoUnico text not null UNIQUE,
     token text not null UNIQUE,
     id_cuenta int not null,
 	foreign key(id_cuenta) references CUENTA(id_cuenta)
@@ -131,7 +131,7 @@ INNER JOIN TIPO_SALA as ts on ts.id_tipo_sala=s.id_tipo_sala
 RIGHT JOIN CUENTA as c on c.id_cuenta = cs.id_cuenta 
 WHERE cs.id_cuenta=_id_cuenta AND s.activo;
 END//
--- CUENTA
+-- DISPOSITIVO
 delimiter //
 use CHAT //
 
@@ -141,8 +141,13 @@ drop procedure if exists sp_existe_token//
 
 CREATE PROCEDURE sp_insertar_dispositivo(_codigoUnico text,_id_cuenta int,_token text) 
 BEGIN
-	IF((SELECT COUNT(*) FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)>0 AND (SELECT id_cuenta FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)!=_id_cuenta) THEN
-		UPDATE DISPOSITIVO SET id_cuenta=_id_cuenta WHERE codigoUnico=_codigoUnico;
+	IF((SELECT COUNT(*) FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)>0) THEN
+		IF((SELECT id_cuenta FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)!=_id_cuenta) THEN
+			UPDATE DISPOSITIVO SET id_cuenta=_id_cuenta WHERE codigoUnico=_codigoUnico;
+		END IF;
+		IF((SELECT token FROM DISPOSITIVO WHERE codigoUnico = _codigoUnico)!=_token) THEN
+			UPDATE DISPOSITIVO SET token=_token WHERE codigoUnico=_codigoUnico;
+		END IF;
 	ELSEIF((SELECT COUNT(*) FROM DISPOSITIVO WHERE token = _token)=0) THEN
 		INSERT INTO DISPOSITIVO(codigoUnico,id_cuenta,token) VALUES(_codigoUnico,_id_cuenta,_token);
 	END IF;
