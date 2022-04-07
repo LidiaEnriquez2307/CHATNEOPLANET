@@ -15,20 +15,18 @@ namespace AppSignalR.Services
         public event EventHandler Connected;
 
         private const string INIT_OPERATION = "Init";
-       // private const string INIT_OPERATION = "Init";
-        private const string SEND_MESSAGE_TO_DEVICE_OPERATION = "SendMessageToSala";
-        private const string SEND_MESSAGE_TO_ALL_OPERATION = "SendMessageToAll";
-
-        public static Mensaje mensaje { get; set; }
+        private const string SEND_MESSAGE_TO_ROOM_OPERATION = "SendMessageToSala";
+        private const string SUBSCRIBE_TO_ROOM = "RegistrarCuenta_a_Sala";
+        public static int id_cuenta { get; set; }
         private HubConnection connection;
 
         public SignalRService()//Mensaje mensaje)
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://192.168.11.117/Api3/chatHub")
+                .WithUrl("http://192.168.100.172/API/chatHub")
                 .WithAutomaticReconnect(new SignalRretryPolicy())
                 .Build();
-         //   mensaje = new Mensaje {id_cuenta=mensaje.id_cuenta,id_sala=mensaje.id_sala };
+            //   mensaje = new Mensaje {id_cuenta=mensaje.id_cuenta,id_sala=mensaje.id_sala };
         }
 
         public async void StartWithReconnectionAsync()
@@ -59,62 +57,61 @@ namespace AppSignalR.Services
             }
 
             Debug.WriteLine($"SignalR connected");
-            await Init(mensaje);
+            await Init(id_cuenta);
             Connected?.Invoke(this, null);
         }
 
-        private Task OnConnectionClosed(Exception ex)
+        public void NewMessage(Mensaje mensaje)
+        {
+            MessageReceived?.Invoke(this, mensaje);
+        }
+
+        public Task OnConnectionClosed(Exception ex)
         {
             StartWithReconnectionAsync();
             return Task.CompletedTask;
         }
 
-        private async Task OnConnectionReconnected(string connectionId)
+        public async Task OnConnectionReconnected(string connectionId)
         {
-            await Init(mensaje);
+            await Init(id_cuenta);
         }
 
-        private async Task Init(Mensaje mensaje)
-        {
-            try
-            {
-                await connection.InvokeAsync(INIT_OPERATION, mensaje);
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void NewMessage(Mensaje obj)
-        {
-            MessageReceived?.Invoke(this, obj);
-        }
-
-        public async Task SendMessageToAll(Mensaje item)
+        public async Task Init(int id_cuenta)
         {
             try
             {
-                await connection.InvokeAsync(SEND_MESSAGE_TO_ALL_OPERATION, item);
+                await connection.InvokeAsync(INIT_OPERATION, id_cuenta);
             }
             catch (Exception ex)
             {
-
+                Debug.WriteLine(ex);
             }
+
         }
 
-        public async Task SendMessageToDevice(Mensaje item)
+        public async Task SendMessageToRoom(Mensaje mensaje)
         {
             try
             {
-                await connection.InvokeAsync(SEND_MESSAGE_TO_DEVICE_OPERATION, item);
+                await connection.InvokeAsync(SEND_MESSAGE_TO_ROOM_OPERATION, mensaje);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
-            }
+                Debug.WriteLine(ex);
+            };
         }
-
+        public async Task SubscribeToRoom(string room)
+        {
+            try
+            {
+                await connection.InvokeAsync(SUBSCRIBE_TO_ROOM, room);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            };
+        }
         public async Task StopAsync()
         {
             if (connection.State == HubConnectionState.Disconnected)

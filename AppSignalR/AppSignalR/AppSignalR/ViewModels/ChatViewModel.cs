@@ -57,7 +57,7 @@
             signalRService = DependencyService.Get<ISignalRService>();
             this.Room = room;
             signalRService.MessageReceived += SignalRService_MessageReceived;
-            SignalRService.mensaje = new Mensaje {id_cuenta=this.Room.id_cuenta,id_sala=this.Room.id_sala};
+            SignalRService.id_cuenta = Room.id_cuenta;
             this.apiService = new ApiService();
             signalRService.StartWithReconnectionAsync();
             this.LoadMensajes();           
@@ -114,7 +114,7 @@
                 id_sala = this.Room.id_sala,
                 fecha = DateTime.Now,
             };
-            await signalRService.SendMessageToDevice(mensaje);
+            await signalRService.SendMessageToRoom(mensaje);
             guardar_mensaje(mensaje);
             mensaje.remitente = true;
             this.ListaMensajes.Add(mensaje);

@@ -12,8 +12,12 @@ namespace AppSignalR.Services
         event EventHandler Connected;
 
         void StartWithReconnectionAsync();
-        Task SendMessageToAll(Mensaje item);
-        Task SendMessageToDevice(Mensaje item);
+        void NewMessage(Mensaje mensaje);
+        Task OnConnectionClosed(Exception ex);
+        Task OnConnectionReconnected(string connectionId);
+        Task Init(int id_cuenta);
+        Task SendMessageToRoom(Mensaje mensaje);
+        Task SubscribeToRoom(string room);
         Task StopAsync();
     }
 }

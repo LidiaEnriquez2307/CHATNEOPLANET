@@ -144,12 +144,12 @@ namespace AppSignalR.ViewModels
             }
             this.IsRunning = false;
             this.IsEnabled = true;
-            
 
-          var response = await this.apiService.GetList<Cuenta>(
-               "http://192.168.11.117",
-               "/Api3",
-               "/api/Cuenta/"+this.Email);
+
+            var response = await this.apiService.GetList<Cuenta>(
+                 "http://192.168.100.172",
+                 "/API",
+                 "/api/Cuenta/" + this.Email);
             if (!response.IsSuccess)
             {
                 
