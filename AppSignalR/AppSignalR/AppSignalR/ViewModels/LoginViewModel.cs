@@ -7,6 +7,7 @@ namespace AppSignalR.ViewModels
     using AppSignalR.Views;
     using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
+    using Plugin.DeviceInfo;
     using System;
     using System.Collections.Generic;
     using System.Net;
@@ -205,8 +206,8 @@ namespace AppSignalR.ViewModels
                 return;
             }
             //Guardar el token en la base de datos
-            Dispositivo dispositivo = new Dispositivo {id_dispositivo=0,id_cuenta=_id_cuenta,token=_token};
-            Uri requestUri = new Uri("http://192.168.11.117/Api3/api/Dispositivo");
+            Dispositivo dispositivo = new Dispositivo { codigoUnico = CrossDeviceInfo.Current.Id, id_dispositivo = 0, id_cuenta = _id_cuenta, token = _token };
+            Uri requestUri = new Uri("http://192.168.100.172/API/api/Dispositivo");
             var client = new HttpClient();
             var json = JsonConvert.SerializeObject(dispositivo);
             var contentJson = new StringContent(json,Encoding.UTF8,"application/json");

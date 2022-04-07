@@ -11,10 +11,10 @@
           "lib/netstandard2.0/CommonServiceLocator.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Connections.Abstractions/6.0.2": {
+      "Microsoft.AspNetCore.Connections.Abstractions/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Features": "6.0.2",
+          "Microsoft.Extensions.Features": "6.0.3",
           "System.IO.Pipelines": "6.0.2"
         },
         "compile": {
@@ -24,11 +24,11 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Connections.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Client/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.2",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.3",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1",
           "Microsoft.Extensions.Options": "6.0.0"
         },
         "compile": {
@@ -38,10 +38,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Common/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "System.Text.Json": "6.0.2"
         },
         "compile": {
@@ -51,11 +51,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.2"
+          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
@@ -64,11 +64,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.3",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "System.Threading.Channels": "6.0.0"
@@ -80,10 +80,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Common/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "Microsoft.Extensions.Options": "6.0.0",
           "System.Text.Json": "6.0.2"
         },
@@ -94,10 +94,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2"
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll": {}
@@ -137,7 +137,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Features/6.0.2": {
+      "Microsoft.Extensions.Features/6.0.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Features.dll": {}
@@ -162,7 +162,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -360,7 +360,16 @@
           "lib/Xamarin.iOS10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Essentials/1.7.1": {
+      "Xam.Plugin.DeviceInfo/4.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        }
+      },
+      "Xamarin.Essentials/1.7.2": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
@@ -377,7 +386,7 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/5.0.0.2337": {
+      "Xamarin.Forms/5.0.0.2401": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -504,12 +513,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Client": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Client": "6.0.3",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "13.0.1",
           "Xam.Plugin.Connectivity": "3.2.0",
-          "Xamarin.Essentials": "1.7.1",
-          "Xamarin.Forms": "5.0.0.2337"
+          "Xam.Plugin.DeviceInfo": "4.1.1",
+          "Xamarin.Essentials": "1.7.2",
+          "Xamarin.Forms": "5.0.0.2401"
         },
         "compile": {
           "bin/placeholder/AppSignalR.dll": {}
@@ -529,10 +539,10 @@
           "lib/netstandard2.0/CommonServiceLocator.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Connections.Abstractions/6.0.2": {
+      "Microsoft.AspNetCore.Connections.Abstractions/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Features": "6.0.2",
+          "Microsoft.Extensions.Features": "6.0.3",
           "System.IO.Pipelines": "6.0.2"
         },
         "compile": {
@@ -542,11 +552,11 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Connections.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Client/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.2",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.3",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1",
           "Microsoft.Extensions.Options": "6.0.0"
         },
         "compile": {
@@ -556,10 +566,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Common/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "System.Text.Json": "6.0.2"
         },
         "compile": {
@@ -569,11 +579,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.2"
+          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
@@ -582,11 +592,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.3",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "System.Threading.Channels": "6.0.0"
@@ -598,10 +608,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Common/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "Microsoft.Extensions.Options": "6.0.0",
           "System.Text.Json": "6.0.2"
         },
@@ -612,10 +622,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2"
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll": {}
@@ -655,7 +665,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Features/6.0.2": {
+      "Microsoft.Extensions.Features/6.0.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Features.dll": {}
@@ -680,7 +690,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -878,7 +888,16 @@
           "lib/Xamarin.iOS10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Essentials/1.7.1": {
+      "Xam.Plugin.DeviceInfo/4.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        }
+      },
+      "Xamarin.Essentials/1.7.2": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
@@ -895,7 +914,7 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/5.0.0.2337": {
+      "Xamarin.Forms/5.0.0.2401": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1022,12 +1041,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Client": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Client": "6.0.3",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "13.0.1",
           "Xam.Plugin.Connectivity": "3.2.0",
-          "Xamarin.Essentials": "1.7.1",
-          "Xamarin.Forms": "5.0.0.2337"
+          "Xam.Plugin.DeviceInfo": "4.1.1",
+          "Xamarin.Essentials": "1.7.2",
+          "Xamarin.Forms": "5.0.0.2401"
         },
         "compile": {
           "bin/placeholder/AppSignalR.dll": {}
@@ -1047,10 +1067,10 @@
           "lib/netstandard2.0/CommonServiceLocator.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Connections.Abstractions/6.0.2": {
+      "Microsoft.AspNetCore.Connections.Abstractions/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Features": "6.0.2",
+          "Microsoft.Extensions.Features": "6.0.3",
           "System.IO.Pipelines": "6.0.2"
         },
         "compile": {
@@ -1060,11 +1080,11 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Connections.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Client/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.2",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.3",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1",
           "Microsoft.Extensions.Options": "6.0.0"
         },
         "compile": {
@@ -1074,10 +1094,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Common/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "System.Text.Json": "6.0.2"
         },
         "compile": {
@@ -1087,11 +1107,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.2"
+          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
@@ -1100,11 +1120,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.3",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "System.Threading.Channels": "6.0.0"
@@ -1116,10 +1136,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Common/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "Microsoft.Extensions.Options": "6.0.0",
           "System.Text.Json": "6.0.2"
         },
@@ -1130,10 +1150,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2"
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll": {}
@@ -1173,7 +1193,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Features/6.0.2": {
+      "Microsoft.Extensions.Features/6.0.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Features.dll": {}
@@ -1198,7 +1218,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -1396,7 +1416,16 @@
           "lib/Xamarin.iOS10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Essentials/1.7.1": {
+      "Xam.Plugin.DeviceInfo/4.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        }
+      },
+      "Xamarin.Essentials/1.7.2": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
@@ -1413,7 +1442,7 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/5.0.0.2337": {
+      "Xamarin.Forms/5.0.0.2401": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1540,12 +1569,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Client": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Client": "6.0.3",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "13.0.1",
           "Xam.Plugin.Connectivity": "3.2.0",
-          "Xamarin.Essentials": "1.7.1",
-          "Xamarin.Forms": "5.0.0.2337"
+          "Xam.Plugin.DeviceInfo": "4.1.1",
+          "Xamarin.Essentials": "1.7.2",
+          "Xamarin.Forms": "5.0.0.2401"
         },
         "compile": {
           "bin/placeholder/AppSignalR.dll": {}
@@ -1565,10 +1595,10 @@
           "lib/netstandard2.0/CommonServiceLocator.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Connections.Abstractions/6.0.2": {
+      "Microsoft.AspNetCore.Connections.Abstractions/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Features": "6.0.2",
+          "Microsoft.Extensions.Features": "6.0.3",
           "System.IO.Pipelines": "6.0.2"
         },
         "compile": {
@@ -1578,11 +1608,11 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Connections.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Client/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.2",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Microsoft.AspNetCore.Http.Connections.Common": "6.0.3",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1",
           "Microsoft.Extensions.Options": "6.0.0"
         },
         "compile": {
@@ -1592,10 +1622,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Common/6.0.2": {
+      "Microsoft.AspNetCore.Http.Connections.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "System.Text.Json": "6.0.2"
         },
         "compile": {
@@ -1605,11 +1635,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.2"
+          "Microsoft.AspNetCore.Http.Connections.Client": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Client.Core": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
@@ -1618,11 +1648,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Client.Core/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2",
-          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3",
+          "Microsoft.AspNetCore.SignalR.Protocols.Json": "6.0.3",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "System.Threading.Channels": "6.0.0"
@@ -1634,10 +1664,10 @@
           "lib/netstandard2.1/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Common/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Common/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.2",
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.3",
           "Microsoft.Extensions.Options": "6.0.0",
           "System.Text.Json": "6.0.2"
         },
@@ -1648,10 +1678,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.2": {
+      "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "6.0.2"
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll": {}
@@ -1691,7 +1721,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Features/6.0.2": {
+      "Microsoft.Extensions.Features/6.0.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Features.dll": {}
@@ -1716,7 +1746,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -1914,7 +1944,16 @@
           "lib/Xamarin.iOS10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Essentials/1.7.1": {
+      "Xam.Plugin.DeviceInfo/4.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.DeviceInfo.dll": {}
+        }
+      },
+      "Xamarin.Essentials/1.7.2": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
@@ -1931,7 +1970,7 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/5.0.0.2337": {
+      "Xamarin.Forms/5.0.0.2401": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -2058,12 +2097,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Client": "6.0.2",
+          "Microsoft.AspNetCore.SignalR.Client": "6.0.3",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "13.0.1",
           "Xam.Plugin.Connectivity": "3.2.0",
-          "Xamarin.Essentials": "1.7.1",
-          "Xamarin.Forms": "5.0.0.2337"
+          "Xam.Plugin.DeviceInfo": "4.1.1",
+          "Xamarin.Essentials": "1.7.2",
+          "Xamarin.Forms": "5.0.0.2401"
         },
         "compile": {
           "bin/placeholder/AppSignalR.dll": {}
@@ -2092,10 +2132,10 @@
         "lib/netstandard2.0/CommonServiceLocator.dll"
       ]
     },
-    "Microsoft.AspNetCore.Connections.Abstractions/6.0.2": {
-      "sha512": "5CuNGdmbzNqMidxekv41KNRTx5LzWaPZIoKbGgT2IdxSZyP1wd9VThDH4KRT9xklQxUpEdvF2nYptsS4Om8OEg==",
+    "Microsoft.AspNetCore.Connections.Abstractions/6.0.3": {
+      "sha512": "sKw40x8OW/WzJPq9CAlQ+7QQFHuoBVeGzmyPtUyBDeyTcBe43rhFRNJuRJYbOQL72M3BKR6wle7R/AAWKNwmxQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.connections.abstractions/6.0.2",
+      "path": "microsoft.aspnetcore.connections.abstractions/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2109,14 +2149,14 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Connections.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.AspNetCore.Connections.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.AspNetCore.Connections.Abstractions.xml",
-        "microsoft.aspnetcore.connections.abstractions.6.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.connections.abstractions.6.0.3.nupkg.sha512",
         "microsoft.aspnetcore.connections.abstractions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Connections.Client/6.0.2": {
-      "sha512": "mvHGvrGN8qNcLFeG3u3+R9r6Od73ffcsdjv0RCN3BIoWWqJGk8clI42/SJ+dHRLuB49orOBVhFfMbI8QZ299Zw==",
+    "Microsoft.AspNetCore.Http.Connections.Client/6.0.3": {
+      "sha512": "lSL0JaFtZXOUYuttpsP8hwNTWxGH8xt7qSAFElS4mNUq/PAXw/BwLKD0md+zHm6w2ExI+NWrGDQeQzU3T/C+qQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.connections.client/6.0.2",
+      "path": "microsoft.aspnetcore.http.connections.client/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2130,14 +2170,14 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Client.xml",
         "lib/netstandard2.1/Microsoft.AspNetCore.Http.Connections.Client.dll",
         "lib/netstandard2.1/Microsoft.AspNetCore.Http.Connections.Client.xml",
-        "microsoft.aspnetcore.http.connections.client.6.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.http.connections.client.6.0.3.nupkg.sha512",
         "microsoft.aspnetcore.http.connections.client.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Connections.Common/6.0.2": {
-      "sha512": "mrX/tBK4oC9STh7umDPrLgeznTAQAbmwgAsVhus5bY5pLZU5bWO3k/+6qlxSG9tzlFI5ATQIoFLZtKBCeqVdjQ==",
+    "Microsoft.AspNetCore.Http.Connections.Common/6.0.3": {
+      "sha512": "ig3U4mq+88/nEfBGQvx2zEbqJGSfdb7BA28kkiyPw8n2bmcbg8dHVXw9CzCe3iNtth4FaNuyfb7Apm06pv4Tkg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.connections.common/6.0.2",
+      "path": "microsoft.aspnetcore.http.connections.common/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2149,14 +2189,14 @@
         "lib/net6.0/Microsoft.AspNetCore.Http.Connections.Common.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.xml",
-        "microsoft.aspnetcore.http.connections.common.6.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.http.connections.common.6.0.3.nupkg.sha512",
         "microsoft.aspnetcore.http.connections.common.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR.Client/6.0.2": {
-      "sha512": "6P2QAP6ERtUNbj+4QchESj5sAjwzpMU25zqBxuPKBuerem33q5qnf02TuRCmyY+x8ne8ITqj9czIzspjp/3E8g==",
+    "Microsoft.AspNetCore.SignalR.Client/6.0.3": {
+      "sha512": "SDzFc3+eOHcdotjVKXeM/XlOvTc0s+uUe19g5uYEtJ2SQq/7m6muEUhXvZ/U5JlHr9oKuNdqJeJUt7ZQoQichA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr.client/6.0.2",
+      "path": "microsoft.aspnetcore.signalr.client/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2168,14 +2208,14 @@
         "lib/net6.0/Microsoft.AspNetCore.SignalR.Client.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.xml",
-        "microsoft.aspnetcore.signalr.client.6.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.client.6.0.3.nupkg.sha512",
         "microsoft.aspnetcore.signalr.client.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR.Client.Core/6.0.2": {
-      "sha512": "9EcrmUA7uMDidv42yQOX5n0RcXMxp9LHXp89ftzDN6sgCsdyNtgl74kQZ9Xb7m0fUrzij82PpLTLo6MZSIa6Pw==",
+    "Microsoft.AspNetCore.SignalR.Client.Core/6.0.3": {
+      "sha512": "k+M/fBSI/P1g7UOSjyNBjMgnpq2WKMCYtgFvwX5LeVmb6RPy6HjJorFQK8R23wwZbyEBv/IufdDWdPJqBT9U5w==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr.client.core/6.0.2",
+      "path": "microsoft.aspnetcore.signalr.client.core/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2189,14 +2229,14 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.xml",
         "lib/netstandard2.1/Microsoft.AspNetCore.SignalR.Client.Core.dll",
         "lib/netstandard2.1/Microsoft.AspNetCore.SignalR.Client.Core.xml",
-        "microsoft.aspnetcore.signalr.client.core.6.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.client.core.6.0.3.nupkg.sha512",
         "microsoft.aspnetcore.signalr.client.core.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR.Common/6.0.2": {
-      "sha512": "csrVJaBdrD6hDWNElmQUZGjQEy+w8gBSJ9Gijf/dcUB8pvlpF+ZgmGA5mHYE6/Ius7Nkk6cPBH3O32M7zNgdrQ==",
+    "Microsoft.AspNetCore.SignalR.Common/6.0.3": {
+      "sha512": "0UTSbl8+dmLh/vhujCkz1SeX2k0y5mBq1CfkjCSNVJV3G/Ve6ynbTt10zytiLYECWQ/iTOGs7+bWnfAIMn2OFQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr.common/6.0.2",
+      "path": "microsoft.aspnetcore.signalr.common/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2208,14 +2248,14 @@
         "lib/net6.0/Microsoft.AspNetCore.SignalR.Common.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.xml",
-        "microsoft.aspnetcore.signalr.common.6.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.common.6.0.3.nupkg.sha512",
         "microsoft.aspnetcore.signalr.common.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.2": {
-      "sha512": "jYs8t/8XYiDcLXZN3G/uc1+Ib17ehRpx0yx7IEf7B/ZrjdZyiLUBtVd0wQoNyfVjqVxFm1MNDfILgBDXvSKtHQ==",
+    "Microsoft.AspNetCore.SignalR.Protocols.Json/6.0.3": {
+      "sha512": "JFZv4ZxEuselWL8yqW2b7QZj3MBj5fhrsHtUHphlSWS0NEwfIX1ecrBpubitT4i7Fqgzh7VGqXblmCpGZMhMNw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr.protocols.json/6.0.2",
+      "path": "microsoft.aspnetcore.signalr.protocols.json/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2227,7 +2267,7 @@
         "lib/net6.0/Microsoft.AspNetCore.SignalR.Protocols.Json.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.xml",
-        "microsoft.aspnetcore.signalr.protocols.json.6.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.protocols.json.6.0.3.nupkg.sha512",
         "microsoft.aspnetcore.signalr.protocols.json.nuspec"
       ]
     },
@@ -2302,10 +2342,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Features/6.0.2": {
-      "sha512": "SWbTHwSu9EC06Fln1QbbfHkJm3RwUHFr/9LFZZbUiEtouXC6S+Mlr/PGiVXPRmic+Fkht6/DP6Ieb4HQ2W6d4w==",
+    "Microsoft.Extensions.Features/6.0.3": {
+      "sha512": "pfVzM2jpJgXwS7dHgUfEi4yUXGpeEHCSSgGa1Zotug8Kzdf2sPIaOfJHqnLpWIFSdx3Fa7zuBZ8X3eBDvCjuDA==",
       "type": "package",
-      "path": "microsoft.extensions.features/6.0.2",
+      "path": "microsoft.extensions.features/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2317,7 +2357,7 @@
         "lib/net6.0/Microsoft.Extensions.Features.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Features.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Features.xml",
-        "microsoft.extensions.features.6.0.2.nupkg.sha512",
+        "microsoft.extensions.features.6.0.3.nupkg.sha512",
         "microsoft.extensions.features.nuspec"
       ]
     },
@@ -2342,10 +2382,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
-      "sha512": "/HggWBbTwy8TgebGSX5DBZ24ndhzi93sHUBDvP1IxbZD7FDokYzdAr6+vbWGjw2XAfR2EJ1sfKUotpjHnFWPxA==",
+    "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
+      "sha512": "dzB2Cgg+JmrouhjkcQGzSFjjvpwlq353i8oBQO2GWNjCXSzhbtBRUf28HSauWe7eib3wYOdb3tItdjRwAdwCSg==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/6.0.0",
+      "path": "microsoft.extensions.logging.abstractions/6.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2389,7 +2429,7 @@
         "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2976,10 +3016,44 @@
         "xam.plugin.connectivity.nuspec"
       ]
     },
-    "Xamarin.Essentials/1.7.1": {
-      "sha512": "u7pUgvHJKTYo5ATiwRZvYviq2O0AQXIqxdna+sMxqidfWpbD7FBgFOLNAZzWKSll/AQBPeDrqLAWZNLq+ztpmQ==",
+    "Xam.Plugin.DeviceInfo/4.1.1": {
+      "sha512": "tBoWE60pwlUDK9f+X3CeFBVTpU+OuMel8Hfp7bxYnJKiGGQ2I3S+8ZF1lJSxvlQf0o8C/IjGnddUeDqwBmWZfg==",
       "type": "package",
-      "path": "xamarin.essentials/1.7.1",
+      "path": "xam.plugin.deviceinfo/4.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid71/Plugin.DeviceInfo.dll",
+        "lib/monoandroid71/Plugin.DeviceInfo.dll.mdb",
+        "lib/monoandroid71/Plugin.DeviceInfo.pdb",
+        "lib/net45/Plugin.DeviceInfo.dll",
+        "lib/net45/Plugin.DeviceInfo.pdb",
+        "lib/netstandard1.0/Plugin.DeviceInfo.dll",
+        "lib/netstandard1.0/Plugin.DeviceInfo.pdb",
+        "lib/netstandard2.0/Plugin.DeviceInfo.dll",
+        "lib/netstandard2.0/Plugin.DeviceInfo.pdb",
+        "lib/tizen40/Plugin.DeviceInfo.dll",
+        "lib/tizen40/Plugin.DeviceInfo.pdb",
+        "lib/uap10.0.16299/Plugin.DeviceInfo.dll",
+        "lib/uap10.0.16299/Plugin.DeviceInfo.pdb",
+        "lib/uap10.0.16299/Plugin.DeviceInfo.pri",
+        "lib/xamarinios10/Plugin.DeviceInfo.dll",
+        "lib/xamarinios10/Plugin.DeviceInfo.pdb",
+        "lib/xamarinmac20/Plugin.DeviceInfo.dll",
+        "lib/xamarinmac20/Plugin.DeviceInfo.pdb",
+        "lib/xamarintvos10/Plugin.DeviceInfo.dll",
+        "lib/xamarintvos10/Plugin.DeviceInfo.pdb",
+        "lib/xamarinwatchos10/Plugin.DeviceInfo.dll",
+        "lib/xamarinwatchos10/Plugin.DeviceInfo.pdb",
+        "readme.txt",
+        "xam.plugin.deviceinfo.4.1.1.nupkg.sha512",
+        "xam.plugin.deviceinfo.nuspec"
+      ]
+    },
+    "Xamarin.Essentials/1.7.2": {
+      "sha512": "3r2QA/54YZGw6o+cBmIQdvs9nkT1SNHHvFGl1jg2bJ/INmsPdSU4ddrwhIw6zSWSIMRbemKvXEVov1KwjRk6PQ==",
+      "type": "package",
+      "path": "xamarin.essentials/1.7.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3014,14 +3088,14 @@
         "lib/xamarinwatchos10/Xamarin.Essentials.pdb",
         "lib/xamarinwatchos10/Xamarin.Essentials.xml",
         "readme.txt",
-        "xamarin.essentials.1.7.1.nupkg.sha512",
+        "xamarin.essentials.1.7.2.nupkg.sha512",
         "xamarin.essentials.nuspec"
       ]
     },
-    "Xamarin.Forms/5.0.0.2337": {
-      "sha512": "2AYl2V1YHjEDEmA5d+aP382ielCKr8d/jo3zCgPSvLE/4Pw/em7pHBGmN3yZ/WzxIMV16f7wBfoFCHesMud0AA==",
+    "Xamarin.Forms/5.0.0.2401": {
+      "sha512": "fk/V8QWjeyo8UXcsqsNRMd6o1H5PBfyXYm97nxvhMsJIdeqDgfRWyIsSurM8uLGLQGdQP23R+hHj7vcTSo2UjQ==",
       "type": "package",
-      "path": "xamarin.forms/5.0.0.2337",
+      "path": "xamarin.forms/5.0.0.2401",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3230,7 +3304,7 @@
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.5.0.0.2337.nupkg.sha512",
+        "xamarin.forms.5.0.0.2401.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -3243,29 +3317,35 @@
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
       "AppSignalR >= 1.0.0",
-      "Microsoft.AspNetCore.SignalR.Client >= 6.0.2",
+      "Microsoft.AspNetCore.SignalR.Client >= 6.0.3",
       "System.Buffers >= 4.5.1",
       "System.Memory >= 4.5.4",
-      "Xamarin.Essentials >= 1.7.1",
-      "Xamarin.Forms >= 5.0.0.2337"
+      "Xam.Plugin.DeviceInfo >= 4.1.1",
+      "Xamarin.Essentials >= 1.7.2",
+      "Xamarin.Forms >= 5.0.0.2401"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Veronica\\.nuget\\packages\\": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+      "projectUniqueName": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
       "projectName": "AppSignalR.iOS",
-      "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
-      "packagesPath": "C:\\Users\\Veronica\\.nuget\\packages\\",
-      "outputPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
+      "projectPath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\AppSignalR.iOS.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Veronica\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "xamarinios10"
@@ -3277,8 +3357,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
-              "projectPath": "D:\\Documentos\\Quinto Semestre\\Nueva carpeta\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
+            "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj": {
+              "projectPath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\CHATNEOPLANET\\AppSignalR\\AppSignalR\\AppSignalR\\AppSignalR.csproj"
             }
           }
         }
@@ -3289,7 +3369,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.SignalR.Client": {
             "target": "Package",
-            "version": "[6.0.2, )"
+            "version": "[6.0.3, )"
           },
           "System.Buffers": {
             "include": "None",
@@ -3301,13 +3381,17 @@
             "target": "Package",
             "version": "[4.5.4, )"
           },
+          "Xam.Plugin.DeviceInfo": {
+            "target": "Package",
+            "version": "[4.1.1, )"
+          },
           "Xamarin.Essentials": {
             "target": "Package",
-            "version": "[1.7.1, )"
+            "version": "[1.7.2, )"
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[5.0.0.2337, )"
+            "version": "[5.0.0.2401, )"
           }
         }
       }

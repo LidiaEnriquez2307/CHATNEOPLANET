@@ -138,3 +138,5 @@ firebaseinstallations-17.0.0.aar
 firebaseiidinterop-17.1.0.aar
 firebasedatatransport-18.0.1.aar
 firebasemessaging-22.0.0.aar
+Plugin.CurrentActivity.dll
+Plugin.DeviceInfo.dll
