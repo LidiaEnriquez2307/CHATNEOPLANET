@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yDzZfrtb4I/wf/Q6++eHuR8aLHxecUg2jg5Cwc2y3mRvH38FFv+jjhZUuedWBhI3p/h/jpDj3OqRfXF3zP71GQ==",
+  "dgSpecHash": "qt2EnqQPJUzik0KIxPZaW0K60sUI/gxhoDYLmtvFmi+1HmJTzg4Dixb9g/qXWs9726nP8LO5jp9IzyhpuRGnig==",
   "success": true,
-  "projectFilePath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
+  "projectFilePath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi\\SignalRApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

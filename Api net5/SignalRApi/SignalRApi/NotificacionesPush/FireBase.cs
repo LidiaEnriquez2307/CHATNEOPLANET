@@ -105,8 +105,8 @@ namespace SignalRApi.NotificacionesPush
                     to = token,
                     data = new
                     {
-                        autor = autor,
-                        mensaje = mensaje
+                        notiTitle = autor,
+                        notiBody = mensaje
                     }
                     
                 };
