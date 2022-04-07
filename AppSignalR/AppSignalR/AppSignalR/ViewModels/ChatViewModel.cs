@@ -14,6 +14,7 @@
     using System.Net.Http;
     using Newtonsoft.Json;
     using System.Net;
+    using System.Linq;
 
     public class ChatViewModel : BaseViewModel
     {
@@ -90,37 +91,21 @@
                 return;
             }
             this.ListaMensajes = new ObservableCollection<Mensaje>((List<Mensaje>)response.Result);
+            for (int i = 0; i < this.ListaMensajes.Count(); i++)
+            {
+                if (this.ListaMensajes[i].id_cuenta == this.Room.id_cuenta)
+                {
+                    this.ListaMensajes[i].remitente = true;
+                }
+                else
+                {
+                    this.ListaMensajes[i].remitente = false;
+                }
+            }
         }
   
-        /*private void btConnect_Clicked(object sender, EventArgs e)
-        {
-
-            SignalRService.DeviceId = this.Room.id_sala;
-            //SignalRService.DeviceId = Convert.ToInt32(enId.Text);
-            signalRService.StartWithReconnectionAsync();
-        }*/
-
-        /*private void SignalRService_Connected(object sender, EventArgs e)
-        {
-            lbState.Text = "Connected";
-        }
-
-        private void SignalRService_Connecting(object sender, EventArgs e)
-        {
-            lbState.Text = "Connecting...";
-        }*/
-
-        /*private void btSentToAll_Clicked(object sender, EventArgs e)
-        {
-            signalRService.SendMessageToAll(new Mensaje
-            {
-                mensaje = enMessage.Text,
-                id_cuenta = Convert.ToInt32(enId.Text),
-                id_sala = Convert.ToInt32(enTargetId.Text)
-            });
-        }*/
-
-        private void Send()
+        
+        private async void Send()
         {
             Mensaje mensaje = new Mensaje
             {
@@ -129,14 +114,16 @@
                 id_sala = this.Room.id_sala,
                 fecha = DateTime.Now,
             };
-            signalRService.SendMessageToDevice(mensaje);
+            await signalRService.SendMessageToDevice(mensaje);
             guardar_mensaje(mensaje);
-            this.LoadMensajes();
+            mensaje.remitente = true;
+            this.ListaMensajes.Add(mensaje);
             this.Mensaje = "";
         }
         private async void SignalRService_MessageReceived(object sender, Mensaje mensaje)
         {
-            this.LoadMensajes();                   
+            mensaje.remitente = false;
+            this.ListaMensajes.Add(mensaje);                   
         }
         private void SignalRService_Connected(object sender, EventArgs e)
         {

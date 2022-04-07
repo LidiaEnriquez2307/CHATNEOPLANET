@@ -13,5 +13,6 @@ namespace AppSignalR.Models
         public DateTime fecha { get; set; }
         public bool activo { get; set; }
         public bool leido { get; set; }
+        public bool remitente { get; set; }
     }
 }

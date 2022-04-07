@@ -1,44 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppSignalR.Views.ChatPage"            
+             xmlns:selectors="clr-namespace:AppSignalR.Selectors"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AppSignalR.Views.ChatPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="{Binding Chat.Room.nombre}">
     <ContentPage.Resources>
-
+        <selectors:ChatMessageSelector x:Key="SelectMessageTemplate"/>
     </ContentPage.Resources>
-    <Grid BindingContext="{Binding Chat}"
-          RowDefinitions="auto, *, auto"
-          Margin="10"
-              Grid.Row="1">
-        <StackLayout Grid.Row="0">
-            <Label x:Name="estado" Text="{Binding estado}"></Label>
-        </StackLayout>
-        <ListView x:Name="Lista" 
-                  SeparatorVisibility="None"
-                  HasUnevenRows="True"
-                  Grid.Row="1"
-                  ItemsSource="{Binding ListaMensajes}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Label Text="{Binding mensaje}"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackLayout Grid.Row="2"
-                     Orientation="Horizontal"
-                     >
+    <Grid 
+        BindingContext="{Binding Chat}"
+        RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".000*"/>
+            <RowDefinition Height=".95*"/>
+            <RowDefinition Height=".07*"/>
+        </Grid.RowDefinitions>
 
-            <Label Text="{Binding id_cuenta}" />
-            <Entry  
-                Placeholder="Mensaje" 
-                HorizontalOptions="FillAndExpand" 
-                Text="{Binding Mensaje, Mode=TwoWay}"/>
-            <Button 
-                Text="Enviar"
-                Command="{Binding SendCommand}"/>
-        </StackLayout>
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding ListaMensajes}"
+                        ItemTemplate="{StaticResource SelectMessageTemplate}"
+                        Margin="3">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="8"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.Resources>
+                <ResourceDictionary>
+                    <DataTemplate x:Key="OtherText">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".0*"/>
+                                <ColumnDefinition Width=".8*"/>
+                                <ColumnDefinition Width=".1*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <pancakeView:PancakeView
+                                BackgroundColor="#E6E9EF"
+                                Grid.Column="1"
+                                CornerRadius="15,15,0,15"
+                                IsClippedToBounds="True"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,5,10,0">
+                                <StackLayout Margin="14">
+                                    
+                                    <Label Text="{Binding mensaje}"
+                                           TextColor="DarkSlateGray"
+                                           FontSize="Small"/>
+                                    <Label Text="{Binding fecha}"
+                                               TextColor="DarkSlateGray"
+                                               FontSize="Micro"
+                                               FontAttributes="Bold"/>
+                                </StackLayout>
+                            </pancakeView:PancakeView>
+                        </Grid>
+                    </DataTemplate>
+                    <DataTemplate x:Key="UserText">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".1*"/>
+                                <ColumnDefinition Width=".8*"/>
+                                <ColumnDefinition Width=".1*"/>
+                            </Grid.ColumnDefinitions>
+                            <pancakeView:PancakeView
+                                BackgroundColor="#4CAF50"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                CornerRadius="15,15,15,0"
+                                IsClippedToBounds="True"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,5,10,0">
+                                <Grid>
+                                    <StackLayout Margin="14">
+                                        <Label Text="{Binding mensaje}"
+                                               TextColor="White"
+                                               FontSize="Small"/>
+                                        <Label Text="{Binding fecha}"
+                                               TextColor="White"
+                                               FontSize="Micro"
+                                               FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </Grid>
+                            </pancakeView:PancakeView>
+                        </Grid>
+                    </DataTemplate>
+                </ResourceDictionary>
+            </CollectionView.Resources>
+        </CollectionView>
+
+        <Grid Grid.Row="2"
+              BackgroundColor="#EFEFF0"
+              VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".0*"/>
+                <ColumnDefinition Width=".9*"/>
+                <ColumnDefinition Width=".1*"/>
+            </Grid.ColumnDefinitions>
+            <Editor Text="{Binding Mensaje, Mode=TwoWay}"
+                    Grid.Column="1"
+                    AutoSize="TextChanges"/>
+            <ImageButton Grid.Column="2"
+                         Source="send.png"
+                         Command="{Binding SendCommand}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"/>
+        </Grid>
+
     </Grid>
 </ContentPage>

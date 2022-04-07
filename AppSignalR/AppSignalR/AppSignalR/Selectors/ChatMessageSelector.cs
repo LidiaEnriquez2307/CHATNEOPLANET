@@ -10,13 +10,17 @@ namespace AppSignalR.Selectors
     {
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
+            var mes = (Mensaje)item;
             var list = (CollectionView)container;
 
-            if (item is Mensaje)
+            if (mes.remitente)
             {
-                return (DataTemplate)list.Resources["LocalSimpleText"];
+                return (DataTemplate)list.Resources["UserText"];
             }
-            return null;
+            else
+            {
+                return (DataTemplate)list.Resources["OtherText"];
+            }
         }
     }
 }
