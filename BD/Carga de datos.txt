@@ -1,6 +1,9 @@
 delimiter ;
 use neopruebas;
 
+call sp_insertar_tipo_sala(1,"Privado");
+call sp_insertar_tipo_sala(2,"Publico");
+
 call sp_insertar_dispositivo('1D',(select id_cuenta from tbl_cuenta where correo_electronico="prueba@correo.com"),"token1"); 
 call sp_insertar_dispositivo('2D',(select id_cuenta from tbl_cuenta where correo_electronico="dalo123456@gmail.com"),"token2"); 
 call sp_insertar_dispositivo('3D',(select id_cuenta from tbl_cuenta where correo_electronico="davaloscorp@gmail.com"),"token3"); 
