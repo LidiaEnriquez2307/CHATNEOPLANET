@@ -9,10 +9,10 @@ drop procedure if exists sp_mensaje_activo//
 drop procedure if exists sp_mensaje_leido//
 drop procedure if exists sp_vaciar_chat//
 
-CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text,_fecha datetime) 
+CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text) 
 BEGIN
 	INSERT INTO MENSAJE (id_cuenta,id_sala,mensaje,fecha,activo,leido) 
-	VALUES(_id_cuenta,_id_sala,_mensaje,_fecha,true,false);
+	VALUES(_id_cuenta,_id_sala,_mensaje,CURRENT_TIMESTAMP(),true,false);
 END//
 
 CREATE PROCEDURE sp_mostrar_mensajes(_id_sala int)

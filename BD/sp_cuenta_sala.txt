@@ -6,10 +6,10 @@ drop procedure if exists sp_vincular_cuenta_sala//
 drop procedure if exists sp_desvincular_cuenta_sala//
 drop procedure if exists sp_salas_de_una_cuenta//
 
-CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_fecha date,_administrador bool) 
+CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_administrador bool) 
 BEGIN
 	INSERT INTO CUENTA_SALA(id_cuenta,id_sala,fecha,administrador,activo) 
-	VALUES(_id_cuenta,_id_sala,_fecha,_administrador,true);
+	VALUES(_id_cuenta,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
 END//
 
 CREATE PROCEDURE sp_desvincular_cuenta_sala(_id_sala_cuenta int) 
