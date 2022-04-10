@@ -19,7 +19,7 @@ namespace SignalRApi.NotificacionesPush
         private string stringConection;
         public FireBase()
         {
-            stringConection = "server=localhost;port=3306;database=CHAT;uid=root;CHARSET=utf8;convert zero datetime=True";
+            stringConection = "server=localhost;port=3306;database=neopruebas;uid=root;CHARSET=utf8;convert zero datetime=True";
         }
         public void NotificarSala(Mensaje mensaje)
         {

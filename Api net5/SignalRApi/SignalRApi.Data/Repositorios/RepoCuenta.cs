@@ -51,7 +51,7 @@ namespace SignalRApi.Data.Repositorios
         public Task<IEnumerable<string>> TraerAutor(int id_cuenta)
         {
             var db = dbConection();
-            var sql = @"SELECT correo FROM cuenta WHERE id_cuenta=" + id_cuenta;
+            var sql = @"SELECT correo_electronico FROM tbl_cuenta WHERE id_cuenta=" + id_cuenta;
             return db.QueryAsync<string>(sql);
         }
     }

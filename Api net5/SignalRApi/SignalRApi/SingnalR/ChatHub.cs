@@ -20,7 +20,7 @@ namespace SignalRApi.SingnalR
         {
             deviceConnections = deviceConnections ?? new Dictionary<int, string>();
             connectionDevices = connectionDevices ?? new Dictionary<string, int>();
-            stringConection = "server=localhost;port=3306;database=CHAT;uid=root;CHARSET=utf8;convert zero datetime=True";
+            stringConection = "server=localhost;port=3306;database=neopruebas;uid=root;CHARSET=utf8;convert zero datetime=True";
         }
 
         public override Task OnConnectedAsync()
