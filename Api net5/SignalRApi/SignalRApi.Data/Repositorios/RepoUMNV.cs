@@ -25,8 +25,8 @@ namespace SignalRApi.Data.Repositorios
         public async Task<bool> insertar_umnv(UMNV umnv)
         {
             var db = dbConnection();
-            var sql = @"call sp_insertar_umnv(@_id_cuenta,@_id_sala,@_id_mensaje,@_fecha)";
-            var result = await db.ExecuteAsync(sql, new {_id_cuenta=umnv.id_cuenta,_id_sala=umnv.id_sala,_id_mensaje=umnv.id_mensaje,_fecha=umnv.fecha});
+            var sql = @"call sp_insertar_umnv(@_id_cuenta,@_id_sala,@_id_mensaje)";
+            var result = await db.ExecuteAsync(sql, new {_id_cuenta=umnv.id_cuenta,_id_sala=umnv.id_sala,_id_mensaje=umnv.id_mensaje});
             return result > 0;
         }
     }

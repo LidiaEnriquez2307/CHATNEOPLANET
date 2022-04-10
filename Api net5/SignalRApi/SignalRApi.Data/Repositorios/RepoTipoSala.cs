@@ -25,8 +25,8 @@ namespace SignalRApi.Data.Repositorios
         public async Task<bool> insertar_tipo_sala(TipoSala tipoSala)
         {
             var db = dbConnection();
-            var sql = @"call sp_insertar_tipo_sala(@_id_tipo_sala,@_nombre,@_fecha)";
-            var result = await db.ExecuteAsync(sql, new { _id_tipo_sala = tipoSala.id_tipo_sala, _nombre = tipoSala.nombre, _fecha = tipoSala.fecha});
+            var sql = @"call sp_insertar_tipo_sala(@_id_tipo_sala,@_nombre)";
+            var result = await db.ExecuteAsync(sql, new { _id_tipo_sala = tipoSala.id_tipo_sala, _nombre = tipoSala.nombre});
             return result > 0;
         } 
     }

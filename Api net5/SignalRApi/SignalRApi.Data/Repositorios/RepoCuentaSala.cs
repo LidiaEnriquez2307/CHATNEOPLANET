@@ -25,8 +25,8 @@ namespace SignalRApi.Data.Repositorios
         public async Task<bool> vincular_cuenta_sala(Cuenta_Sala cuenta_sala)
         {
             var db = dbConnection();
-            var sql = @"call sp_vincular_cuenta_sala(@_id_cuenta,@_id_sala,@_fecha,@_administrador);";
-            var result = await db.ExecuteAsync(sql, new { _id_cuenta = cuenta_sala.id_cuenta, _id_sala = cuenta_sala.id_sala, _fecha = cuenta_sala.fecha, _administrador = cuenta_sala.administrador });
+            var sql = @"call sp_vincular_cuenta_sala(@_id_cuenta,@_id_sala,@_administrador);";
+            var result = await db.ExecuteAsync(sql, new { _id_cuenta = cuenta_sala.id_cuenta, _id_sala = cuenta_sala.id_sala, _administrador = cuenta_sala.administrador });
             return result > 0;
         }
         public async Task<bool> desvincular_cuenta_sala(int id_sala_cuenta)

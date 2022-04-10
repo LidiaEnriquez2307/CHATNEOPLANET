@@ -30,8 +30,8 @@ namespace SignalRApi.Data.Repositorios
         public async Task<bool> insertar_mensaje(Mensaje mensaje)
         {
             var db = dbConnection();
-            var sql = @"call sp_insertar_mensaje(@_id_cuenta,@_id_sala,@_mensaje,@_fecha)";
-            var result = await db.ExecuteAsync(sql, new { _id_cuenta = mensaje.id_cuenta, _id_sala = mensaje.id_sala, _mensaje = mensaje.mensaje, _fecha = mensaje.fecha.ToString("yyyy-MM-dd h:mm tt") });
+            var sql = @"call sp_insertar_mensaje(@_id_cuenta,@_id_sala,@_mensaje)";
+            var result = await db.ExecuteAsync(sql, new { _id_cuenta = mensaje.id_cuenta, _id_sala = mensaje.id_sala, _mensaje = mensaje.mensaje });
             return result > 0;
         }
 
