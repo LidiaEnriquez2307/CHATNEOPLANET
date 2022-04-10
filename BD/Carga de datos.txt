@@ -1,30 +1,18 @@
 delimiter ;
-use CHAT;
+use neopruebas;
 
-call sp_insertar_tipo_sala(1,"Privado");
-call sp_insertar_tipo_sala(2,"Publico");
-
-call sp_insertar_cuenta("usuario1@1","123");
-call sp_insertar_cuenta("usuario2@2","123");
-call sp_insertar_cuenta("usuario3@3","123");
-call sp_insertar_cuenta("usuario4@4","123");
-call sp_insertar_cuenta("usuario5@5","123");
-call sp_insertar_cuenta("usuario6@6","123");
-call sp_insertar_cuenta("usuario7@7","123");
-call sp_insertar_cuenta("usuario8@8","123");
-
-call sp_insertar_dispositivo('1D',(select id_cuenta from CUENTA where correo="usuario1@1"),"token1"); 
-call sp_insertar_dispositivo('2D',(select id_cuenta from CUENTA where correo="usuario1@1"),"token2"); 
-call sp_insertar_dispositivo('3D',(select id_cuenta from CUENTA where correo="usuario2@2"),"token3"); 
-call sp_insertar_dispositivo('4D',(select id_cuenta from CUENTA where correo="usuario2@2"),"token4"); 
-call sp_insertar_dispositivo('5D',(select id_cuenta from CUENTA where correo="usuario3@3"),"token5"); 
-call sp_insertar_dispositivo('6D',(select id_cuenta from CUENTA where correo="usuario3@3"),"token6"); 
-call sp_insertar_dispositivo('7D',(select id_cuenta from CUENTA where correo="usuario4@4"),"token7"); 
-call sp_insertar_dispositivo('8D',(select id_cuenta from CUENTA where correo="usuario4@4"),"token8"); 
-call sp_insertar_dispositivo('9D',(select id_cuenta from CUENTA where correo="usuario5@5"),"token9"); 
-call sp_insertar_dispositivo('10D',(select id_cuenta from CUENTA where correo="usuario5@5"),"token10"); 
-call sp_insertar_dispositivo('11D',(select id_cuenta from CUENTA where correo="usuario6@6"),"token11"); 
-call sp_insertar_dispositivo('12D',(select id_cuenta from CUENTA where correo="usuario6@6"),"token12");
+call sp_insertar_dispositivo('1D',(select id_cuenta from tbl_cuenta where correo_electronico="prueba@correo.com"),"token1"); 
+call sp_insertar_dispositivo('2D',(select id_cuenta from tbl_cuenta where correo_electronico="dalo123456@gmail.com"),"token2"); 
+call sp_insertar_dispositivo('3D',(select id_cuenta from tbl_cuenta where correo_electronico="davaloscorp@gmail.com"),"token3"); 
+call sp_insertar_dispositivo('4D',(select id_cuenta from tbl_cuenta where correo_electronico="sol_jb12@hotmail.com"),"token4"); 
+call sp_insertar_dispositivo('5D',(select id_cuenta from tbl_cuenta where correo_electronico="sofia.taco.e@gmail.com"),"token5"); 
+call sp_insertar_dispositivo('6D',(select id_cuenta from tbl_cuenta where correo_electronico="harisonci1992@gmail.com"),"token6"); 
+call sp_insertar_dispositivo('7D',(select id_cuenta from tbl_cuenta where correo_electronico="saguaygabriel@gmail.com"),"token7"); 
+call sp_insertar_dispositivo('8D',(select id_cuenta from tbl_cuenta where correo_electronico="hernan.cardenas92@hotmail.com"),"token8"); 
+call sp_insertar_dispositivo('9D',(select id_cuenta from tbl_cuenta where correo_electronico="gaiborm4@gmail.com"),"token9"); 
+call sp_insertar_dispositivo('10D',(select id_cuenta from tbl_cuenta where correo_electronico="monicajimbo1094@gmail.com"),"token10"); 
+call sp_insertar_dispositivo('11D',(select id_cuenta from tbl_cuenta where correo_electronico="juan_c_paste@hotmail.com"),"token11"); 
+call sp_insertar_dispositivo('12D',(select id_cuenta from tbl_cuenta where correo_electronico="jessyescobar9335@gmail.com"),"token12");
 
 call sp_insertar_sala(1,"Sala privada 1");
 call sp_insertar_sala(1,"Sala privada 2");
@@ -34,44 +22,44 @@ call sp_insertar_sala(2,"Sala publica 1");
 call sp_insertar_sala(2,"Sala publica 2");
 
 
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala privada 1"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala privada 1"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala privada 2"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala privada 2"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala privada 3"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala privada 3"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala privada 4"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala privada 4"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="prueba@correo.com"),(select id_sala from tbl_sala where nombre="Sala privada 1"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="dalo123456@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 1"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="davaloscorp@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 2"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="sol_jb12@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 2"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="sofia.taco.e@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 3"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="harisonci1992@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 3"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="saguaygabriel@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 4"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="hernan.cardenas92@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 4"),false);
 
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala publica 1"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala publica 2"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala publica 1"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala publica 2"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala publica 1"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala publica 2"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala publica 1"),false);
-call sp_vincular_cuenta_sala((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala publica 2"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="prueba@correo.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="dalo123456@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="davaloscorp@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="sol_jb12@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="sofia.taco.e@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="harisonci1992@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="saguaygabriel@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),false);
+call sp_vincular_cuenta_sala((select id_cuenta from tbl_cuenta where correo_electronico="hernan.cardenas92@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),false);
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala privada 1"),"mensaje de usuario1@1 a sala privada1");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario1@1"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario1@1 a sala publica1");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="prueba@correo.com"),(select id_sala from tbl_sala where nombre="Sala privada 1"),"mensaje de prueba@correo.com a sala privada1");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="prueba@correo.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),"mensaje de prueba@correo.com a sala publica1");
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala privada 1"),"mensaje de usuario2@2 a sala privada1");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario2@2"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario2@2 a sala publica2");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="dalo123456@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 1"),"mensaje de dalo123456@gmail.com a sala privada1");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="dalo123456@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),"mensaje de dalo123456@gmail.com a sala publica2");
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala privada 2"),"mensaje de usuario3@3 a sala privada2");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario3@3"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario3@3 a sala publica1");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="davaloscorp@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 2"),"mensaje de davaloscorp@gmail.com a sala privada2");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="davaloscorp@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),"mensaje de davaloscorp@gmail.com a sala publica1");
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala privada 2"),"mensaje de usuario4@4 a sala privada2");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario4@4"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario4@4 a sala publica2");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="sol_jb12@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 2"),"mensaje de sol_jb12@hotmail.com a sala privada2");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="sol_jb12@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),"mensaje de sol_jb12@hotmail.com a sala publica2");
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala privada 3"),"mensaje de usuario5@5 a sala privada3");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario5@5"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario5@5 a sala publica1");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="sofia.taco.e@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 3"),"mensaje de sofia.taco.e@gmail.com a sala privada3");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="sofia.taco.e@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),"mensaje de sofia.taco.e@gmail.com a sala publica1");
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala privada 3"),"mensaje de usuario6@6 a sala privada3");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario6@6"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario6@6 a sala publica2");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="harisonci1992@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 3"),"mensaje de harisonci1992@gmail.com a sala privada3");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="harisonci1992@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),"mensaje de harisonci1992@gmail.com a sala publica2");
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala privada 4"),"mensaje de usuario7@7 a sala privada4");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario7@7"),(select id_sala from SALA where nombre="Sala publica 1"),"mensaje de usuario7@7 a sala publica1");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="saguaygabriel@gmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 4"),"mensaje de saguaygabriel@gmail.com a sala privada4");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="saguaygabriel@gmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 1"),"mensaje de saguaygabriel@gmail.com a sala publica1");
 
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala privada 4"),"mensaje de usuario8@8 a sala privada4");
-call sp_insertar_mensaje((select id_cuenta from CUENTA where correo="usuario8@8"),(select id_sala from SALA where nombre="Sala publica 2"),"mensaje de usuario8@8 a sala publica2");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="hernan.cardenas92@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala privada 4"),"mensaje de hernan.cardenas92@hotmail.com a sala privada4");
+call sp_insertar_mensaje((select id_cuenta from tbl_cuenta where correo_electronico="hernan.cardenas92@hotmail.com"),(select id_sala from tbl_sala where nombre="Sala publica 2"),"mensaje de hernan.cardenas92@hotmail.com a sala publica2");

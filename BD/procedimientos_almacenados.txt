@@ -1,0 +1,179 @@
+delimiter //
+use neopruebas//
+
+-- tbl_sala_cuenta
+
+drop procedure if exists sp_vincular_cuenta_sala//
+drop procedure if exists sp_desvincular_cuenta_sala//
+drop procedure if exists sp_salas_de_una_cuenta//
+
+CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_administrador bool) 
+BEGIN
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
+END//
+
+CREATE PROCEDURE sp_desvincular_cuenta_sala(_id_sala_cuenta int) 
+BEGIN
+	UPDATE tbl_sala_cuenta SET administrador = false, activo = false 
+	WHERE id_sala_cuenta= _id_sala_cuenta;
+END//
+
+CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int) 
+BEGIN
+select s.id_sala,s.id_tipo_sala,if(ts.id_tipo_sala=2,(s.nombre),
+          	(
+            SELECT c.correo_electronico FROM tbl_cuenta as c 
+            INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
+            INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta
+			)
+         ) as nombre,s.fecha,s.activo from tbl_sala as s 
+INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala 
+INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
+RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta 
+WHERE cs.id_cuenta=_id_cuenta AND s.activo;
+END//
+
+-- TBL_DISPOSITIVO
+
+drop procedure if exists sp_insertar_dispositivo//
+drop procedure if exists sp_mostrar_tokens//
+drop procedure if exists sp_existe_token//
+
+CREATE PROCEDURE sp_insertar_dispositivo(_codigo_unico text,_id_cuenta int,_token text) 
+BEGIN
+	IF((SELECT COUNT(*) FROM tbl_dispositivo WHERE codigo_unico = _codigo_unico)>0) THEN
+		IF((SELECT id_cuenta FROM tbl_dispositivo WHERE codigo_unico = _codigo_unico)!=_id_cuenta) THEN
+			UPDATE tbl_dispositivo SET id_cuenta=_id_cuenta WHERE codigo_unico=_codigo_unico;
+		END IF;
+		IF((SELECT token FROM tbl_dispositivo WHERE codigo_unico = _codigo_unico)!=_token) THEN
+			UPDATE tbl_dispositivo SET token=_token WHERE codigo_unico=_codigo_unico;
+		END IF;
+	ELSEIF((SELECT COUNT(*) FROM tbl_dispositivo WHERE token = _token)=0) THEN
+		INSERT INTO tbl_dispositivo(codigo_unico,id_cuenta,token) VALUES(_codigo_unico,_id_cuenta,_token);
+	END IF;
+END//
+
+CREATE PROCEDURE sp_mostrar_tokens(_id_cuenta int, _id_sala int)
+BEGIN
+SELECT token FROM tbl_dispositivo as d 
+INNER JOIN tbl_cuenta as c on d.id_cuenta=c.id_cuenta
+INNER JOIN tbl_sala_cuenta as cs on cs.id_cuenta=c.id_cuenta
+INNER JOIN tbl_sala as s on s.id_sala=cs.id_sala
+WHERE s.id_sala=_id_sala AND c.id_cuenta!=_id_cuenta;
+END
+//
+CREATE PROCEDURE sp_existe_token(_token text)
+BEGIN
+SELECT COUNT(*) FROM tbl_dispositivo WHERE token LIKE _token;
+END
+//
+
+-- TBL_MENSAJE
+
+drop procedure if exists sp_insertar_mensaje//
+drop procedure if exists sp_mostrar_mensajes//
+drop procedure if exists sp_buscar_mensaje//
+drop procedure if exists sp_mensaje_activo//
+drop procedure if exists sp_mensaje_leido//
+drop procedure if exists sp_vaciar_chat//
+
+CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text) 
+BEGIN
+	INSERT INTO tbl_mensaje (id_cuenta,id_sala,mensaje,fecha,activo,leido) 
+	VALUES(_id_cuenta,_id_sala,_mensaje,CURRENT_TIMESTAMP(),true,false);
+END//
+
+CREATE PROCEDURE sp_mostrar_mensajes(_id_sala int)
+BEGIN
+	SELECT * FROM tbl_mensaje WHERE id_sala=_id_sala;
+END//
+
+CREATE PROCEDURE sp_buscar_mensaje(_id_cuenta int,_mensaje text)
+BEGIN
+	SELECT * FROM tbl_mensaje WHERE id_cuenta=_id_cuenta AND mensaje LIKE _mensaje;
+END//
+CREATE PROCEDURE sp_mensaje_activo(_id_mensaje int, _activo bool)
+BEGIN
+	UPDATE tbl_mensaje SET activo=_activo WHERE id_mensaje=_id_mensaje;
+END//
+CREATE PROCEDURE sp_mensaje_leido(_id_mensaje int, _leido bool)
+BEGIN
+	UPDATE tbl_mensaje SET leido=_leido WHERE id_mensaje=_id_mensaje;
+END//
+CREATE PROCEDURE sp_vaciar_chat(_id_sala int)
+BEGIN
+	UPDATE tbl_mensaje SET activo=false WHERE id_sala=_id_sala;
+END//
+
+-- TBL_SALA
+
+drop procedure if exists sp_insertar_sala//
+drop procedure if exists sp_cambiar_nombre_sala//
+drop procedure if exists sp_borrar_sala//
+
+CREATE PROCEDURE sp_insertar_sala(_id_tipo_sala int,_nombre varchar(50)) 
+BEGIN
+	INSERT INTO tbl_sala (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,CURRENT_TIMESTAMP(),true);
+END//
+
+CREATE PROCEDURE sp_cambiar_nombre_sala(_id_sala int,_nombre varchar(50)) 
+BEGIN
+	UPDATE tbl_sala SET	nombre=_nombre 
+	WHERE id_sala=_id_sala;
+END//
+
+CREATE PROCEDURE sp_borrar_sala(_id_sala int) 
+BEGIN
+	UPDATE tbl_sala SET	activo=false
+	WHERE id_sala=_id_sala;
+END//
+
+-- TBL_TIPO_SALA
+
+drop procedure if exists sp_insertar_tipo_sala//
+
+CREATE PROCEDURE sp_insertar_tipo_sala(_id_tipo_sala int,_nombre varchar(50)) 
+BEGIN
+	INSERT INTO tbl_tipo_sala (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,CURRENT_TIMESTAMP(),true);
+END//
+
+-- TBL_ULTIMO_MENSAJE_NO_VISIBLE
+
+drop procedure if exists sp_insertar_umnv//
+
+CREATE PROCEDURE sp_insertar_umnv(_id_cuenta int,_id_sala int, _id_mensaje int) 
+BEGIN
+	INSERT INTO tbl_ultimo_mensaje_no_visible (id_cuenta,id_sala,id_mensaje,fecha) 
+	VALUES(_id_cuenta,_id_sala, _id_mensaje, CURRENT_TIMESTAMP());
+END//
+
+-- CUENTA
+
+drop procedure if exists sp_insertar_cuenta//
+drop procedure if exists sp_mostrar_cuentas//
+drop procedure if exists sp_id_cuenta//
+drop procedure if exists sp_mostrar_cuenta//
+
+CREATE PROCEDURE sp_insertar_cuenta (_correo varchar(50),_contrasenia varchar(50)) 
+BEGIN
+	INSERT INTO tbl_cuenta(correo,contrasenia) VALUES(_correo,_contrasenia);
+END//
+
+CREATE PROCEDURE sp_mostrar_cuentas()
+BEGIN
+	Select * from tbl_cuenta;
+END
+//
+CREATE PROCEDURE sp_mostrar_cuenta(_id_cuenta int)
+BEGIN
+	Select * from tbl_cuenta where id_cuenta=_id_cuenta;
+END
+//
+CREATE PROCEDURE sp_id_cuenta(_correo varchar(50))
+BEGIN
+	Select id_cuenta from tbl_cuenta where correo_electronico=_correo;
+END//

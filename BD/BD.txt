@@ -1,70 +1,60 @@
-drop database if exists chat;
+use neopruebas;
 
-create database chat;
-
-use chat;
-
-create table CUENTA
-(
-    id_cuenta int auto_increment primary key not null,
-    correo varchar(100) not null,
-    contrasenia varchar(100) not null
-);
-create table DISPOSITIVO
+create table tbl_dispositivo
 (
     id_dispositivo int auto_increment primary key not null,
-    codigoUnico text not null UNIQUE,
+    codigo_unico text not null UNIQUE,
     token text not null UNIQUE,
     id_cuenta int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta)
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta)
 );
-create table TIPO_SALA
+create table tbl_tipo_sala
 (
     id_tipo_sala int primary key not null,
     nombre varchar(10) not null,
     fecha datetime not null,
     activo bool not null
 );
-create table SALA
+create table tbl_sala
 (
     id_sala int auto_increment primary key not null,
     id_tipo_sala int not null,
-	foreign key(id_tipo_sala) references TIPO_SALA(id_tipo_sala),
+	foreign key(id_tipo_sala) references tbl_tipo_sala(id_tipo_sala),
     nombre varchar(255),
     fecha datetime not null,
     activo bool not null
 );
-create table MENSAJE
+create table tbl_mensaje
 (
     id_mensaje int auto_increment primary key not null,
     id_cuenta int not null,
     id_sala int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta),
-	foreign key(id_sala) references SALA(id_sala),
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta),
+	foreign key(id_sala) references tbl_sala(id_sala),
     mensaje text not null,
     fecha datetime not null,
     activo bool not null,
     leido bool not null
 );
-create table CUENTA_SALA
+create table tbl_sala_cuenta
 (
     id_sala_cuenta int auto_increment primary key not null,
     id_cuenta int not null,
     id_sala int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta),
-	foreign key(id_sala) references SALA(id_sala),
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta),
+	foreign key(id_sala) references tbl_sala(id_sala),
     administrador bool not null,
     fecha datetime not null,
     activo bool not null
 );
-create table ULTIMO_MENSAJE_NV
+create table tbl_ultimo_mensaje_no_visible
 (
    id_umnv int auto_increment primary key not null,
    id_cuenta int not null,
    id_sala int not null,
    id_mensaje int not null,
-	foreign key(id_cuenta) references CUENTA(id_cuenta),
-	foreign key(id_sala) references SALA(id_sala),
-	foreign key(id_mensaje) references MENSAJE(id_mensaje),
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta),
+	foreign key(id_sala) references tbl_sala(id_sala),
+	foreign key(id_mensaje) references tbl_mensaje(id_mensaje),
    fecha datetime not null
 );
