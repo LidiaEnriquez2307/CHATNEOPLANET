@@ -79,14 +79,14 @@ namespace SignalRApi.NotificacionesPush
                 {
                     conexion.Open();
                     MySqlCommand _sql = new MySqlCommand();
-                    _sql.CommandText = @"SELECT correo FROM cuenta WHERE id_cuenta=?_id_cuenta";
+                    _sql.CommandText = @"call sp_nombre_cuenta(@_id_cuenta)";
                     _sql.Parameters.Add("?_id_cuenta", MySqlDbType.Int32).Value = id_cuenta;
                     _sql.Connection = conexion;
                     using (var reader = _sql.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            autor = reader["correo"].ToString();
+                            autor = reader["nombre"].ToString();
                         }
                     }
                 } catch (Exception e)
@@ -105,8 +105,15 @@ namespace SignalRApi.NotificacionesPush
                     to = token,
                     data = new
                     {
-                        notiTitle = autor,
-                        notiBody = mensaje
+                        autor = autor,
+
+                        id_mensaje=mensaje.id_mensaje,
+                        id_cuenta=mensaje.id_cuenta,
+                        id_sala=mensaje.id_sala,
+                        mensaje=mensaje.mensaje,
+                        fecha=mensaje.fecha,
+                        activo=mensaje.activo,
+                        leido=mensaje.leido
                     }
                     
                 };

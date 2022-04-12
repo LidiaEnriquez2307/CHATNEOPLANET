@@ -23,7 +23,9 @@ CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int)
 BEGIN
 select s.id_sala,s.id_tipo_sala,if(ts.id_tipo_sala=2,(s.nombre),
           	(
-            SELECT c.correo_electronico FROM tbl_cuenta as c 
+            SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre 
+	    FROM tbl_cuenta as c
+	    INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta
             INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
             INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
             WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta
@@ -157,6 +159,7 @@ drop procedure if exists sp_insertar_cuenta//
 drop procedure if exists sp_mostrar_cuentas//
 drop procedure if exists sp_id_cuenta//
 drop procedure if exists sp_mostrar_cuenta//
+drop procedure if exists sp_nombre_cuenta//
 
 CREATE PROCEDURE sp_insertar_cuenta (_correo varchar(50),_contrasenia varchar(50)) 
 BEGIN
@@ -176,4 +179,8 @@ END
 CREATE PROCEDURE sp_id_cuenta(_correo varchar(50))
 BEGIN
 	Select id_cuenta from tbl_cuenta where correo_electronico=_correo;
+END//
+CREATE PROCEDURE sp_nombre_cuenta(_id_cuenta int)
+BEGIN
+	SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre FROM tbl_cuenta as c INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta WHERE c.id_cuenta=_id_cuenta;
 END//
