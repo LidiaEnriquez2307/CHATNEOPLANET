@@ -21,11 +21,11 @@ namespace SignalRApi.Data.Repositorios
             return new MySqlConnection(_connectionString._connectionString);
         }
         //CRUD
-        public async Task<IEnumerable<Cuenta>> id_cuenta(string correo)
+        public async Task<IEnumerable<int>> id_cuenta(string correo)
         {
             var db = dbConection();
             var sql = @"call sp_id_cuenta(@_correo)";
-            return await db.QueryAsync<Cuenta>(sql, new { _correo = correo });
+            return await db.QueryAsync<int>(sql, new { _correo = correo });
         }
 
         public async Task<bool> insertar_cuenta(Cuenta cuenta)

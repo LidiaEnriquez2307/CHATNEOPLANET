@@ -11,7 +11,7 @@ namespace SignalRApi.Data.Insterfazes
     {
         Task<bool> insertar_cuenta(Cuenta cuenta);
         Task<IEnumerable<Cuenta>> mostrar_cuentas();
-        Task<IEnumerable<Cuenta>> id_cuenta(string correo);
+        Task<IEnumerable<int>> id_cuenta(string correo);
         Task<IEnumerable<Cuenta>> mostrar_cuenta(int id_cuenta);
         Task<IEnumerable<string>> TraerAutor(int id_cuenta);
     }

@@ -15,11 +15,7 @@ namespace SignalRApi.Controllers
         {
             this._repoCuenta = repoCuenta;
         }
-        [HttpGet]
-        public async Task<IActionResult> mostrar_cuentas()
-        {
-            return Ok(await _repoCuenta.mostrar_cuentas());
-        }
+
         [HttpGet("{correo}")]
         public async Task<IActionResult> id_cuenta(string correo)
         {
@@ -29,20 +25,6 @@ namespace SignalRApi.Controllers
         public async Task<IActionResult> nombre_cuenta(int id_cuenta)
         {
             return Ok(await _repoCuenta.TraerAutor(id_cuenta));
-        }
-        [HttpPost]
-        public async Task<IActionResult> insertar_cuenta([FromBody]Cuenta cuenta)
-        {
-            if (cuenta==null)
-            {
-                return BadRequest();
-            }
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var created = await _repoCuenta.insertar_cuenta(cuenta);
-            return Created("created",created);
         }
     }
 }
