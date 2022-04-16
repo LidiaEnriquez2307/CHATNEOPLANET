@@ -11,6 +11,8 @@ drop function if exists fn_id_sala//
 drop function if exists fn_vincular_cuenta_sala//
 drop function if exists fn_insertar_y_vincular_sala//
 
+drop procedure if exists sp_sincronizar_salas_amigos//
+
 CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_administrador bool) 
 BEGIN
 	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
@@ -83,6 +85,15 @@ BEGIN
 	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
 	VALUES(_id_cuenta2,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
     RETURN true;
+END//
+
+CREATE PROCEDURE sp_sincronizar_salas_amigos(_id_cuenta int) 
+BEGIN
+	SELECT if(fn_id_sala(id_cuenta_principal, id_cuenta_amigo)>0,
+          0
+          ,
+          (fn_insertar_y_vincular_sala(1,CONCAT(id_cuenta_principal,id_cuenta_amigo),id_cuenta_principal,id_cuenta_amigo,false))
+         ) as insertado FROM tbl_amigos WHERE id_cuenta_principal=_id_cuenta;
 END//
 
 -- TBL_DISPOSITIVO
@@ -162,7 +173,7 @@ END//
 drop procedure if exists sp_insertar_sala//
 drop procedure if exists sp_cambiar_nombre_sala//
 drop procedure if exists sp_borrar_sala//
-drop procedure if exists sp_sincronizar_salas_amigos//
+
 
 CREATE PROCEDURE sp_insertar_sala(_id_tipo_sala int,_nombre varchar(50)) 
 BEGIN
@@ -180,15 +191,6 @@ CREATE PROCEDURE sp_borrar_sala(_id_sala int)
 BEGIN
 	UPDATE tbl_sala SET	activo=false
 	WHERE id_sala=_id_sala;
-END//
-
-CREATE PROCEDURE sp_sincronizar_salas_amigos(_id_cuenta int) 
-BEGIN
-	SELECT if(fn_id_sala(id_cuenta_principal, id_cuenta_amigo)>0,
-          0
-          ,
-          (fn_insertar_y_vincular_sala(1,CONCAT(id_cuenta_principal,id_cuenta_amigo),id_cuenta_principal,id_cuenta_amigo,false))
-         ) as insertado FROM tbl_amigos WHERE id_cuenta_principal=_id_cuenta;
 END//
 
 -- TBL_TIPO_SALA

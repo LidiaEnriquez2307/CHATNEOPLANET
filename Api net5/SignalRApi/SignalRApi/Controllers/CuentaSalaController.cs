@@ -25,6 +25,11 @@ namespace SignalRApi.Controllers
         {
             return Ok(await _repoSalaCuenta.salas_de_una_cuenta(id_cuenta));
         }
+        [HttpGet("sincronizar_con_amigos/{id_cuenta}")]
+        public async Task<IActionResult> sincronizar_con_amigos(int id_cuenta)
+        {
+            return Ok(await _repoSalaCuenta.sincroniza_sala_cuenta_amigos(id_cuenta));
+        }
         [HttpPost]
         public async Task<IActionResult> vincular_cuenta_sala([FromBody] Cuenta_Sala sala_cuenta)
         {

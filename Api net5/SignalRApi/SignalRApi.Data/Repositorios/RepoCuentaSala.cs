@@ -43,5 +43,11 @@ namespace SignalRApi.Data.Repositorios
             var sql = @"sp_salas_de_una_cuenta(@_id_cuenta)";
             return await db.QueryAsync<Sala>(sql, new { _id_cuenta = id_cuenta});
         }
+        public async Task<IEnumerable<bool>> sincroniza_sala_cuenta_amigos(int id_cuenta)
+        {
+            var db = dbConnection();
+            var sql = @"sp_sincronizar_salas_amigos(@_id_cuenta)";
+            return await db.QueryAsync<bool>(sql, new { _id_cuenta = id_cuenta });
+        }
     }
 }
