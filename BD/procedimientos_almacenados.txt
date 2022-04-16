@@ -6,6 +6,10 @@ use neopruebas//
 drop procedure if exists sp_vincular_cuenta_sala//
 drop procedure if exists sp_desvincular_cuenta_sala//
 drop procedure if exists sp_salas_de_una_cuenta//
+drop procedure if exists sp_id_sala//
+drop function if exists fn_id_sala//
+drop function if exists fn_vincular_cuenta_sala//
+drop function if exists fn_insertar_y_vincular_sala//
 
 CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_administrador bool) 
 BEGIN
@@ -35,6 +39,50 @@ INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
 INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
 RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta 
 WHERE cs.id_cuenta=_id_cuenta AND s.activo;
+END//
+
+CREATE FUNCTION fn_id_sala(_id_cuenta1 int,_id_cuenta2 int) 
+RETURNS int
+BEGIN
+	DECLARE id_sala int default 0;
+    SET id_sala=(SELECT IF(
+        (SELECT COUNT(sc.id_cuenta) FROM tbl_sala_cuenta as sc 
+        INNER JOIN tbl_sala as s ON sc.id_sala=s.id_sala
+        INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
+        WHERE (sc.id_cuenta = _id_cuenta1 or sc.id_cuenta = _id_cuenta2) and ts.id_tipo_sala=1
+        GROUP BY sc.id_sala
+        ORDER BY COUNT(sc.id_cuenta) DESC
+        LIMIT 1)=2,
+        (SELECT sc.id_sala FROM tbl_sala_cuenta as sc 
+        INNER JOIN tbl_sala as s ON sc.id_sala=s.id_sala
+        INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
+        WHERE (sc.id_cuenta = _id_cuenta1 or sc.id_cuenta =_id_cuenta2) and ts.id_tipo_sala=1
+        GROUP BY sc.id_sala
+        ORDER BY COUNT(sc.id_cuenta) DESC
+        LIMIT 1),0) as id_sala);
+    RETURN id_sala;
+END//
+
+CREATE FUNCTION fn_insertar_y_vincular_sala(_id_tipo_sala int,_nombre varchar(50), id_cuenta1 int,id_cuenta2 int,_administrador boolean) 
+RETURNS boolean
+BEGIN
+	INSERT INTO tbl_sala (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,CURRENT_TIMESTAMP(),true);
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(id_cuenta1,(SELECT MAX(id_sala) FROM tbl_sala),CURRENT_TIMESTAMP(),_administrador,true);
+    INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(id_cuenta2,(SELECT MAX(id_sala) FROM tbl_sala),CURRENT_TIMESTAMP(),_administrador,true);
+    RETURN true;
+END//
+
+CREATE FUNCTION fn_vincular_cuenta_sala(_id_cuenta1 int,_id_cuenta2 int,_id_sala int,_administrador bool) 
+RETURNS boolean
+BEGIN
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta1,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta2,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
+    RETURN true;
 END//
 
 -- TBL_DISPOSITIVO
@@ -114,6 +162,7 @@ END//
 drop procedure if exists sp_insertar_sala//
 drop procedure if exists sp_cambiar_nombre_sala//
 drop procedure if exists sp_borrar_sala//
+drop procedure if exists sp_sincronizar_salas_amigos//
 
 CREATE PROCEDURE sp_insertar_sala(_id_tipo_sala int,_nombre varchar(50)) 
 BEGIN
@@ -131,6 +180,15 @@ CREATE PROCEDURE sp_borrar_sala(_id_sala int)
 BEGIN
 	UPDATE tbl_sala SET	activo=false
 	WHERE id_sala=_id_sala;
+END//
+
+CREATE PROCEDURE sp_sincronizar_salas_amigos(_id_cuenta int) 
+BEGIN
+	SELECT if(fn_id_sala(id_cuenta_principal, id_cuenta_amigo)>0,
+          0
+          ,
+          (fn_insertar_y_vincular_sala(1,CONCAT(id_cuenta_principal,id_cuenta_amigo),id_cuenta_principal,id_cuenta_amigo,false))
+         ) as insertado FROM tbl_amigos WHERE id_cuenta_principal=_id_cuenta;
 END//
 
 -- TBL_TIPO_SALA
