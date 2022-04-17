@@ -10,6 +10,7 @@ drop procedure if exists sp_id_sala//
 drop function if exists fn_id_sala//
 drop function if exists fn_vincular_cuenta_sala//
 drop function if exists fn_insertar_y_vincular_sala//
+drop procedure if exists sp_mensajes_no_leidos_de_una_cuenta//
 
 drop procedure if exists sp_sincronizar_salas_amigos//
 
@@ -57,7 +58,8 @@ select s.id_sala,s.id_tipo_sala,
 INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala 
 INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
 RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta 
-WHERE cs.id_cuenta=_id_cuenta AND s.activo;
+WHERE cs.id_cuenta=_id_cuenta AND s.activo
+ORDER BY (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
 END//
 
 CREATE FUNCTION fn_id_sala(_id_cuenta1 int,_id_cuenta2 int) 
@@ -113,6 +115,17 @@ BEGIN
          ) as insertado FROM tbl_amigos WHERE id_cuenta_principal=_id_cuenta;
 END//
 
+CREATE PROCEDURE sp_mensajes_no_leidos_de_una_cuenta(_id_cuenta int) 
+BEGIN
+    select s.id_sala,
+    (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) as mensajes_no_leidos
+    FROM tbl_sala as s
+    INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
+    RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
+    WHERE cs.id_cuenta=_id_cuenta AND s.activo
+    ORDER BY mensajes_no_leidos DESC;
+END//
+
 -- TBL_DISPOSITIVO
 
 drop procedure if exists sp_insertar_dispositivo//
@@ -156,6 +169,7 @@ drop procedure if exists sp_buscar_mensaje//
 drop procedure if exists sp_mensaje_activo//
 drop procedure if exists sp_mensaje_leido//
 drop procedure if exists sp_vaciar_chat//
+drop procedure if exists sp_mensaje_de_sala_leido//
 
 CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text) 
 BEGIN
@@ -179,6 +193,10 @@ END//
 CREATE PROCEDURE sp_mensaje_leido(_id_mensaje int, _leido bool)
 BEGIN
 	UPDATE tbl_mensaje SET leido=_leido WHERE id_mensaje=_id_mensaje;
+END//
+CREATE PROCEDURE sp_mensaje_de_sala_leido(_id_sala int, _id_cuenta int)
+BEGIN
+	UPDATE tbl_mensaje SET leido=true WHERE id_sala=_id_sala AND id_cuenta != _id_cuenta;  
 END//
 CREATE PROCEDURE sp_vaciar_chat(_id_sala int)
 BEGIN
