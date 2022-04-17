@@ -31,6 +31,11 @@ namespace SignalRApi.Controllers
         {
             return Ok(await _repoSalaCuenta.sincroniza_sala_cuenta_amigos(id_cuenta));
         }
+        [HttpGet("mensajes_no_leidos/{id_cuenta}")]
+        public async Task<IActionResult> mensajes_no_leidos(int id_cuenta)
+        {
+            return Ok(await _repoSalaCuenta.mensajes_no_leidos_de_una_cuenta(id_cuenta));
+        }
         [HttpPost]
         public async Task<IActionResult> vincular_cuenta_sala([FromBody] Cuenta_Sala sala_cuenta)
         {
