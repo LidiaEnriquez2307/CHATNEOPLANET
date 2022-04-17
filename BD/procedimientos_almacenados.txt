@@ -27,7 +27,6 @@ END//
 
 CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int) 
 BEGIN
-call sp_sincronizar_salas_amigos(_id_cuenta);
 
 select s.id_sala,s.id_tipo_sala,
 	IF(ts.id_tipo_sala=2,

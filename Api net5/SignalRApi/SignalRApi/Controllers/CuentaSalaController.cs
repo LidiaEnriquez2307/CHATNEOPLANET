@@ -23,6 +23,7 @@ namespace SignalRApi.Controllers
         [HttpGet("{id_cuenta}")]
         public async Task<IActionResult> mostrar_salas(int id_cuenta)
         {
+            _repoSalaCuenta.sincroniza_sala_cuenta_amigos(id_cuenta);
             return Ok(await _repoSalaCuenta.salas_de_una_cuenta(id_cuenta));
         }
         [HttpGet("sincronizar_con_amigos/{id_cuenta}")]
