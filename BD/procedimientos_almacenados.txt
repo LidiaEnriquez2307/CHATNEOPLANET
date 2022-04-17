@@ -169,7 +169,6 @@ drop procedure if exists sp_buscar_mensaje//
 drop procedure if exists sp_mensaje_activo//
 drop procedure if exists sp_mensaje_leido//
 drop procedure if exists sp_vaciar_chat//
-drop procedure if exists sp_mensaje_de_sala_leido//
 
 CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text) 
 BEGIN
@@ -177,9 +176,10 @@ BEGIN
 	VALUES(_id_cuenta,_id_sala,_mensaje,CURRENT_TIMESTAMP(),true,false);
 END//
 
-CREATE PROCEDURE sp_mostrar_mensajes(_id_sala int)
+CREATE PROCEDURE sp_mostrar_mensajes(_id_sala int, _id_cuenta int)
 BEGIN
 	SELECT * FROM tbl_mensaje WHERE id_sala=_id_sala;
+	UPDATE tbl_mensaje SET leido=true WHERE id_sala=_id_sala AND id_cuenta != _id_cuenta;
 END//
 
 CREATE PROCEDURE sp_buscar_mensaje(_id_cuenta int,_mensaje text)
@@ -193,10 +193,6 @@ END//
 CREATE PROCEDURE sp_mensaje_leido(_id_mensaje int, _leido bool)
 BEGIN
 	UPDATE tbl_mensaje SET leido=_leido WHERE id_mensaje=_id_mensaje;
-END//
-CREATE PROCEDURE sp_mensaje_de_sala_leido(_id_sala int, _id_cuenta int)
-BEGIN
-	UPDATE tbl_mensaje SET leido=true WHERE id_sala=_id_sala AND id_cuenta != _id_cuenta;  
 END//
 CREATE PROCEDURE sp_vaciar_chat(_id_sala int)
 BEGIN

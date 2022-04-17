@@ -35,11 +35,11 @@ namespace SignalRApi.Data.Repositorios
             return result > 0;
         }
 
-        public async Task<IEnumerable<Mensaje>> mostrar_mensajes(int id_sala)
+        public async Task<IEnumerable<Mensaje>> mostrar_mensajes(int id_sala, int id_cuenta)
         {
             var db = dbConnection();
-            var sql = @"call sp_mostrar_mensajes(@_id_sala)";
-            return await db.QueryAsync<Mensaje>(sql, new { _id_sala = id_sala });
+            var sql = @"call sp_mostrar_mensajes(@_id_sala, @_id_cuenta)";
+            return await db.QueryAsync<Mensaje>(sql, new { _id_sala = id_sala, _id_cuenta=id_cuenta });
         }
         public async Task<bool> mensaje_activo(int id_mensaje, bool activo)
         {

@@ -18,10 +18,10 @@ namespace SignalRApi.Controllers
         {
             this._reposMensaje = MensajeRepos;
         }
-        [HttpGet("{id_sala}")]
-        public async Task<IActionResult> mostrar_mensajes(int id_sala)
+        [HttpGet("{id_sala}/{id_cuenta}")]
+        public async Task<IActionResult> mostrar_mensajes(int id_sala, int id_cuenta)
         {
-            return Ok(await _reposMensaje.mostrar_mensajes(id_sala));
+            return Ok(await _reposMensaje.mostrar_mensajes(id_sala,id_cuenta));
         }
         [HttpPost]
         public async Task<IActionResult> insertar_mensaje([FromBody] Mensaje mensaje)
