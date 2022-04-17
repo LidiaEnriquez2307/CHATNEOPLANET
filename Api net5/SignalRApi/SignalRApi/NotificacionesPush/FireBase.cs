@@ -121,8 +121,8 @@ namespace SignalRApi.NotificacionesPush
                 var json = JsonConvert.SerializeObject(fieldsFirebase);
                 Byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(json);
 
-                string SERVER_API_KEY = "AAAA713rtM8:APA91bHgjggLV-5e1EsQVrQpNsFteMqrqnVIdr5b6H1qMwA9lGd9WjwfksaA-3Y-wTNube7M0tSwy0i0nihGAlCAOipwi1WoJSiWbBosPf5pB21JWGVXJ1WUkrDDcCzdQFmk2bBlzvoE";
-                string SENDER_ID = "1028072912079";
+                string SERVER_API_KEY = "AAAAV5kk180:APA91bFDkR4vqTEkx_NhxHmEDk78FsYK4LheCfOwaI8bzQTRGcDuS5tZfIkzf0rAQ0ra9a2aP-9JfP0wAxtz1ttTZJ9Tt6BgF6bZ5R1pnTj6K4WnKWxzSIx4xgJLu0Pdmn-q88Vq5RTt";
+                string SENDER_ID = "376231483341";
 
                 WebRequest tRequest;
                 tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
