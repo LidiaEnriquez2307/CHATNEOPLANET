@@ -33,7 +33,7 @@ namespace SignalRApi.Data.Repositorios
         {
             var db = dbConnection();
             var sql = @"call sp_desvincular_cuenta_sala(@_id_sala_cuenta);";
-            var result = await db.ExecuteAsync(sql, new { _id_sala_cuenta = id_sala_cuenta});
+            var result = await db.ExecuteAsync(sql, new { _id_sala_cuenta = id_sala_cuenta });
             return result > 0;
         }
 
@@ -43,7 +43,7 @@ namespace SignalRApi.Data.Repositorios
             var sql = @"sp_salas_de_una_cuenta(@_id_cuenta)";
             //sincronizar sala_cuenta y amigos
             await sincroniza_sala_cuenta_amigos(id_cuenta);
-            return await db.QueryAsync<Sala>(sql, new { _id_cuenta = id_cuenta});
+            return await db.QueryAsync<Sala>(sql, new { _id_cuenta = id_cuenta });
         }
         public async Task<IEnumerable<bool>> sincroniza_sala_cuenta_amigos(int id_cuenta)
         {
@@ -55,7 +55,7 @@ namespace SignalRApi.Data.Repositorios
         {
             var db = dbConnection();
             var sql = @"sp_mensajes_no_leidos_de_una_cuenta(@_id_cuenta)";
-            return await db.QueryAsync<string>(sql, new { _id_cuenta = id_cuenta });
+            return await db.QueryAsync <string>(sql, new { _id_cuenta = id_cuenta });
         }
     }
 }

@@ -117,8 +117,7 @@ END//
 
 CREATE PROCEDURE sp_mensajes_no_leidos_de_una_cuenta(_id_cuenta int) 
 BEGIN
-    select s.id_sala,
-    (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) as mensajes_no_leidos
+    select (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) as mensajes_no_leidos
     FROM tbl_sala as s
     INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
     RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
