@@ -27,16 +27,34 @@ END//
 
 CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int) 
 BEGIN
-select s.id_sala,s.id_tipo_sala,if(ts.id_tipo_sala=2,(s.nombre),
-          	(
-            SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre 
-	    FROM tbl_cuenta as c
-	    INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta
+call sp_sincronizar_salas_amigos(_id_cuenta);
+
+select s.id_sala,s.id_tipo_sala,
+	IF(ts.id_tipo_sala=2,
+       (s.nombre),
+          	if(
+                !ISNULL(
+                    (SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre 
+            FROM tbl_cuenta as c
+            INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta
             INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
             INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
-            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta
-			)
-         ) as nombre,s.fecha,s.activo from tbl_sala as s 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta)
+                ),
+                (SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre 
+            FROM tbl_cuenta as c
+            INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta
+            INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
+            INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta),
+                (SELECT c.usuario as nombre 
+            FROM tbl_cuenta as c
+            INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
+            INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta)
+            )
+         ) as nombre,
+    s.fecha,s.activo from tbl_sala as s 
 INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala 
 INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
 RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta 
