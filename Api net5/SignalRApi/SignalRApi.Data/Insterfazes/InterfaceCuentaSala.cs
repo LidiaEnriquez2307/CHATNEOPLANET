@@ -14,5 +14,6 @@ namespace SignalRApi.Data.Insterfazes
         Task<IEnumerable<Sala>> salas_de_una_cuenta(int id_cuenta);
         Task<IEnumerable<bool>> sincroniza_sala_cuenta_amigos(int id_cuenta);
         Task<IEnumerable<string>> mensajes_no_leidos_de_una_cuenta(int id_cuenta);
+        Task<IEnumerable<string>> ultimo_mensaje_por_sala(int id_cuenta);
     }
 }

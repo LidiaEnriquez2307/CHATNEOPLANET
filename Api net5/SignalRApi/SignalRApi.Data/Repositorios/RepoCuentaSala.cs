@@ -57,5 +57,11 @@ namespace SignalRApi.Data.Repositorios
             var sql = @"sp_mensajes_no_leidos_de_una_cuenta(@_id_cuenta)";
             return await db.QueryAsync <string>(sql, new { _id_cuenta = id_cuenta });
         }
+        public async Task<IEnumerable<string>> ultimo_mensaje_por_sala(int id_cuenta)
+        {
+            var db = dbConnection();
+            var sql = @"sp_ultimo_mensaje_por_sala(@_id_cuenta)";
+            return await db.QueryAsync<string>(sql, new { _id_cuenta = id_cuenta });
+        }
     }
 }

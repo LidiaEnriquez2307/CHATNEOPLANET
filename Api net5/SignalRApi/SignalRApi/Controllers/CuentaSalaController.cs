@@ -36,6 +36,11 @@ namespace SignalRApi.Controllers
         {
             return Ok(await _repoSalaCuenta.mensajes_no_leidos_de_una_cuenta(id_cuenta));
         }
+        [HttpGet("ultimo_mensaje/{id_cuenta}")]
+        public async Task<IActionResult> ultimo_mensaje_por_sala(int id_cuenta)
+        {
+            return Ok(await _repoSalaCuenta.ultimo_mensaje_por_sala(id_cuenta));
+        }
         [HttpPost]
         public async Task<IActionResult> vincular_cuenta_sala([FromBody] Cuenta_Sala sala_cuenta)
         {

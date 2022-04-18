@@ -11,6 +11,7 @@ drop function if exists fn_id_sala//
 drop function if exists fn_vincular_cuenta_sala//
 drop function if exists fn_insertar_y_vincular_sala//
 drop procedure if exists sp_mensajes_no_leidos_de_una_cuenta//
+drop procedure if exists sp_ultimo_mensaje_por_sala//
 
 drop procedure if exists sp_sincronizar_salas_amigos//
 
@@ -123,6 +124,16 @@ BEGIN
     RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
     WHERE cs.id_cuenta=_id_cuenta AND s.activo
     ORDER BY mensajes_no_leidos DESC;
+END//
+
+CREATE PROCEDURE sp_ultimo_mensaje_por_sala(_id_cuenta int) 
+BEGIN
+    select IFNULL((SELECT mensaje FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1),'Chat vacío') as ultimo_mensaje
+    FROM tbl_sala as s
+    INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
+    RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
+    WHERE cs.id_cuenta=_id_cuenta AND s.activo
+    ORDER BY (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
 END//
 
 -- TBL_DISPOSITIVO

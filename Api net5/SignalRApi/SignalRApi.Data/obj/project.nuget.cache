@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3It6JecFvp+fhKc4iIV13iCbMmUp6aAg9UFQXRnYkfEbo36+5oabZSnlnlcqUAD5d3Ue8zVn/LC5CN8y7TKqPw==",
+  "dgSpecHash": "wxxmqia+ovr+wtagrqkxc9D/H4qVU6YEMhXp/nMCQh13DRYOSeW7An2M+SQf6V6kfgxM+qCFCI74fZ6FnMdRww==",
   "success": true,
   "projectFilePath": "D:\\Lenin\\NeoPlanet\\CHATNEOPLANET\\CHATNEOPLANET\\Api net5\\SignalRApi\\SignalRApi.Data\\SignalRApi.Data.csproj",
   "expectedPackageFiles": [
@@ -67,7 +67,10 @@
     "C:\\Users\\Dell\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\system.threading.channels\\4.5.0\\system.threading.channels.4.5.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\Dell\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Dell\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
