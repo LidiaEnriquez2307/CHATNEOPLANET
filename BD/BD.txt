@@ -128,7 +128,7 @@ INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
 INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
 RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta 
 WHERE cs.id_cuenta=_id_cuenta AND s.activo
-ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1),(SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
+ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1) DESC,(SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
 END//
 
 CREATE FUNCTION fn_id_sala(_id_cuenta1 int,_id_cuenta2 int) 
@@ -191,7 +191,7 @@ BEGIN
     INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
     RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
     WHERE cs.id_cuenta=_id_cuenta AND s.activo
-    ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1),mensajes_no_leidos DESC;
+    ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1) DESC,mensajes_no_leidos DESC;
 END//
 
 CREATE PROCEDURE sp_ultimo_mensaje_por_sala(_id_cuenta int) 
@@ -201,7 +201,7 @@ BEGIN
     INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
     RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
     WHERE cs.id_cuenta=_id_cuenta AND s.activo
-    ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1),(SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
+    ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1) DESC,(SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
 END//
 
 -- TBL_DISPOSITIVO
@@ -280,9 +280,23 @@ END//
 -- TBL_SALA
 
 drop procedure if exists sp_insertar_sala//
+
+DROP PROCEDURE IF EXISTS sp_sala_no_leida
+//
+
 drop procedure if exists sp_cambiar_nombre_sala//
 drop procedure if exists sp_borrar_sala//
 
+CREATE PROCEDURE sp_sala_no_leida(_id_cuenta int) 
+BEGIN
+    select COUNT((SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta))
+    FROM tbl_sala as s
+    INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
+    RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
+    WHERE cs.id_cuenta=_id_cuenta AND s.activo
+    AND (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) >0 ;
+   
+END//
 
 CREATE PROCEDURE sp_insertar_sala(_id_tipo_sala int,_nombre varchar(50)) 
 BEGIN
