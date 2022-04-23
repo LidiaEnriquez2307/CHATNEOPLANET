@@ -12,5 +12,7 @@ namespace SignalRApi.Data.Insterfazes
         Task<bool> insertar_sala(Sala sala);
         Task<bool> cambiar_nombre_sala(int id_sala, string nombre);
         Task<bool> borrar_sala(int id_sala);
+        Task<IEnumerable<int>> sala_no_leida(int id_cuenta);
+
     }
 }
