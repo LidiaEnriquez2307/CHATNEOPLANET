@@ -19,6 +19,14 @@ namespace SignalRApi.Controllers
         {
             this._repoSala = repoSala;
         }
+         [HttpGet("{id_cuenta}")]
+        
+        public async Task<IActionResult> sala_no_leida(int id_cuenta)
+        {
+            return Ok(await _repoSala.sala_no_leida(id_cuenta));
+        }
+
+        
        [HttpPost]
         public async Task<IActionResult> insertar_sala([FromBody] Sala sala)
         {
