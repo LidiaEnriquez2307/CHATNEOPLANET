@@ -1,0 +1,374 @@
+use neopruebas;
+
+DROP TABLE IF EXISTS tbl_ultimo_mensaje_no_visible;
+DROP TABLE IF EXISTS tbl_sala_cuenta;
+DROP TABLE IF EXISTS tbl_leido;
+DROP TABLE IF EXISTS tbl_mensaje;
+DROP TABLE IF EXISTS tbl_dispositivo;
+DROP TABLE IF EXISTS tbl_sala;
+DROP TABLE IF EXISTS tbl_tipo_sala;
+
+create table tbl_dispositivo
+(
+    id_dispositivo int auto_increment primary key not null,
+    codigo_unico text not null UNIQUE,
+    token text not null UNIQUE,
+    id_cuenta int not null,
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta)
+);
+create table tbl_tipo_sala
+(
+    id_tipo_sala int primary key not null,
+    nombre varchar(10) not null,
+    fecha datetime not null,
+    activo bool not null
+);
+create table tbl_sala
+(
+    id_sala int auto_increment primary key not null,
+    id_tipo_sala int not null,
+	foreign key(id_tipo_sala) references tbl_tipo_sala(id_tipo_sala),
+    nombre varchar(255),
+    fecha datetime not null,
+    activo bool not null
+);
+create table tbl_mensaje
+(
+    id_mensaje int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta),
+	foreign key(id_sala) references tbl_sala(id_sala),
+    mensaje text not null,
+    fecha datetime not null,
+    activo bool not null,
+    leido bool not null
+);
+create table tbl_sala_cuenta
+(
+    id_sala_cuenta int auto_increment primary key not null,
+    id_cuenta int not null,
+    id_sala int not null,
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta),
+	foreign key(id_sala) references tbl_sala(id_sala),
+    administrador bool not null,
+    fecha datetime not null,
+    activo bool not null
+);
+create table tbl_ultimo_mensaje_no_visible
+(
+   id_umnv int auto_increment primary key not null,
+   id_cuenta int not null,
+   id_sala int not null,
+   id_mensaje int not null,
+	foreign key(id_cuenta) references tbl_cuenta(id_cuenta),
+	foreign key(id_sala) references tbl_sala(id_sala),
+	foreign key(id_mensaje) references tbl_mensaje(id_mensaje),
+   fecha datetime not null
+);
+
+delimiter //
+
+-- tbl_sala_cuenta
+
+drop procedure if exists sp_vincular_cuenta_sala//
+drop procedure if exists sp_desvincular_cuenta_sala//
+drop procedure if exists sp_salas_de_una_cuenta//
+drop procedure if exists sp_id_sala//
+drop function if exists fn_id_sala//
+drop function if exists fn_vincular_cuenta_sala//
+drop function if exists fn_insertar_y_vincular_sala//
+drop procedure if exists sp_mensajes_no_leidos_de_una_cuenta//
+drop procedure if exists sp_ultimo_mensaje_por_sala//
+
+drop procedure if exists sp_sincronizar_salas_amigos//
+
+CREATE PROCEDURE sp_vincular_cuenta_sala(_id_cuenta int,_id_sala int,_administrador bool) 
+BEGIN
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
+END//
+
+CREATE PROCEDURE sp_desvincular_cuenta_sala(_id_sala_cuenta int) 
+BEGIN
+	UPDATE tbl_sala_cuenta SET administrador = false, activo = false 
+	WHERE id_sala_cuenta= _id_sala_cuenta;
+END//
+
+CREATE PROCEDURE sp_salas_de_una_cuenta(_id_cuenta int) 
+BEGIN
+
+select s.id_sala,s.id_tipo_sala,
+	IF(ts.id_tipo_sala=2,
+       (s.nombre),
+          	if(
+                !ISNULL(
+                    (SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre 
+            FROM tbl_cuenta as c
+            INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta
+            INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
+            INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta)
+                ),
+                (SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre 
+            FROM tbl_cuenta as c
+            INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta
+            INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
+            INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta),
+                (SELECT c.usuario as nombre 
+            FROM tbl_cuenta as c
+            INNER JOIN tbl_sala_cuenta as cs on c.id_cuenta = cs.id_cuenta 
+            INNER JOIN tbl_sala as sal on sal.id_sala=cs.id_sala 
+            WHERE sal.id_sala=s.id_sala AND c.id_cuenta!=_id_cuenta)
+            )
+         ) as nombre,
+    s.fecha,s.activo from tbl_sala as s 
+INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala 
+INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
+RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta 
+WHERE cs.id_cuenta=_id_cuenta AND s.activo
+ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1) DESC,(SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
+END//
+
+CREATE FUNCTION fn_id_sala(_id_cuenta1 int,_id_cuenta2 int) 
+RETURNS int
+BEGIN
+	DECLARE id_sala int default 0;
+    SET id_sala=(SELECT IF(
+        (SELECT COUNT(sc.id_cuenta) FROM tbl_sala_cuenta as sc 
+        INNER JOIN tbl_sala as s ON sc.id_sala=s.id_sala
+        INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
+        WHERE (sc.id_cuenta = _id_cuenta1 or sc.id_cuenta = _id_cuenta2) and ts.id_tipo_sala=1
+        GROUP BY sc.id_sala
+        ORDER BY COUNT(sc.id_cuenta) DESC
+        LIMIT 1)=2,
+        (SELECT sc.id_sala FROM tbl_sala_cuenta as sc 
+        INNER JOIN tbl_sala as s ON sc.id_sala=s.id_sala
+        INNER JOIN tbl_tipo_sala as ts on ts.id_tipo_sala=s.id_tipo_sala 
+        WHERE (sc.id_cuenta = _id_cuenta1 or sc.id_cuenta =_id_cuenta2) and ts.id_tipo_sala=1
+        GROUP BY sc.id_sala
+        ORDER BY COUNT(sc.id_cuenta) DESC
+        LIMIT 1),0) as id_sala);
+    RETURN id_sala;
+END//
+
+CREATE FUNCTION fn_insertar_y_vincular_sala(_id_tipo_sala int,_nombre varchar(50), id_cuenta1 int,id_cuenta2 int,_administrador boolean) 
+RETURNS boolean
+BEGIN
+	INSERT INTO tbl_sala (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,CURRENT_TIMESTAMP(),true);
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(id_cuenta1,(SELECT MAX(id_sala) FROM tbl_sala),CURRENT_TIMESTAMP(),_administrador,true);
+    INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(id_cuenta2,(SELECT MAX(id_sala) FROM tbl_sala),CURRENT_TIMESTAMP(),_administrador,true);
+    RETURN true;
+END//
+
+CREATE FUNCTION fn_vincular_cuenta_sala(_id_cuenta1 int,_id_cuenta2 int,_id_sala int,_administrador bool) 
+RETURNS boolean
+BEGIN
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta1,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
+	INSERT INTO tbl_sala_cuenta(id_cuenta,id_sala,fecha,administrador,activo) 
+	VALUES(_id_cuenta2,_id_sala,CURRENT_TIMESTAMP(),_administrador,true);
+    RETURN true;
+END//
+
+CREATE PROCEDURE sp_sincronizar_salas_amigos(_id_cuenta int) 
+BEGIN
+	SELECT if(fn_id_sala(id_cuenta_principal, id_cuenta_amigo)>0,
+          0
+          ,
+          (fn_insertar_y_vincular_sala(1,CONCAT(id_cuenta_principal,id_cuenta_amigo),id_cuenta_principal,id_cuenta_amigo,false))
+         ) as insertado FROM tbl_amigos WHERE id_cuenta_principal=_id_cuenta;
+END//
+
+CREATE PROCEDURE sp_mensajes_no_leidos_de_una_cuenta(_id_cuenta int) 
+BEGIN
+    select (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) as mensajes_no_leidos
+    FROM tbl_sala as s
+    INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
+    RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
+    WHERE cs.id_cuenta=_id_cuenta AND s.activo
+    ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1) DESC,mensajes_no_leidos DESC;
+END//
+
+CREATE PROCEDURE sp_ultimo_mensaje_por_sala(_id_cuenta int) 
+BEGIN
+    select IFNULL((SELECT mensaje FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1),'Chat vacío') as ultimo_mensaje
+    FROM tbl_sala as s
+    INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
+    RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
+    WHERE cs.id_cuenta=_id_cuenta AND s.activo
+    ORDER BY (SELECT fecha FROM tbl_mensaje WHERE id_sala=s.id_sala ORDER BY id_mensaje DESC LIMIT 1) DESC,(SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) DESC;
+END//
+
+-- TBL_DISPOSITIVO
+
+drop procedure if exists sp_insertar_dispositivo//
+drop procedure if exists sp_mostrar_tokens//
+drop procedure if exists sp_existe_token//
+
+CREATE PROCEDURE sp_insertar_dispositivo(_codigo_unico text,_id_cuenta int,_token text) 
+BEGIN
+	IF((SELECT COUNT(*) FROM tbl_dispositivo WHERE codigo_unico = _codigo_unico)>0) THEN
+		IF((SELECT id_cuenta FROM tbl_dispositivo WHERE codigo_unico = _codigo_unico)!=_id_cuenta) THEN
+			UPDATE tbl_dispositivo SET id_cuenta=_id_cuenta WHERE codigo_unico=_codigo_unico;
+		END IF;
+		IF((SELECT token FROM tbl_dispositivo WHERE codigo_unico = _codigo_unico)!=_token) THEN
+			UPDATE tbl_dispositivo SET token=_token WHERE codigo_unico=_codigo_unico;
+		END IF;
+	ELSEIF((SELECT COUNT(*) FROM tbl_dispositivo WHERE token = _token)=0) THEN
+		INSERT INTO tbl_dispositivo(codigo_unico,id_cuenta,token) VALUES(_codigo_unico,_id_cuenta,_token);
+	END IF;
+END//
+
+CREATE PROCEDURE sp_mostrar_tokens(_id_cuenta int, _id_sala int)
+BEGIN
+SELECT token FROM tbl_dispositivo as d 
+INNER JOIN tbl_cuenta as c on d.id_cuenta=c.id_cuenta
+INNER JOIN tbl_sala_cuenta as cs on cs.id_cuenta=c.id_cuenta
+INNER JOIN tbl_sala as s on s.id_sala=cs.id_sala
+WHERE s.id_sala=_id_sala AND c.id_cuenta!=_id_cuenta;
+END
+//
+CREATE PROCEDURE sp_existe_token(_token text)
+BEGIN
+SELECT COUNT(*) FROM tbl_dispositivo WHERE token LIKE _token;
+END
+//
+
+-- TBL_MENSAJE
+
+drop procedure if exists sp_insertar_mensaje//
+drop procedure if exists sp_mostrar_mensajes//
+drop procedure if exists sp_buscar_mensaje//
+drop procedure if exists sp_mensaje_activo//
+drop procedure if exists sp_mensaje_leido//
+drop procedure if exists sp_vaciar_chat//
+
+CREATE PROCEDURE sp_insertar_mensaje(_id_cuenta int,_id_sala int,_mensaje text) 
+BEGIN
+	INSERT INTO tbl_mensaje (id_cuenta,id_sala,mensaje,fecha,activo,leido) 
+	VALUES(_id_cuenta,_id_sala,_mensaje,CURRENT_TIMESTAMP(),true,false);
+END//
+
+CREATE PROCEDURE sp_mostrar_mensajes(_id_sala int, _id_cuenta int)
+BEGIN
+	SELECT * FROM tbl_mensaje WHERE id_sala=_id_sala;
+	UPDATE tbl_mensaje SET leido=true WHERE id_sala=_id_sala AND id_cuenta != _id_cuenta;
+END//
+
+CREATE PROCEDURE sp_buscar_mensaje(_id_cuenta int,_mensaje text)
+BEGIN
+	SELECT * FROM tbl_mensaje WHERE id_cuenta=_id_cuenta AND mensaje LIKE _mensaje;
+END//
+CREATE PROCEDURE sp_mensaje_activo(_id_mensaje int, _activo bool)
+BEGIN
+	UPDATE tbl_mensaje SET activo=_activo WHERE id_mensaje=_id_mensaje;
+END//
+CREATE PROCEDURE sp_mensaje_leido(_id_mensaje int, _leido bool)
+BEGIN
+	UPDATE tbl_mensaje SET leido=_leido WHERE id_mensaje=_id_mensaje;
+END//
+CREATE PROCEDURE sp_vaciar_chat(_id_sala int)
+BEGIN
+	UPDATE tbl_mensaje SET activo=false WHERE id_sala=_id_sala;
+END//
+
+-- TBL_SALA
+
+drop procedure if exists sp_insertar_sala//
+
+DROP PROCEDURE IF EXISTS sp_sala_no_leida
+//
+
+drop procedure if exists sp_cambiar_nombre_sala//
+drop procedure if exists sp_borrar_sala//
+
+CREATE PROCEDURE sp_sala_no_leida(_id_cuenta int) 
+BEGIN
+    select COUNT((SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta))
+    FROM tbl_sala as s
+    INNER JOIN tbl_sala_cuenta as cs on s.id_sala = cs.id_sala
+    RIGHT JOIN tbl_cuenta as c on c.id_cuenta = cs.id_cuenta
+    WHERE cs.id_cuenta=_id_cuenta AND s.activo
+    AND (SELECT COUNT(*) FROM tbl_mensaje WHERE id_sala=s.id_sala and !leido and id_cuenta!=c.id_cuenta) >0 ;
+   
+END//
+
+CREATE PROCEDURE sp_insertar_sala(_id_tipo_sala int,_nombre varchar(50)) 
+BEGIN
+	INSERT INTO tbl_sala (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,CURRENT_TIMESTAMP(),true);
+END//
+
+CREATE PROCEDURE sp_cambiar_nombre_sala(_id_sala int,_nombre varchar(50)) 
+BEGIN
+	UPDATE tbl_sala SET	nombre=_nombre 
+	WHERE id_sala=_id_sala;
+END//
+
+CREATE PROCEDURE sp_borrar_sala(_id_sala int) 
+BEGIN
+	UPDATE tbl_sala SET	activo=false
+	WHERE id_sala=_id_sala;
+END//
+
+-- TBL_TIPO_SALA
+
+drop procedure if exists sp_insertar_tipo_sala//
+
+CREATE PROCEDURE sp_insertar_tipo_sala(_id_tipo_sala int,_nombre varchar(50)) 
+BEGIN
+	INSERT INTO tbl_tipo_sala (id_tipo_sala,nombre,fecha,activo) 
+	VALUES(_id_tipo_sala,_nombre,CURRENT_TIMESTAMP(),true);
+END//
+
+-- TBL_ULTIMO_MENSAJE_NO_VISIBLE
+
+drop procedure if exists sp_insertar_umnv//
+
+CREATE PROCEDURE sp_insertar_umnv(_id_cuenta int,_id_sala int, _id_mensaje int) 
+BEGIN
+	INSERT INTO tbl_ultimo_mensaje_no_visible (id_cuenta,id_sala,id_mensaje,fecha) 
+	VALUES(_id_cuenta,_id_sala, _id_mensaje, CURRENT_TIMESTAMP());
+END//
+
+-- CUENTA
+
+drop procedure if exists sp_insertar_cuenta//
+drop procedure if exists sp_mostrar_cuentas//
+drop procedure if exists sp_id_cuenta//
+drop procedure if exists sp_mostrar_cuenta//
+drop procedure if exists sp_nombre_cuenta//
+
+CREATE PROCEDURE sp_insertar_cuenta (_correo varchar(50),_contrasenia varchar(50)) 
+BEGIN
+	INSERT INTO tbl_cuenta(correo,contrasenia) VALUES(_correo,_contrasenia);
+END//
+
+CREATE PROCEDURE sp_mostrar_cuentas()
+BEGIN
+	Select * from tbl_cuenta;
+END
+//
+CREATE PROCEDURE sp_mostrar_cuenta(_id_cuenta int)
+BEGIN
+	Select * from tbl_cuenta where id_cuenta=_id_cuenta;
+END
+//
+CREATE PROCEDURE sp_id_cuenta(_correo varchar(50))
+BEGIN
+	Select id_cuenta from tbl_cuenta where correo_electronico=_correo;
+END//
+CREATE PROCEDURE sp_nombre_cuenta(_id_cuenta int)
+BEGIN
+	SELECT CONCAT(u.nombres, ' ' , u.apellidos) as nombre FROM tbl_cuenta as c INNER JOIN tbl_usuario as u ON c.id_cuenta=u.id_cuenta WHERE c.id_cuenta=_id_cuenta;
+END//
+
+delimiter ;
+
+call sp_insertar_tipo_sala(1,"Privado");
+call sp_insertar_tipo_sala(2,"Publico");
